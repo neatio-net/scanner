@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img src="./assets/neat-explorer.png" alt="Neatio Logo" width="300" />
+    <img src="./neatassets/neat-explorer.png" alt="Neatio Logo" width="300" />
 </h1>
 
 # Block Explorer
