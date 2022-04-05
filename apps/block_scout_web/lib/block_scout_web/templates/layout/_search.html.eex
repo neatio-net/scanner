@@ -1,0 +1,15 @@
+<!-- Search navbar -->
+<div class="search-form d-lg-flex d-inline-block <%= if assigns[:additional_classes] do @additional_classes |> Enum.join(" ") end %>">
+	<div class="input-group" style="width: 100%;" title='<%= gettext("Wallet Address / Block Number / Transaction") %>'>
+		<div class="form-control search-control me auto <%= if assigns[:additional_classes] do @additional_classes |> Enum.join(" ") end %>">
+			<input id="<%= @id %>" class="main-search-autocomplete" data-test="search_input" type="text" tabindex="2">
+		</div>
+		<div class="input-group-append left">
+			<button class="input-group-text" id="search-icon">
+			<%= render BlockScoutWeb.IconsView, "_search_icon.html" %>
+			</button>
+		</div>
+
+	</div>
+	<button class="btn btn-outline-success my-2 my-sm-0 sr-only hidden" type="submit"><%= gettext "Search" %></button>
+</div>

@@ -1,0 +1,21 @@
+@import '~@tarekraafat/autocomplete.js/dist/css/autoComplete.01.css';
+
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  main {
+    flex-grow: 1;
+    padding-top: 0%;
+    //background-color: #000;
+    background-image: url('/images/world-bg.jpg');
+    //background-repeat: no-repeat;
+    object-fit: cover;
+    
+  }
+}
+
+.logs-hash {
+  line-height: 24px !important;
+}

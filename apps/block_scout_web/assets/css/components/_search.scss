@@ -1,0 +1,80 @@
+.mobile-search-show {
+    @include media-breakpoint-down(lg) {
+        width: 100%;
+    }
+    @include media-breakpoint-up(lg) {
+        display: none !important;
+    }
+}
+
+.mobile-search-hide {
+    @include media-breakpoint-down(lg) {
+        display: none !important;
+    }
+}
+
+// Search bar
+.search-control {
+    //margin-top: 3rem;
+    background-color: transparent;
+    max-width: 100%;
+    height: 51px !important;
+
+
+    @include media-breakpoint-down(lg) {
+        height: 39px !important;
+      
+    }
+    &.focused-field {
+      border: 1px solid #00bfff !important;
+    }
+}
+
+.autoComplete_wrapper {
+    width: 100% !important;
+}
+
+.main-search-autocomplete {
+    //height: 40px;
+    width: 100% !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background-color: transparent !important;
+    @include media-breakpoint-down(lg) {
+        height: auto !important;
+        
+    }
+}
+
+.main-search-autocomplete, .main-search-autocomplete-mobile {
+    //font-size: 24px !important;
+    text-align: center;
+    color: #00bfff !important;
+
+}
+
+.autocomplete-category {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 100;
+    text-transform: uppercase;
+    color: rgb(33,33,33);
+}
+
+.autoComplete_highlight {
+    background-color: #feff54 !important;
+    color: #212121 !important;
+}
+
+ul[id^='autoComplete_list_'] {
+    margin-left: -39px !important;
+    border-radius: 0px !important;
+    padding: 5px !important;
+}
+
+li[id^='autoComplete_result_'] {
+    font-size: 12px !important;
+    border-radius: 0 !important;
+}
