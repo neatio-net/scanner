@@ -1,7 +1,7 @@
 // Default variables
-$header-background-color: #000 !default;
-$header-links-color: #00bfff !default;
-$header-links-color-active: #a6ff33 !default;
+$header-background-color: #fff !default;
+$header-links-color: #828ba0 !default;
+$header-links-color-active: #333 !default;
 $header-icon-color: $header-links-color !default;
 $header-icon-color-hover: $secondary !default;
 $header-icon-border-color-hover: $secondary !default;
@@ -10,32 +10,36 @@ $header-textfield-text-color: $header-links-color !default;
 $header-textfield-background-color: #f5f6fa !default;
 $header-textfield-magnifier-color: $header-links-color !default;
 $header-link-horizontal-padding: 0.71rem;
-$navbar-logo-height: 48px !default;
+$navbar-logo-height: 28px !default;
 $navbar-logo-width: auto !default;
 
+// Navbar
 .navbar.navbar-primary {
-  background-color: #191919;
+  background-color: #24292f;
   position: relative;
   z-index: 100;
+  
 
   .nav-item {
     font-size: 14px;
+    
   }
 
   .navbar-nav {
+    background-color: #24292f;
+
     
     .nav-link {
       outline: none;
       align-items: center;
-      color: $header-links-color;
+      color: #00bfff;
       display: flex;
-      font-size: 16px;
-      font-weight: 600;
+      font-size: 14px;
       position: relative;
       transition: $transition-cont;
 
       &:before {
-        background-color: $header-icon-border-color-hover;
+        background-color: #a6ff33;
         border-radius: 0 0 4px 4px;
         content: "";
         display: block;
@@ -63,7 +67,7 @@ $navbar-logo-width: auto !default;
       &.active,
       &:hover,
       &.active-icon {
-        color: $header-links-color-active;
+        color: #a6ff33;
         .nav-link-icon {
           path {
             fill: $header-icon-color-hover;
@@ -93,6 +97,11 @@ $navbar-logo-width: auto !default;
     }
   }
 
+  .container-fluid {
+    max-width: 1258px;
+  }
+  
+
   .navbar-toggler {
     outline: none;
     color: $primary;
@@ -102,19 +111,14 @@ $navbar-logo-width: auto !default;
       background-image: url($header-toggler-icon);
     }
   }
-
-
   .search-form {
-    display: flex;  
-    //padding-top: 20px; 
+    display: flex;
+ 
 
     @include media-breakpoint-up(xl) {
       height: 57px;
       margin-bottom: -8px;
       margin-top: -8px;
-      margin: auto;
-      width: auto;
-      margin-top: 5%;
     }
   }
 
@@ -125,21 +129,20 @@ $navbar-logo-width: auto !default;
   .input-group {
     height: 100%;
     position: relative;
-    
+    max-height: 120px;
   }
+
 
   .form-control {
     background: $header-textfield-background-color;
     border-color: $header-textfield-background-color;
-    color: $header-textfield-text-color;
+    color: #00bfff;
     font-size: 14px;
     height: 100%;
     padding-left: 38px;
     padding-right: 8px;
     position: relative;
-  
-    
-    //width: 100%;
+    width: 100%;
     z-index: 1;
 
     &[placeholder]{
@@ -147,19 +150,24 @@ $navbar-logo-width: auto !default;
     }
     &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
         text-overflow: ellipsis  !important;
+      
     }
     &::-moz-placeholder { /* Firefox 19+ */
         text-overflow: ellipsis  !important;
+     
     }
     &:-ms-input-placeholder { /* IE 10+ */
         text-overflow: ellipsis  !important;
+  
     }
     &:-moz-placeholder { /* Firefox 18- */
         text-overflow: ellipsis  !important;
+     
     }
 
     &:focus {
       box-shadow: none;
+
     }
 
     @include media-breakpoint-up(xl) {
@@ -172,20 +180,18 @@ $navbar-logo-width: auto !default;
       width: 550px;
     }
   }
-
-
   .input-group-append {
-    //margin-top: 3rem;
     height: 38px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     width: 38px;
     z-index: 5;
+    background-color: #24292f;
 
     &.left {
-      margin-top: 3rem;
       left: 0px;
+      border-top-right-radius: 4px;
     }
 
     &.right {
@@ -205,7 +211,6 @@ $navbar-logo-width: auto !default;
     }
   }
   .input-group-text {
-    
     align-items: center;
     background: none;
     border-color: transparent;
@@ -214,7 +219,9 @@ $navbar-logo-width: auto !default;
     justify-content: center;
     padding: 0;
     width: 100%;
+    color: #a6ff33;
 
+    margin-top: 20px;
     &.border {
       border-color: $secondary !important;
       border-radius: 5px;
@@ -222,6 +229,27 @@ $navbar-logo-width: auto !default;
       background-color: $header-textfield-background-color;
     }
   }
+}
+
+
+// Explorer name
+.explorer-text {
+  color: #00bfff;
+  font-weight: bold;
+  word-spacing: 7px;
+  text-align: center;
+  font-size: 1.1rem;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+
+  @media (max-width: 992px) { 
+    display: none;
+     }
+  
 }
 
 .navbar-collapse.collapsing,
@@ -233,7 +261,7 @@ $navbar-logo-width: auto !default;
     align-items: center;
     order: -1;
     width: 100%;
-
+    margin-top: 20px;
     form {
       flex-grow: 1;
     }
@@ -241,7 +269,7 @@ $navbar-logo-width: auto !default;
   }
   .input-group {
     width: 100%;
-    
+    margin-top: 20px;
   }
   .navbar-nav {
     white-space: nowrap;
@@ -264,32 +292,18 @@ $navbar-logo-width: auto !default;
 
 .logo-text {
   color: #333;
-  font-size: 0.7rem;
+  font-size: 1rem;
+  font-weight: 700;
   margin-left: 5px;
   line-height: 28px;
 
-  &.footer {
+  &.in-footer {
     color: #fff;
   }
-}
-// Explorer name
-.explorer-text {
-  color: #00bfff;
-  font-weight: bold;
-  word-spacing: 7px;
-  text-align: center;
-  font-size: 1.1rem;
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
 
-  @media (max-width: 992px) { 
-    display: none;
-     }
-  
+  &.no-logo {
+    margin-left: 0px;
+  }
 }
 
 @include media-breakpoint-up(md) {
@@ -313,15 +327,15 @@ $navbar-logo-width: auto !default;
 }
 
 .navbar-container, .navbar-primary {
-  @include media-breakpoint-up(xl) {
-    padding: 0px 20px 0px 20px;
-    
+  @media (min-width: 992px) {
+    padding-right: 0;
   }
 }
 
 .nav-item-networks {
   .topnav-nav-link {
     transition: none !important;
+    color: #f5f6fa;
   }
 }
 

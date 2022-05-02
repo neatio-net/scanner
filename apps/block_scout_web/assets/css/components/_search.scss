@@ -1,56 +1,76 @@
 .mobile-search-show {
-    @include media-breakpoint-down(lg) {
+    @media screen and (max-width: 992px) {
         width: 100%;
     }
-    @include media-breakpoint-up(lg) {
+    @media screen and (min-width: 992px) {
         display: none !important;
     }
 }
 
 .mobile-search-hide {
-    @include media-breakpoint-down(lg) {
+    @media screen and (max-width: 992px) {
         display: none !important;
     }
 }
 
-// Search bar
 .search-control {
-    //margin-top: 3rem;
-    background-color: transparent;
-    max-width: 100%;
-    height: 51px !important;
-
-
-    @include media-breakpoint-down(lg) {
-        height: 39px !important;
-      
+  
+    background-color: #24292f;
+    @media screen and (min-width: 992px) {
+        height: 57px !important;
+    }
+    @media screen and (max-width: 992px) {
+        height: 33px !important;
     }
     &.focused-field {
-      border: 1px solid #00bfff !important;
+      border: 1px solid $secondary !important;
     }
+
 }
 
 .autoComplete_wrapper {
     width: 100% !important;
+    
+   
 }
 
 .main-search-autocomplete {
-    //height: 40px;
     width: 100% !important;
     padding: 0 !important;
     border: none !important;
     border-radius: 0 !important;
+    text-align: center;
+
+
     background-color: transparent !important;
-    @include media-breakpoint-down(lg) {
+    @media screen and (max-width: 992px) {
         height: auto !important;
-        
     }
+    &[placeholder]{
+        text-overflow: ellipsis !important;
+      }
+      &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+          text-overflow: ellipsis  !important;
+          color: #00bfff !important;
+      }
+      &::-moz-placeholder { /* Firefox 19+ */
+          text-overflow: ellipsis  !important;
+          color: #00bfff !important;
+      }
+      &:-ms-input-placeholder { /* IE 10+ */
+          text-overflow: ellipsis  !important;
+          color: #00bfff !important;
+    
+      }
+      &:-moz-placeholder { /* Firefox 18- */
+          text-overflow: ellipsis  !important;
+          color: #00bfff !important;
+      }
 }
 
 .main-search-autocomplete, .main-search-autocomplete-mobile {
-    //font-size: 24px !important;
-    text-align: center;
-    color: #00bfff !important;
+    font-size: 14px !important;
+    color: #bff000 !important;
 
 }
 
@@ -60,12 +80,13 @@
     font-size: 13px;
     font-weight: 100;
     text-transform: uppercase;
-    color: rgb(33,33,33);
+    color: #ddd;
+    margin-left: auto;
 }
 
 .autoComplete_highlight {
     background-color: #feff54 !important;
-    color: #212121 !important;
+    color: #ddd !important;
 }
 
 ul[id^='autoComplete_list_'] {

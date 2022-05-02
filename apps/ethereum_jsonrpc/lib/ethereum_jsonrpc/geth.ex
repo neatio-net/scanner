@@ -12,6 +12,7 @@ defmodule EthereumJSONRPC.Geth do
 
   @doc """
   Block reward contract beneficiary fetching is not supported currently for Geth.
+
   To signal to the caller that fetching is not supported, `:ignore` is returned.
   """
   @impl EthereumJSONRPC.Variant
@@ -44,6 +45,7 @@ defmodule EthereumJSONRPC.Geth do
 
   @doc """
   Internal transaction fetching for entire blocks is not currently supported for Geth.
+
   To signal to the caller that fetching is not supported, `:ignore` is returned.
   """
   @impl EthereumJSONRPC.Variant

@@ -1,18 +1,5 @@
 <title>
-  <%= gettext("Neatio | Explorer") %>
+  <%= gettext("Neatio | Explorer", subnetwork: LayoutView.subnetwork_title(), network: LayoutView.network_title()) %>
 </title>
-
-<meta name="description" content="<%= gettext "Find out the latest blocks and transactions with Neatio Explorer to find the price,average block time, total transactions, total blocks, wallet addresses and more." %>">
-<link rel="canonical" href="https://explorer.neatio.org">
-
-<meta name="og:title" content="<%= gettext "Neatio | Explorer" %>">
-<meta name="og:description" content="<%= gettext "Find out the latest blocks and transactions with Neatio Explorer to find the price,average block time, total transactions, total blocks, wallet addresses and more." %>">
-<meta name="og:type" content="website">
-<meta name="og:image" content="https://https://explorer.neatio.org">
-<meta name="og:url" content="https://explorer.neatio.org">
-
-<meta name="twitter:card" content="website">
-<meta name="twitter:site" content="@cryptocom">
-<meta name="twitter:title" content="<%= gettext "Neatio | Explorer" %>">
-<meta name="twitter:description" content="<%= gettext "Find out the latest blocks and transactions with Neatio Explorer to find the price,average block time, total transactions, total blocks, wallet addresses and more." %>">
-<meta name="twitter:image" content="https://explorer.neatio.org">
+<meta name="description" content="<%= gettext "Neatio blockchain explorer.", subnetwork: LayoutView.subnetwork_title() %>">
+<meta name="keywords" content="Neatio, blockchain, NEAT, cryptocurrency.">

@@ -1,67 +1,93 @@
 .fontawesome-icon {
     background-color: $footer-text-color;
-
-    
   
     &.github {
-      -webkit-mask: url(/images/icons/fontawesome/gh-icon.png) no-repeat center;
-      mask: url(/images/icons/fontawesome/github.svg) no-repeat center;
+      -webkit-mask: url(../static/images/icons/social/github.svg) no-repeat center;
+      mask: url(../static/images/icons/social/github.svg) no-repeat center;
       height: 22px;
       width: 22px;
       mask-size: 22px !important;
       -webkit-mask-size: 22px !important;
     }
     &.twitter {
-      -webkit-mask: url(/images/icons/fontawesome/tw-logo.png) no-repeat center;
-      mask: url(/images/icons/fontawesome/twitter.svg) no-repeat center;
+      -webkit-mask: url(../static/images/icons/social/twitter.svg) no-repeat center;
+      mask: url(../static/images/icons/social/twitter.svg) no-repeat center;
       height: 22px;
       width: 22px;
       mask-size: 22px !important;
       -webkit-mask-size: 22px !important;
     }
-    &.telegram {
-      -webkit-mask: url(/images/icons/fontawesome/tg-icon.png) no-repeat center;
-      mask: url(/images/icons/fontawesome/telegram.svg) no-repeat center;
-      height: 22px;
-      width: 22px;
-      mask-size: 22px !important;
-      -webkit-mask-size: 22px !important;
-    }
+
     &.discord {
-      -webkit-mask: url(/images/icons/fontawesome/dd-icon.png) no-repeat center;
-      mask: url(/images/icons/fontawesome/bar-chart.svg) no-repeat center;
+      -webkit-mask: url(../static/images/icons/social/discord.svg) no-repeat center;
+      mask: url(../static/images/icons/social/discord.svg) no-repeat center;
       height: 22px;
       width: 22px;
       mask-size: 22px !important;
       -webkit-mask-size: 22px !important;
     }
+
+
+    &.telegram {
+      -webkit-mask: url(../static/images/icons/social/telegram.svg) no-repeat center;
+      mask: url(../static/images/icons/social/telegram.svg) no-repeat center;
+      height: 22px;
+      width: 22px;
+      mask-size: 22px !important;
+      -webkit-mask-size: 22px !important;
+    }
+
     &.bitcointalk {
-      -webkit-mask: url(/images/icons/fontawesome/bt-icon.png) no-repeat center;
-      mask: url(/images/icons/fontawesome/bar-chart.svg) no-repeat center;
+      -webkit-mask: url(../static/images/icons/social/bitcointalk.svg) no-repeat center;
+      mask: url(../static/images/icons/social/bitcointalk.svg) no-repeat center;
       height: 22px;
       width: 22px;
       mask-size: 22px !important;
       -webkit-mask-size: 22px !important;
     }
+
     &.reddit {
-      -webkit-mask: url(/images/icons/fontawesome/rd-icon.png) no-repeat center;
-      mask: url(/images/icons/fontawesome/bar-chart.svg) no-repeat center;
+      -webkit-mask: url(../static/images/icons/social/reddit.svg) no-repeat center;
+      mask: url(../static/images/icons/social/reddit.svg) no-repeat center;
       height: 22px;
       width: 22px;
       mask-size: 22px !important;
       -webkit-mask-size: 22px !important;
     }
     &.facebook {
-      -webkit-mask: url(/images/icons/fontawesome/fb-icon.png) no-repeat center;
-      mask: url(/images/icons/fontawesome/info-circle.svg) no-repeat center;
+      -webkit-mask: url(../static/images/icons/social/facebook.svg) no-repeat center;
+      mask: url(../static/images/icons/social/facebook.svg) no-repeat center;
       height: 22px;
       width: 22px;
       mask-size: 22px !important;
       -webkit-mask-size: 22px !important;
     }
+
+
+
+
+    &.bar-chart {
+      -webkit-mask: url(../static/images/icons/fontawesome/bar-chart.svg) no-repeat center;
+      mask: url(../static/images/icons/fontawesome/bar-chart.svg) no-repeat center;
+      height: 22px;
+      width: 22px;
+      mask-size: 22px !important;
+      -webkit-mask-size: 22px !important;
+    }
+
+
+
+    &.info-circle {
+      -webkit-mask: url(../static/images/icons/fontawesome/info-circle.svg) no-repeat center;
+      mask: url(../static/images/icons/fontawesome/info-circle.svg) no-repeat center;
+      height: 12px;
+      width: 12px;
+      mask-size: 12px !important;
+      -webkit-mask-size: 12px !important;
+    }
     &.tag {
-      -webkit-mask: url(/images/icons/fontawesome/tag.svg) no-repeat center;
-      mask: url(/images/icons/fontawesome/tag.svg) no-repeat center;
+      -webkit-mask: url(../static/images/icons/fontawesome/tag.svg) no-repeat center;
+      mask: url(../static/images/icons/fontawesome/tag.svg) no-repeat center;
       height: 12px;
       width: 12px;
       mask-size: 12px !important;

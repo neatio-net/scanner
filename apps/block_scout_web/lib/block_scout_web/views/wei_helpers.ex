@@ -29,10 +29,10 @@ defmodule BlockScoutWeb.WeiHelpers do
   ## Examples
 
       iex> format_wei_value(%Wei{value: Decimal.new(1)}, :wei)
-      "1 baseneat"
+      "1 Wei"
 
       iex> format_wei_value(%Wei{value: Decimal.new(1, 10, 12)}, :gwei)
-      "1,000 baseneat"
+      "10,000 Gwei"
 
       iex> format_wei_value(%Wei{value: Decimal.new(1, 10, 21)}, :ether)
       "10,000 NEAT"
@@ -73,7 +73,7 @@ defmodule BlockScoutWeb.WeiHelpers do
     end
   end
 
-  defp display_unit(:wei), do: gettext("baseneat")
-  defp display_unit(:gwei), do: gettext("baseneat")
+  defp display_unit(:wei), do: gettext("Wei")
+  defp display_unit(:gwei), do: gettext("Gwei")
   defp display_unit(:ether), do: gettext("NEAT")
 end

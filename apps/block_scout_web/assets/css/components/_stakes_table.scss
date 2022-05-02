@@ -1,4 +1,4 @@
-$stakes-table-th-background: #191919 !default;
+$stakes-table-th-background: #24292f !default;
 $stakes-table-cell-separation: 25px !default;
 $stakes-link-color: $primary !default;
 
@@ -23,7 +23,7 @@ $stakes-link-color: $primary !default;
     }
   }
   .color-lighten {
-    color: #dddddd;
+    color: #828ba0;
   }
 }
 
@@ -139,7 +139,6 @@ $stakes-link-color: $primary !default;
 
 .stakes-td {
   border-bottom: 1px solid #f5f6fa;
-  color: #a6ff33;
   font-size: 14px;
   font-weight: normal;
   height: 60px;

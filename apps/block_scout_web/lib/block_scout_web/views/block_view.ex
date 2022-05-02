@@ -6,6 +6,7 @@ defmodule BlockScoutWeb.BlockView do
   alias Explorer.Chain
   alias Explorer.Chain.{Block, Wei}
   alias Explorer.Chain.Block.Reward
+  alias Explorer.Counters.{BlockBurnedFeeCounter, BlockPriorityFeeCounter}
 
   @dialyzer :no_match
 
@@ -17,7 +18,7 @@ defmodule BlockScoutWeb.BlockView do
       |> Kernel.||(0)
       |> BlockScoutWeb.Cldr.Number.to_string!()
 
-    unit_text = gettext("baseneat")
+    unit_text = gettext("Gwei")
 
     "#{average} #{unit_text}"
   end
@@ -57,12 +58,12 @@ defmodule BlockScoutWeb.BlockView do
       %{payout_key: block_miner_payout_address} = Reward.get_validator_payout_key_by_mining(block_miner_address)
 
       if beneficiary_address == block_miner_payout_address do
-        gettext("Miner Reward")
+        gettext("Validator Reward")
       else
         gettext("Chore Reward")
       end
     else
-      gettext("Miner Reward")
+      gettext("Validator Reward")
     end
   end
 

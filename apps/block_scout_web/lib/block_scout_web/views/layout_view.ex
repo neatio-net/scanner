@@ -10,16 +10,16 @@ defmodule BlockScoutWeb.LayoutView do
   @issue_url "https://github.com/blockscout/blockscout/issues/new"
   @default_other_networks [
     %{
-      title: "POA",
+      title: "|",
       url: "https://blockscout.com/poa/core"
     },
     %{
-      title: "Sokol",
+      title: "Neatio",
       url: "https://blockscout.com/poa/sokol",
       test_net?: true
     },
     %{
-      title: "xDai",
+      title: "Gnosis Chain",
       url: "https://blockscout.com/xdai/mainnet"
     },
     %{
@@ -37,12 +37,11 @@ defmodule BlockScoutWeb.LayoutView do
   alias BlockScoutWeb.SocialMedia
 
   def logo do
-    Keyword.get(application_config(), :logo) || "/images/neat-explorer.png"
+    Keyword.get(application_config(), :logo)
   end
 
   def logo_footer do
-    Keyword.get(application_config(), :logo_footer) || Keyword.get(application_config(), :logo) ||
-    "/images/neat-explorer.png"
+    Keyword.get(application_config(), :logo_footer) || Keyword.get(application_config(), :logo)
   end
 
   def logo_text do
@@ -54,7 +53,7 @@ defmodule BlockScoutWeb.LayoutView do
   end
 
   def network_title do
-    Keyword.get(application_config(), :network) || "Neatio"
+    Keyword.get(application_config(), :network) || "|"
   end
 
   defp application_config do

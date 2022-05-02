@@ -65,6 +65,7 @@ $form-control-border-color-active: $primary !default;
 .form-control:focus ~ .input-group-prepend.last {
   .input-group-text {
     border-color: $form-control-border-color-active;
+    
   }
 }
 
@@ -142,7 +143,7 @@ $form-control-border-color-active: $primary !default;
 }
 
 .tokens-list-search-input {
-  //height: 40px;
+  height: 40px;
   width: 300px;
   @include media-breakpoint-down(md) {
     width: 100%;

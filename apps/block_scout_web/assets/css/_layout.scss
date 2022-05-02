@@ -8,9 +8,9 @@
   main {
     flex-grow: 1;
     padding-top: 0%;
-    //background-color: #000;
-    background-image: url('/images/world-bg.jpg');
-    //background-repeat: no-repeat;
+    background-color: #000;
+    //background-image: url('../static/images/hero.jpg');
+    background-repeat: no-repeat;
     object-fit: cover;
     
   }

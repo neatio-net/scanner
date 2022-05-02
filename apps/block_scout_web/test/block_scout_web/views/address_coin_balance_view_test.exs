@@ -5,16 +5,16 @@ defmodule BlockScoutWeb.AddressCoinBalanceViewTest do
   alias Explorer.Chain.Wei
 
   describe "format/1" do
-    test "format the wei value in NEAT" do
+    test "format the wei value in ether" do
       wei = Wei.from(Decimal.new(1_340_000_000), :gwei)
 
-      assert AddressCoinBalanceView.format(wei) == "13.4 NEAT"
+      assert AddressCoinBalanceView.format(wei) == "1.34 NEAT"
     end
 
     test "format negative values" do
       wei = Wei.from(Decimal.new(-1_340_000_000), :gwei)
 
-      assert AddressCoinBalanceView.format(wei) == "-13.4 NEAT"
+      assert AddressCoinBalanceView.format(wei) == "-1.34 NEAT"
     end
   end
 

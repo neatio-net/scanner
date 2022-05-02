@@ -20,6 +20,12 @@ defmodule BlockScoutWeb.ChainControllerTest do
   end
 
   describe "GET index/2" do
+    test "returns a welcome message", %{conn: conn} do
+      conn = get(conn, chain_path(BlockScoutWeb.Endpoint, :show))
+
+      assert(html_response(conn, 200) =~ "POA")
+    end
+
     test "returns a block" do
       insert(:block, %{number: 23})
 
@@ -48,7 +54,7 @@ defmodule BlockScoutWeb.ChainControllerTest do
     end
 
     test "displays miner primary address names" do
-      miner_name = "POA Miner Pool"
+      miner_name = "POA Validator Pool"
       %{address: miner_address} = insert(:address_name, name: miner_name, primary: true)
 
       insert(:block, miner: miner_address, miner_hash: nil)
@@ -88,7 +94,7 @@ defmodule BlockScoutWeb.ChainControllerTest do
     end
 
     test "finds verified contract" do
-      insert(:smart_contract, name: "SuperToken")
+      insert(:smart_contract, name: "SuperToken", contract_code_md5: "123")
 
       conn =
         build_conn()
@@ -98,7 +104,7 @@ defmodule BlockScoutWeb.ChainControllerTest do
     end
 
     test "finds verified contract and token" do
-      insert(:smart_contract, name: "MagicContract")
+      insert(:smart_contract, name: "MagicContract", contract_code_md5: "123")
       insert(:token, name: "magicToken")
 
       conn =
@@ -109,10 +115,10 @@ defmodule BlockScoutWeb.ChainControllerTest do
     end
 
     test "finds verified contracts and tokens" do
-      insert(:smart_contract, name: "something")
-      insert(:smart_contract, name: "MagicContract")
+      insert(:smart_contract, name: "something", contract_code_md5: "123")
+      insert(:smart_contract, name: "MagicContract", contract_code_md5: "123")
       insert(:token, name: "Magic3")
-      insert(:smart_contract, name: "magicContract2")
+      insert(:smart_contract, name: "magicContract2", contract_code_md5: "123")
       insert(:token, name: "magicToken")
       insert(:token, name: "OneMoreToken")
 
@@ -136,7 +142,7 @@ defmodule BlockScoutWeb.ChainControllerTest do
 
     test "find by empty query" do
       insert(:token, name: "MaGiCt0k3n")
-      insert(:smart_contract, name: "MagicContract")
+      insert(:smart_contract, name: "MagicContract", contract_code_md5: "123")
 
       conn =
         build_conn()

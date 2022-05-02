@@ -1,21 +1,6 @@
 <footer class="footer">
   <div class="footer-body container">
-    <!-- Logo
-    <div class="row footer-logo-row">
-      <div class="col-md-12">
-        <%= link to: webapp_url(@conn), class: "footer-brand" do %>
-          <img class="footer-logo" src="<%= static_path(@conn, logo_footer()) %>" alt="<%= subnetwork_title() %>" />
-          <%= if logo_text() do %>
-            <span class="logo-text footer"> <%= logo_text() %> </span>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-
-    <% other_explorers = other_explorers() %>
-    <% col_size = if Enum.empty?(other_explorers), do: 3, else: 2 %>
--->
-
+    <!-- Footer Layout -->
 
         <div class="footer-social-icons">
           <a href="https://dd.neatio.org" rel="noreferrer" target="_blank" class="footer-social-icon" title='<%= gettext("Discord") %>'>
@@ -44,32 +29,10 @@
             <div class="footer-layout-line">
         <p class="footer-info-text">
           <%= gettext("Copyright © 2022 Neatio. All rights reserved.")%>
-          <a href="https://github.com/blockscout/blockscout" rel="noreferrer" class="footer-link" target="_blank"><%= gettext(" Powered by Blockscout") %></a>
+          <a href="https://github.com/blockscout/blockscout" rel="noreferrer" class="footer-link" target="_blank"><%= gettext("Powered by Blockscout") %></a>
         </p>
        </div>
             <p class="footer-layout-line">Your use of this website and software is entirely at your own risk, and this website is provided on an "as is" basis and for reference only.</p>
-
-     <!--
-      <div class="col-xs-12 col-md-4 col-lg-<%= col_size %> footer-list">
-        <h3><%= gettext("Explorer") %></h3>
-        <ul>
-          <li><a href="/" rel="noreferrer" class="footer-link"><%= gettext("Home") %></a></li>
-          <li><a href="/blocks" rel="noreferrer" class="footer-link"><%= gettext("Blocks") %></a></li>
-          <li><a href="/txs" rel="noreferrer" class="footer-link"><%= gettext("Transactions") %></a></li>
-          <li><a href="/accounts" rel="noreferrer" class="footer-link"><%= gettext("Accounts") %></a></li>
-          <li><a href="/tokens" rel="noreferrer" class="footer-link"><%= gettext("Tokens") %></a></li>
-        </ul>
-      </div>
-
-
-
-      <div class="col-xs-12 col-md-4 col-lg-<%= col_size %> footer-list">
-        <h3><%= gettext("Resources") %></h3>
-        <ul>
-          <li><a href="https://neatio.org/" target="_blank" rel="noreferrer" class="footer-link"><%= gettext("Neatio Website") %></a></li>
-        </ul>
-      </div>
-     -->
 
 
 

@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 pre {
   white-space: pre-wrap;
 }
@@ -23,11 +25,12 @@ pre {
 }
 
 .pre-scrollable-shorty {
-  max-height: $pre-scrollable-max-height / 7;
+  max-height: math.div($pre-scrollable-max-height, 7);
 }
 
 .tile pre {
   margin-bottom: 0;
+  background-color: #24292f;
 }
 
 .contract-code-container {
@@ -36,6 +39,7 @@ pre {
   }
 
   & .buttons {
+    background-color: transparent;
     @include media-breakpoint-down(md) {
       width: 100%;
       margin-bottom: 10px;

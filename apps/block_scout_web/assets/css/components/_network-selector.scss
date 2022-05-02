@@ -115,7 +115,7 @@ $network-selector-item-icon-dimensions: 30px !default;
 .network-selector-search-input {
   background-color: transparent;
   border-color: transparent;
-  color: #333;
+  color: #00bfff;
   flex-grow: 1;
   font-size: 14px;
   font-weight: 600;
@@ -124,19 +124,19 @@ $network-selector-item-icon-dimensions: 30px !default;
   padding: 0 20px 0 10px;
 
   &[placeholder]{
-    color: $network-selector-search-input-color !important;
+    color: #00bfff !important;
   }
   &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    color: $network-selector-search-input-color !important;
+    color: #00bfff !important;
   }
   &::-moz-placeholder { /* Firefox 19+ */
-    color: $network-selector-search-input-color !important;
+    color: #00bfff !important;
   }
   &:-ms-input-placeholder { /* IE 10+ */
-    color: $network-selector-search-input-color !important;
+    color: #00bfff !important;
   }
   &:-moz-placeholder { /* Firefox 18- */
-    color: $network-selector-search-input-color !important;
+    color: #00bfff !important;
   }
 }
 

@@ -30,6 +30,10 @@ defmodule BlockScoutWeb.API.RPC.ContractView do
     RPCView.render("show.json", data: prepare_source_code_contract(contract))
   end
 
+  def render("show.json", %{result: result}) do
+    RPCView.render("show.json", data: result)
+  end
+
   defp prepare_source_code_contract(nil) do
     %{
       "Address" => "",
@@ -43,7 +47,9 @@ defmodule BlockScoutWeb.API.RPC.ContractView do
       "OptimizationRuns" => "",
       "EVMVersion" => "",
       "ConstructorArguments" => "",
-      "ExternalLibraries" => ""
+      "ExternalLibraries" => "",
+      "FileName" => "",
+      "IsProxy" => "false"
     }
   end
 
@@ -63,6 +69,22 @@ defmodule BlockScoutWeb.API.RPC.ContractView do
     |> set_constructor_arguments(contract)
     |> set_external_libraries(contract)
     |> set_verified_contract_data(contract, address, optimization)
+    |> set_proxy_info(contract)
+  end
+
+  defp set_proxy_info(contract_output, contract) do
+    result =
+      if contract.is_proxy do
+        contract_output
+        |> Map.put_new(:ImplementationAddress, contract.implementation_address_hash_string)
+      else
+        contract_output
+      end
+
+    is_proxy_string = if contract.is_proxy, do: "true", else: "false"
+
+    result
+    |> Map.put_new(:IsProxy, is_proxy_string)
   end
 
   defp set_decompiled_contract_data(contract_output, decompiled_smart_contract) do
@@ -142,6 +164,7 @@ defmodule BlockScoutWeb.API.RPC.ContractView do
       |> Map.put_new(:CompilerVersion, Map.get(contract, :compiler_version, ""))
       |> Map.put_new(:OptimizationUsed, contract_optimization)
       |> Map.put_new(:EVMVersion, Map.get(contract, :evm_version, ""))
+      |> Map.put_new(:FileName, Map.get(contract, :file_path, "") || "")
       |> insert_additional_sources(address)
     end
   end
@@ -160,7 +183,7 @@ defmodule BlockScoutWeb.API.RPC.ContractView do
           Enum.map(additional_sources, fn src ->
             %{
               Filename: src.file_name,
-              SourceCode: SmartContract.add_submitted_comment(src.contract_source_code, src.inserted_at)
+              SourceCode: src.contract_source_code
             }
           end),
         else: []
