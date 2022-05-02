@@ -5,10 +5,18 @@
 
   <div class="container-fluid navbar-container">
 
+           <!-- navbar logo -->
+    <%= link to: webapp_url(@conn), class: "navbar-brand", "data-test": "header_logo" do %>
+      <%= if logo() do %>
+        <img class="navbar-logo" id="navbar-logo" src="/images/scanner.svg" alt="Neatio Scanner" />
+      <% end %>
+
+    <% end %>
+
 
 
          <!-- navbar logo -->
-        <img class="navbar-logo" id="navbar-logo" src="../images/controller.svg" />
+
 
 
 

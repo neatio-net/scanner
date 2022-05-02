@@ -10,7 +10,7 @@ $header-textfield-text-color: $header-links-color !default;
 $header-textfield-background-color: #f5f6fa !default;
 $header-textfield-magnifier-color: $header-links-color !default;
 $header-link-horizontal-padding: 0.71rem;
-$navbar-logo-height: 28px !default;
+$navbar-logo-height: 32px !default;
 $navbar-logo-width: auto !default;
 
 // Navbar
@@ -21,8 +21,10 @@ $navbar-logo-width: auto !default;
   
 
   .nav-item {
-    font-size: 14px;
-    
+    font-size: 16px;
+    margin-right: 20px;
+    font-weight: bold;
+    text-transform: uppercase;    
   }
 
   .navbar-nav {
@@ -34,7 +36,7 @@ $navbar-logo-width: auto !default;
       align-items: center;
       color: #00bfff;
       display: flex;
-      font-size: 14px;
+      font-size: 18px;
       position: relative;
       transition: $transition-cont;
 
@@ -99,6 +101,7 @@ $navbar-logo-width: auto !default;
 
   .container-fluid {
     max-width: 1258px;
+    //padding-left: -20px;
   }
   
 
@@ -187,7 +190,7 @@ $navbar-logo-width: auto !default;
     transform: translateY(-50%);
     width: 38px;
     z-index: 5;
-    background-color: #24292f;
+    background-color: #000000;
 
     &.left {
       left: 0px;
@@ -278,8 +281,8 @@ $navbar-logo-width: auto !default;
 
 .navbar-brand {
   margin-left: 0;
-  flex-shrink: 1;
-  display: inline-flex;
+  //flex-shrink: 1;
+  //display: inline-flex;
   .navbar-logo {
     max-width: 100%;
   }

@@ -1,4 +1,4 @@
-$dashboard-banner-gradient-start: #000000 !default;
+$dashboard-banner-gradient-start: transparent !default;
 $dashboard-banner-gradient-end: lighten(
   $dashboard-banner-gradient-start,
   5%
@@ -9,21 +9,23 @@ $dashboard-line-color-market: $secondary !default;
 $dashboard-line-color-transactions: $warning !default;
 $dashboard-stats-item-label-color: #fff !default;
 $dashboard-stats-item-value-color: rgba(#fff, 0.8) !default;
-$dashboard-banner-chart-legend-label-color: #000 !default;
+$dashboard-banner-chart-legend-label-color: transparent !default;
 $dashboard-banner-chart-legend-value-color: #999 !default;
 $dashboard-stats-item-border-color: $primary !default;
-$dashboard-banner-network-plain-container-height: 120px;
-$dashboard-banner-chart-axis-font-color: $dashboard-stats-item-value-color !default;
+$dashboard-banner-network-plain-container-height: 92px;
+$dashboard-banner-chart-axis-font-color: red !default;
 $dashboard-banner-chart-axis-font-color-alt: #333;
 
 .dashboard-banner-container {
   //@include gradient-container();
-  margin-bottom: 3rem;
+  //margin-bottom: 3rem;
   overflow: hidden;
   padding: 0;
   position: relative;
-  height: 264px;
-  background-color: #000000;
+  height: 184px;
+  background-color: transparent;
+  margin: 0 auto;
+
   @include media-breakpoint-down(sm) {
       height: auto;
   }
@@ -34,12 +36,13 @@ $dashboard-banner-chart-axis-font-color-alt: #333;
 
 .dashboard-banner {
   //display: flex;
+  margin: 0 auto;
   justify-content: space-between;
   position: relative;
   z-index: 9;
 
   @include media-breakpoint-between(lg, xl) {
-    height: 160px;
+    height: 120px;
   }
 
   @include media-breakpoint-down(sm) {
@@ -172,8 +175,8 @@ $dashboard-banner-chart-axis-font-color-alt: #333;
 // dashboard
 .dashboard-banner-network-plain-container {
   align-items: center;
-  align-self: flex-end;
-  background-color: #000000;
+  margin: 0 auto;
+  background-color: transparent;
   //border-top-left-radius: 10px;
   //display: flex;
   height: $dashboard-banner-network-plain-container-height;
@@ -204,27 +207,29 @@ $dashboard-banner-chart-axis-font-color-alt: #333;
     width: 100%;
   }
 
-  &::after {
-    background-color: #000000;
-    bottom: 0;
-    content: "";
-    display: block;
-    height: $dashboard-banner-network-plain-container-height;
-    left: 0;
-    position: absolute;
-    width: 9999px;
-    z-index: -1;
-    box-shadow: 0 0 35px 0 rgba(0, 0, 0, 0.2);
-    border-top-left-radius: 20px;
+  // &::after {
+  //   background-color: ;
+  //   bottom: 0;
+  //   content: "";
+  //   display: block;
+  //   height: $dashboard-banner-network-plain-container-height;
+  //   left: 0;
+  //   position: absolute;
+  //   width: 9999px;
+  //   z-index: -1;
+  //   box-shadow: 0 0 35px 0 rgba(0, 0, 0, 0.2);
+  //   border-top-left-radius: 20px;
 
-    @include media-breakpoint-down(md) {
-      display: none;
-    }
-  }
+  //   @include media-breakpoint-down(md) {
+  //     display: none;
+  //   }
+  // }
 }
 
 .dashboard-banner-network-stats {
-  column-gap: 15px;
+  display: inline-block;
+  margin-bottom: 40px;
+  column-gap: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 
@@ -246,9 +251,17 @@ $dashboard-banner-chart-axis-font-color-alt: #333;
   @include stats-item($dashboard-stats-item-border-color, $dashboard-stats-item-label-color, $dashboard-stats-item-value-color);
 
   .dashboard-banner-network-stats-item {
-    margin-right: 60px;
+    background-color: #000000;
+    //margin-right: 60px;
     border-style: solid;
     border-width: 1px;
+    min-width: 264px;
+    min-height: 60px;
+    align-items: center;
+    margin: 0 auto;
+    //text-align:center;
+ 
+ 
 
 
     @include media-breakpoint-down(lg) {

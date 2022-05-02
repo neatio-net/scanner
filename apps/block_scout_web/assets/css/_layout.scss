@@ -8,9 +8,10 @@
   main {
     flex-grow: 1;
     padding-top: 0%;
-    background-color: #000;
-    //background-image: url('../static/images/hero.jpg');
-    background-repeat: no-repeat;
+    //background-color: #000;
+    background-image: url('./hero.svg');
+    background-blend-mode: multiply;
+    background-color: #2b3642;
     object-fit: cover;
     
   }
