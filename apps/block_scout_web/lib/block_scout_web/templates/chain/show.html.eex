@@ -63,8 +63,6 @@
 
 
       </div>
-                <%= render BlockScoutWeb.LayoutView, "_search.html", conn: @conn, id: "main-search-autocomplete", additional_classes: ["mobile-search-hide"] %>
-              <%= render BlockScoutWeb.LayoutView, "_search.html", conn: @conn, id: "main-search-autocomplete-mobile", additional_classes: ["mobile-search-show"] %>
 
 
 
@@ -76,6 +74,20 @@
 
 </div>
 <section class="container">
+
+<div class="dashboard-text">
+<h1 >
+
+          <%= gettext("NEATIO  BLOCKCHAIN  EXPLORER") %>
+
+</h1>
+</div>
+
+                <%= render BlockScoutWeb.LayoutView, "_search.html", conn: @conn, id: "main-search-autocomplete", additional_classes: ["mobile-search-hide"] %>
+              <%= render BlockScoutWeb.LayoutView, "_search.html", conn: @conn, id: "main-search-autocomplete-mobile", additional_classes: ["mobile-search-show"] %>
+
+
+  <!--
   <div class="card card-chain-blocks js-ad-dependant-mb-3">
     <div class="card-body">
       <%= link(gettext("View All"), to: blocks_path(BlockScoutWeb.Endpoint, :index), class: "btn-line float-right") %>
@@ -133,9 +145,11 @@
       </div>
     </div>
   </div>
-
+  -->
+  <!--
   <%= render BlockScoutWeb.Advertisement.BannersAdView, "_banner_728.html", conn: @conn %>
-
+  -->
+  <!--
   <div class="card card-chain-transactions">
     <div class="card-body">
       <%= link(gettext("View All"), to: transaction_path(BlockScoutWeb.Endpoint, :index), class: "btn-line float-right") %>
@@ -157,4 +171,5 @@
       </span>
     </div>
   </div>
+  -->
 </section>

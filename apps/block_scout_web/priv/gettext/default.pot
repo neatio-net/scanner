@@ -3022,6 +3022,11 @@ msgid "Via flattened source code"
 msgstr ""
 
 #, elixir-format
+#: lib/block_scout_web/templates/chain/show.html.eex:175
+msgid "View All"
+msgstr ""
+
+#, elixir-format
 #: lib/block_scout_web/templates/chain/show.html.eex:235
 msgid "View All"
 msgstr ""

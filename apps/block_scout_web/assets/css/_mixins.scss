@@ -16,11 +16,11 @@
 @mixin gradient-container() {
   background-color: transparent;
 
-  box-shadow: 0 5px 40px -5px rgba(#000, 0.25);
+  // box-shadow: 0 5px 40px -5px rgba(#000, 0.25);
   margin-top: -3rem;
 }
 
-@mixin stats-item($border-color: #fff, $text-color: #fff, $value-color: #fff) {
+@mixin stats-item($border-color: #fff, $text-color: #fff, $value-color: #00bfff) {
   &-item {
     display: flex;
     flex-direction: column;
@@ -29,16 +29,16 @@
     padding-right: 1rem;
     position: relative;
 
-    &::before {
-      background-color: $border-color;
-      border-radius: 2px;
-      content: "";
-      height: 100%;
-      left: 0;
-      position: absolute;
-      top: 0;
-      width: 4px;
-    }
+    // &::before {
+    //   background-color: $border-color;
+    //   border-radius: 2px;
+    //   content: "";
+    //   height: 100%;
+    //   left: 0;
+    //   position: absolute;
+    //   top: 0;
+    //   width: 4px;
+    // }
   }
 
   &-label {

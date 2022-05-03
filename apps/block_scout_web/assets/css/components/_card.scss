@@ -11,8 +11,10 @@ $card-tab-icon-color-active: #fff !default;
 .card {
   background-color: $card-background-color;
   border-radius: $card-default-border-radius;
-  border: none;
-  box-shadow: 0 0 16px 0 rgba(202, 199, 226, 0.5);
+  border: 1px;
+  border-style: solid;
+  border-color: #00bfff;
+  //box-shadow: 0 0 16px 0 rgba(202, 199, 226, 0.5);
   margin-bottom: $common-container-margin;
 
   .block-details-row {

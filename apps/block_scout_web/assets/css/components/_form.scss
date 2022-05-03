@@ -56,7 +56,7 @@ $form-control-border-color-active: $primary !default;
     background: none;
     border-color: $form-control-border-color;
     border-left: none;
-    color: #a3a9b5;
+    color: #00bfff;
     font-size: 14px;
     transition: $input-transition;
   }
@@ -64,7 +64,7 @@ $form-control-border-color-active: $primary !default;
 
 .form-control:focus ~ .input-group-prepend.last {
   .input-group-text {
-    border-color: $form-control-border-color-active;
+    border-color: #00bfff;
     
   }
 }

@@ -437,9 +437,9 @@ $tile-body-a-color: #5959d8 !default;
     border-radius: 4px;
     overflow: hidden;
     transition: .24s ease-out;
-    border-top: 1px solid #dee2e6;
-    border-right: 1px solid #dee2e6;
-    border-bottom: 1px solid #dee2e6;
+    border-top: 1px solid #00bfff;
+    border-right: 1px solid #00bfff;
+    border-bottom: 1px solid #00bfff;
     pointer-events: none;
     .tile-type-line-up {
       position: absolute;
@@ -460,7 +460,7 @@ $tile-body-a-color: #5959d8 !default;
       left: 0;
       bottom: 0;
       width: 1px;
-      background-color: #dee2e6;
+      background-color: #00bfff;
     }
   }
 }

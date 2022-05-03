@@ -1,6 +1,6 @@
 // Default variables
 $header-background-color: #fff !default;
-$header-links-color: #828ba0 !default;
+$header-links-color: #00bfff !default;
 $header-links-color-active: #333 !default;
 $header-icon-color: $header-links-color !default;
 $header-icon-color-hover: $secondary !default;
@@ -10,7 +10,7 @@ $header-textfield-text-color: $header-links-color !default;
 $header-textfield-background-color: #f5f6fa !default;
 $header-textfield-magnifier-color: $header-links-color !default;
 $header-link-horizontal-padding: 0.71rem;
-$navbar-logo-height: 32px !default;
+$navbar-logo-height: 44px !default;
 $navbar-logo-width: auto !default;
 
 // Navbar
@@ -215,8 +215,8 @@ $navbar-logo-width: auto !default;
   }
   .input-group-text {
     align-items: center;
-    background: none;
-    border-color: transparent;
+    background: yellow;
+    border-color: red;
     display: flex;
     height: 100%;
     justify-content: center;
@@ -226,7 +226,7 @@ $navbar-logo-width: auto !default;
 
     margin-top: 20px;
     &.border {
-      border-color: $secondary !important;
+      border-color: yellow !important;
       border-radius: 5px;
       color: $secondary;
       background-color: $header-textfield-background-color;
