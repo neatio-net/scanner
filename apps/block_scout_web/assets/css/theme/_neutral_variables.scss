@@ -6,7 +6,7 @@ $additional-font: #fff;
 
 // footer
 $footer-background-color: #24292f;
-$footer-title-color: #ddd;
+$footer-title-color: #89CFF0;
 $footer-text-color: #00bfff;
 $footer-item-disc-color: $secondary;
 .footer-logo { filter: brightness(0) invert(1); }
@@ -30,7 +30,7 @@ $dashboard-banner-network-plain-container-background-color: #00bfff; // stats bg
 
 // navigation
 .navbar { box-shadow: 0px 0px 30px 0px rgba(21, 53, 80, 0.12); } // header shadow
-$dropdown-menu-item-hover-color: #000000 !default;
+$dropdown-menu-item-hover-color: #121c2b !default;
 $dropdown-menu-item-hover-background: rgba($primary, .1) !default;
 $header-icon-color-hover: #a6ff33;
 $header-icon-border-color-hover: $primary;
@@ -49,11 +49,11 @@ $tile-type-progress-bar-color: $primary;
 a.tile-title { color: $primary !important; }
 
 // card
-$card-background-1: #000000;
+$card-background-1: #121c2b;
 $card-tab-active: $primary;
 
 .layout-container {
-background-color: #000000;
+background-color: #121c2b;
 }
 
 // Badges

@@ -15,7 +15,7 @@
 
 .search-control {
   
-    background-color: #000000;
+    background-color: #121c2b;
     @media screen and (min-width: 992px) {
         height: 57px !important;
     }
@@ -41,6 +41,7 @@
     border-radius: 0 !important;
     text-align: center;
     border-color: #00bfff;
+
 
 
     background-color: transparent !important;
@@ -69,11 +70,14 @@
       }
 }
 
-.main-search-autocomplete, .main-search-autocomplete-mobile {
-    font-size: 14px !important;
-    color: #bff000 !important;
+// .main-search-autocomplete, .main-search-autocomplete-mobile {
+//     font-size: 14px !important;
+//     color: #bff000 !important;
+//     margin-bottom: 20px;
 
-}
+// }
+
+
 
 .autocomplete-category {
     display: flex;
@@ -81,13 +85,13 @@
     font-size: 13px;
     font-weight: 100;
     text-transform: uppercase;
-    color: #ddd;
+    color: #89CFF0;
     margin-left: auto;
 }
 
 .autoComplete_highlight {
     background-color: #feff54 !important;
-    color: #ddd !important;
+    color: #89CFF0 !important;
 }
 
 ul[id^='autoComplete_list_'] {

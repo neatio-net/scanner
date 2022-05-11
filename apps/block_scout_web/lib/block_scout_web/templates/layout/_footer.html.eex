@@ -28,11 +28,10 @@
 
             <div class="footer-layout-line">
         <p class="footer-info-text">
-          <%= gettext("Copyright © 2022 Neatio. All rights reserved.")%>
-          <a href="https://github.com/blockscout/blockscout" rel="noreferrer" class="footer-link" target="_blank"><%= gettext("Powered by Blockscout") %></a>
+          <%= gettext("Copyright © 2022 Neatio. All rights reserved. Your use of this website and software is entirely at your own risk, and this website is provided on an 'as is' basis and for reference only.")%>
         </p>
        </div>
-            <p class="footer-layout-line">Your use of this website and software is entirely at your own risk, and this website is provided on an "as is" basis and for reference only.</p>
+
 
 
 

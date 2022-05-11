@@ -1,69 +1,7 @@
 <div class='dashboard-banner-container' data-page="chain-details">
   <div class="container">
-
-
-
-    <div class="dashboard-banner">
-
-      <!-- Stats -->
-      <div class="dashboard-banner-network-plain-container">
-        <div class="dashboard-banner-network-stats">
-          <%= case @average_block_time do %>
-            <% {:error, :disabled} -> %>
-              <%= nil %>
-            <% average_block_time -> %>
-              <div class="dashboard-banner-network-stats-item dashboard-banner-network-stats-item-1">
-                <span class="dashboard-banner-network-stats-label">
-                  <%= gettext "Avg. Block Spacing" %>
-                </span>
-                <span class="dashboard-banner-network-stats-value" data-selector="average-block-time">
-                  <%= Timex.format_duration(average_block_time, Explorer.Counters.AverageBlockTimeDurationFormat) %>
-                </span>
-              </div>
-          <% end %>
-          <div class="dashboard-banner-network-stats-item dashboard-banner-network-stats-item-2">
-            <span class="dashboard-banner-network-stats-label">
-              <%= gettext "Total Transactions" %>
-            </span>
-            <div class="d-flex">
-              <span class="dashboard-banner-network-stats-value" data-selector="transaction-count">
-                <%= BlockScoutWeb.Cldr.Number.to_string!(@transaction_estimated_count, format: "#,###") %>
-              </span>
-              <%= if @total_gas_usage > 0 do %>
-                <span
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  data-html="true"
-                  data-template="<div class='tooltip tooltip-inversed-color tooltip-gas-usage' role='tooltip'><div class='arrow'></div><div class='tooltip-inner'></div></div>"
-                  title="<div class='custom-tooltip-header'>Total gas used</div><div class='custom-tooltip-description'><b><%= BlockScoutWeb.Cldr.Number.to_string!(@total_gas_usage, format: "#,###") %><b></div>"
-                  class="custom-tooltip-total-transactions">
-                  <i style="color: #ffffff;" class="fa fa-info-circle ml-2"></i>
-                </span>
-              <% end %>
-            </div>
-          </div>
-          <div class="dashboard-banner-network-stats-item dashboard-banner-network-stats-item-3">
-            <span class="dashboard-banner-network-stats-label">
-              <%= gettext "Blockchain Height" %>
-            </span>
-            <span class="dashboard-banner-network-stats-value" data-selector="block-count">
-              <%= BlockScoutWeb.Cldr.Number.to_string!(@block_count, format: "#,###") %>
-            </span>
-          </div>
-          <div class="dashboard-banner-network-stats-item dashboard-banner-network-stats-item-4">
-            <span class="dashboard-banner-network-stats-label">
-              <%= gettext "Wallet addresses" %>
-            </span>
-            <span class="dashboard-banner-network-stats-value" data-selector="address-count">
-              <%= BlockScoutWeb.Cldr.Number.to_string!(@address_count, format: "#,###") %>
-            </span>
-          </div>
-        </div>
-
-
-
-      </div>
-
+    <div class="dashboard-logo">
+    <img src="/images/scanner-logo.svg" alt="Neatio Block Explorer"/>
 
 
     </div>
@@ -87,11 +25,17 @@
               <%= render BlockScoutWeb.LayoutView, "_search.html", conn: @conn, id: "main-search-autocomplete-mobile", additional_classes: ["mobile-search-show"] %>
 
 
-  <!--
-  <div class="card card-chain-blocks js-ad-dependant-mb-3">
+
+
+      <!-- Stats -->
+
+
+<div class="text-stats"></div>
+
+<div class="card card-chain-blocks js-ad-dependant-mb-3">
     <div class="card-body">
       <%= link(gettext("View All"), to: blocks_path(BlockScoutWeb.Endpoint, :index), class: "btn-line float-right") %>
-      <h2 class="card-title"><%= gettext "Blocks" %></h2>
+      <h2 class="card-title"><%= gettext "Recent Blocks" %></h2>
       <div class="row" data-selector="chain-block-list" data-url="<%= chain_blocks_path(@conn, :chain_blocks) %>">
         <button data-selector="error-message" class="alert alert-danger col-12 text-left" style="display: none;">
           <span class="alert-link">
@@ -145,11 +89,9 @@
       </div>
     </div>
   </div>
-  -->
-  <!--
-  <%= render BlockScoutWeb.Advertisement.BannersAdView, "_banner_728.html", conn: @conn %>
-  -->
-  <!--
+
+
+
   <div class="card card-chain-transactions">
     <div class="card-body">
       <%= link(gettext("View All"), to: transaction_path(BlockScoutWeb.Endpoint, :index), class: "btn-line float-right") %>
@@ -171,5 +113,5 @@
       </span>
     </div>
   </div>
-  -->
+
 </section>
