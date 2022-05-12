@@ -55,13 +55,31 @@
               <%= BlockScoutWeb.Cldr.Number.to_string!(@address_count, format: "#,###") %>
             </span>
           </div>
-
+          <!--validators-->
           <div class="dashboard-banner-network-stats-item dashboard-banner-network-stats-item-5">
             <span class="dashboard-banner-network-stats-label">
               <%= gettext "Validators" %>
             </span>
             <span class="dashboard-banner-network-stats-value" >
                <%= gettext "4" %>
+            </span>
+          </div>
+          <!--circulating-supply-->
+          <div class="dashboard-banner-network-stats-item dashboard-banner-network-stats-item-5">
+            <span class="dashboard-banner-network-stats-label">
+              <%= gettext "Circulating" %>
+            </span>
+            <span class="dashboard-banner-network-stats-value" >
+               <%= gettext "4,565,970" %>
+            </span>
+          </div>
+          <!--max-supply-->
+          <div class="dashboard-banner-network-stats-item dashboard-banner-network-stats-item-5">
+            <span class="dashboard-banner-network-stats-label">
+              <%= gettext "Max. Supply" %>
+            </span>
+            <span class="dashboard-banner-network-stats-value" >
+               <%= gettext "50,000,000" %>
             </span>
           </div>
 
