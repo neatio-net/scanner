@@ -1,4 +1,93 @@
+<!-- STATS -->
+    <div class="dashboard-banner-network-stats">
+
+          <%= case @average_block_time do %>
+            <% {:error, :disabled} -> %>
+              <%= nil %>
+            <% average_block_time -> %>
+              <div class="dashboard-banner-network-stats-item dashboard-banner-network-stats-item-1">
+                <span class="dashboard-banner-network-stats-label">
+                  <%= gettext "Spacing" %>
+                </span>
+                <span class="dashboard-banner-network-stats-value" data-selector="average-block-time">
+                  <%= Timex.format_duration(average_block_time, Explorer.Counters.AverageBlockTimeDurationFormat) %>
+                </span>
+              </div>
+          <% end %>
+
+          <div class="dashboard-banner-network-stats-item dashboard-banner-network-stats-item-2">
+            <span class="dashboard-banner-network-stats-label">
+              <%= gettext "Transactions" %>
+            </span>
+            <div class="d-flex">
+              <span class="dashboard-banner-network-stats-value" data-selector="transaction-count">
+                <%= BlockScoutWeb.Cldr.Number.to_string!(@transaction_estimated_count, format: "#,###") %>
+              </span>
+              <%= if @total_gas_usage > 0 do %>
+                <span
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  data-html="true"
+                  data-template="<div class='tooltip tooltip-inversed-color tooltip-gas-usage' role='tooltip'><div class='arrow'></div><div class='tooltip-inner'></div></div>"
+                  title="<div class='custom-tooltip-header'>Total gas used</div><div class='custom-tooltip-description'><b><%= BlockScoutWeb.Cldr.Number.to_string!(@total_gas_usage, format: "#,###") %><b></div>"
+                  class="custom-tooltip-total-transactions">
+                  <i style="color: #ffffff;" class="fa fa-info-circle ml-2"></i>
+                </span>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="dashboard-banner-network-stats-item dashboard-banner-network-stats-item-3">
+            <span class="dashboard-banner-network-stats-label">
+              <%= gettext "Height" %>
+            </span>
+            <span class="dashboard-banner-network-stats-value" data-selector="block-count">
+              <%= BlockScoutWeb.Cldr.Number.to_string!(@block_count, format: "#,###") %>
+            </span>
+          </div>
+
+           <div class="dashboard-banner-network-stats-item dashboard-banner-network-stats-item-4">
+            <span class="dashboard-banner-network-stats-label">
+              <%= gettext "Accounts" %>
+            </span>
+            <span class="dashboard-banner-network-stats-value" data-selector="address-count">
+              <%= BlockScoutWeb.Cldr.Number.to_string!(@address_count, format: "#,###") %>
+            </span>
+          </div>
+          <!--validators-->
+          <!--
+          <div class="dashboard-banner-network-stats-item dashboard-banner-network-stats-item-5">
+            <span class="dashboard-banner-network-stats-label">
+              <%= gettext "Validators" %>
+            </span>
+            <span class="dashboard-banner-network-stats-value" >
+               <%= gettext "4" %>
+            </span>
+          </div>
+          -->
+          <!--circulating-supply-->
+          <div class="dashboard-banner-network-stats-item dashboard-banner-network-stats-item-5">
+            <span class="dashboard-banner-network-stats-label">
+              <%= gettext "Circulating" %>
+            </span>
+            <span class="dashboard-banner-network-stats-value" >
+               <%= gettext "4,282,295" %>
+            </span>
+          </div>
+          <!--max-supply-->
+          <div class="dashboard-banner-network-stats-item dashboard-banner-network-stats-item-5">
+            <span class="dashboard-banner-network-stats-label">
+              <%= gettext "Max. Supply" %>
+            </span>
+            <span class="dashboard-banner-network-stats-value" >
+               <%= gettext "50,000,000" %>
+            </span>
+          </div>
+    </div>
+<!-- STATS END -->
 <div class='dashboard-banner-container' data-page="chain-details">
+
+
   <div class="container">
     <div class="dashboard-logo">
     <img src="/images/scanner-logo.svg" alt="Neatio Block Explorer"/>
