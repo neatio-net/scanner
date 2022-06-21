@@ -101,11 +101,9 @@ $navbar-logo-width: auto !default;
 
   .container-fluid {
     max-width: 1258px;
-    // text-align: center;
-    width: 50%;
-    margin: 0 auto;
-  
-  }
+    height: 2.4rem;
+    text-align: center;
+ }
   
 
   .navbar-toggler {
@@ -289,9 +287,8 @@ $navbar-logo-width: auto !default;
 }
 
 .navbar-brand {
-  margin-left: 0;
-  //flex-shrink: 1;
-  //display: inline-flex;
+
+
   .navbar-logo {
     max-width: 100%;
   }

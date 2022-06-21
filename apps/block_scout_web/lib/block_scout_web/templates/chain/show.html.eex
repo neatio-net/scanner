@@ -105,7 +105,7 @@
 <div class="dashboard-text">
 <h1 >
 
-          <%= gettext("NEATIO  BLOCKCHAIN  EXPLORER") %>
+          <%= gettext("NEATIO BLOCKCHAIN  EXPLORER") %>
 
 </h1>
 </div>
