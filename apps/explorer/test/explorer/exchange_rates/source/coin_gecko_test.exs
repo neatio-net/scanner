@@ -23,7 +23,7 @@ defmodule Explorer.ExchangeRates.Source.CoinGeckoTest do
     {
       "id": "poa-network",
       "symbol": "poa",
-      "name": "POA Network"
+      "name": "Neatio Network"
     },
     {
       "id": "poc-chain",
@@ -84,7 +84,7 @@ defmodule Explorer.ExchangeRates.Source.CoinGeckoTest do
           id: "poa-network",
           last_updated: ~U[2019-08-21 08:36:49.371Z],
           market_cap_usd: Decimal.new("2962791"),
-          name: "POA Network",
+          name: "Neatio Network",
           symbol: "POA",
           usd_value: Decimal.new("0.01345698"),
           volume_24h_usd: Decimal.new("119946")

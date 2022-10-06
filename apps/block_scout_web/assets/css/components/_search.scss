@@ -23,7 +23,7 @@
         height: 33px !important;
     }
     &.focused-field {
-      border: 1px solid $secondary !important;
+      border: 1px solid #00ffff !important;
     }
 
 }
@@ -40,7 +40,7 @@
     border: none !important;
     border-radius: 0 !important;
     text-align: center;
-    border-color: #00bfff;
+    border-color: #00ffff;
 
 
 
@@ -53,20 +53,20 @@
       }
       &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
           text-overflow: ellipsis  !important;
-          color: #00bfff !important;
+          color: #00ffff !important;
       }
       &::-moz-placeholder { /* Firefox 19+ */
           text-overflow: ellipsis  !important;
-          color: #00bfff !important;
+          color: #00ffff !important;
       }
       &:-ms-input-placeholder { /* IE 10+ */
           text-overflow: ellipsis  !important;
-          color: #00bfff !important;
+          color: #00ffff !important;
     
       }
       &:-moz-placeholder { /* Firefox 18- */
           text-overflow: ellipsis  !important;
-          color: #00bfff !important;
+          color: #00ffff !important;
       }
 }
 

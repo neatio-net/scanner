@@ -1,9 +1,16 @@
-// Variables
-//
-// Variables should follow the `$component-state-property-size` formula for
-// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
-
 @use 'sass:math';
+
+@font-face {
+  font-family: 'Pirulen';
+  src: url('../fonts/PirulenRg-Regular.eot');
+  src: url('../fonts/PirulenRg-Regular.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/PirulenRg-Regular.woff2') format('woff2'),
+      url('../fonts/PirulenRg-Regular.woff') format('woff'),
+      url('../fonts/PirulenRg-Regular.svg#PirulenRg-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 $dashboard-line-color-price: #8286a9 !default;
 $base-border-color: #e2e5ec !default;
@@ -11,15 +18,15 @@ $common-container-margin: 50px !default;
 
 // stylelint-disable
 $white: #fff !default;
-$gray-100: #00bfff !default;
-$gray-200: #00bfff !default;
-$gray-300: #00bfff !default;
-$gray-400: #00bfff !default;
-$gray-500: #00bfff !default;
-$gray-600: #00bfff !default;
-$gray-700: #00bfff !default;
-$gray-800: #00bfff !default;
-$gray-900: #00bfff !default;
+$gray-100: #00ffff !default;
+$gray-200: #00ffff !default;
+$gray-300: #00ffff !default;
+$gray-400: #00ffff !default;
+$gray-500: #00ffff !default;
+$gray-600: #00ffff !default;
+$gray-700: #00ffff !default;
+$gray-800: #00ffff !default;
+$gray-900: #00ffff !default;
 $black: #000 !default;
 
 $grays: () !default;
@@ -219,8 +226,9 @@ $container-max-widths: (
 
 @media (min-width: 1200px) { 
   .container {
-    max-width: 1280px !important; 
-    //background-color:  
+    max-width: 1140px !important; 
+    min-height: 720px;
+    margin: 0 auto;
   }
  }
 
@@ -259,19 +267,17 @@ $transition-fade: opacity 0.15s linear !default;
 $transition-collapse: height 0.35s ease !default;
 $transition-cont: all 0.4s ease-in-out !default;
 
-// Fonts
-//
-// Font, line-height, and color for body text, headings, and more.
 
-// stylelint-disable value-keyword-case
+$font-family-neat: Pirulen !default;
+
 $font-family:  "Helvetica Neue", Arial, sans-serif,
   "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
 $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
   "Liberation Mono", "Courier New", monospace !default;
 $font-family-base: $font-family !default;
-// stylelint-enable value-keyword-case
 
-$font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
+
+$font-size-base: 1rem !default; 
 $font-size-lg: ($font-size-base * 1.25) !default;
 $font-size-sm: ($font-size-base * 0.875) !default;
 

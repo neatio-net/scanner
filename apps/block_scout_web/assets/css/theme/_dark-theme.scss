@@ -1,7 +1,7 @@
-$body-dark: #1c1d31; // body background
-$dark-bg: #22223a; // hero shade
-$dark-light-bg: #282945; // pills bg shade
-$dark-light: #313355; // tile light top share
+$body-dark: #ffff00; // body background
+$dark-bg: #00bfff; // hero shade
+$dark-light-bg: #7174ca; // pills bg shade
+$dark-light: #9598d3; // tile light top share
 $labels-dark: #8a8dba; // header nav, labels
 $dark-stakes-banned-background: #3e314c;
 
@@ -70,7 +70,7 @@ $dark-stakes-banned-background: #3e314c;
 		border-color: $dark-bg;
 		color: #fff;
 		&::placeholder {
-			color: #00bfff;
+			color: #00ffff;
 		}
 	}
 	.navbar.navbar-primary .navbar-toggler .navbar-toggler-icon {
@@ -99,6 +99,16 @@ $dark-stakes-banned-background: #3e314c;
 	.layout-container .dashboard-banner-container {
 		background-image: none;
 		background-color: $dark-bg;
+		width: auto;
+		max-width: 1100px;  
+		height: fit-content;
+		border-width: 2px;
+		background: #000;
+		border-radius: 4px;
+		margin: 20px 10px 20px 10px;  
+		padding: 0 10px; 
+		align-content: center; 
+		justify-content: center;
 	}
 	.dashboard-banner-network-plain-container,
 	.dashboard-banner-network-plain-container::after {
@@ -106,7 +116,18 @@ $dark-stakes-banned-background: #3e314c;
 	}
 	.dashboard-banner-network-stats-label,
 	.dashboard-banner-chart-legend .dashboard-banner-chart-legend-label {
-		color: $labels-dark;
+		color: #ffff;
+		width: auto;
+		max-width: 1100px;  
+		height: fit-content;
+		border-width: 2px;
+		background: #000;
+		border-radius: 4px;
+		margin: 20px 10px 20px 10px;  
+		padding: 0 10px; 
+		align-content: center; 
+		justify-content: center;
+		font-family: $font-family-neat;
 	}
 	.dashboard-banner-chart-legend .dashboard-banner-chart-legend-item:nth-child(1)::before {
 		background-color: $dark-primary;

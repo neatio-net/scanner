@@ -1,48 +1,44 @@
-@mixin textfield-placeholder($color: #00bfff) {
+@mixin textfield-placeholder($color: #00ffff) {
   &::-webkit-input-placeholder {
-    color: #00bfff;
+    color: #00ffff;
+    font-family: $font-family-neat;
   }
   &::-moz-placeholder {
-    color: #00bfff;
+    color: #00ffff;
+    font-family: $font-family-neat;
   }
   &:-ms-input-placeholder {
-    color: #00bfff;
+    color: #00ffff;
+    font-family: $font-family-neat;
   }
   &:-moz-placeholder {
     color: $color;
+    font-family: $font-family-neat;
   }
 }
 
 @mixin gradient-container() {
   background-color: transparent;
+  // border: 1px solid #00ffffa4;
+  // border-radius: 4px;
+  // box-shadow: 0 0 40px #00bfff31;
 
-  // box-shadow: 0 5px 40px -5px rgba(#000, 0.25);
+  box-shadow: 0 5px 40px -5px rgba(#fff, 0.25);
   margin-top: -3rem;
 }
 
-@mixin stats-item($border-color: #fff, $text-color: #fff, $value-color: #00bfff) {
+@mixin stats-item($border-color: #fff, $text-color: #fff, $value-color: #00ffff) {
   &-item {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: calc(1rem + 4px);
-    padding-right: 1rem;
     position: relative;
 
-    // &::before {
-    //   background-color: $border-color;
-    //   border-radius: 2px;
-    //   content: "";
-    //   height: 100%;
-    //   left: 0;
-    //   position: absolute;
-    //   top: 0;
-    //   width: 4px;
-    // }
+
   }
 
   &-label {
-    color: $text-color;
+    color: #ffff;
     display: block;
     white-space: nowrap;
   }
@@ -144,7 +140,7 @@
   font-weight: 400;
 
   &:hover {
-    background-color: #00bfff;
+    background-color: #00ffff;
     color: $bg-color;
     text-decoration: none;
 

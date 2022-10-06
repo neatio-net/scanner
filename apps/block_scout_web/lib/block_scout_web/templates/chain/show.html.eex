@@ -1,4 +1,25 @@
-<!-- STATS -->
+
+<section class="container">
+
+
+
+
+    <div class="dashboard-logo">
+    <img class="scan-logo" src="/images/scanner.png" alt="Neatio Block Explorer"/>
+
+
+    </div>
+
+
+
+<section class="container">
+
+
+
+                <%= render BlockScoutWeb.LayoutView, "_search.html", conn: @conn, id: "main-search-autocomplete", additional_classes: ["mobile-search-hide"] %>
+              <%= render BlockScoutWeb.LayoutView, "_search.html", conn: @conn, id: "main-search-autocomplete-mobile", additional_classes: ["mobile-search-show"] %>
+
+
     <div class="dashboard-banner-network-stats">
 
           <%= case @average_block_time do %>
@@ -7,7 +28,7 @@
             <% average_block_time -> %>
               <div class="dashboard-banner-network-stats-item dashboard-banner-network-stats-item-1">
                 <span class="dashboard-banner-network-stats-label">
-                  <%= gettext "Spacing" %>
+                  <%= gettext "Block Space" %>
                 </span>
                 <span class="dashboard-banner-network-stats-value" data-selector="average-block-time">
                   <%= Timex.format_duration(average_block_time, Explorer.Counters.AverageBlockTimeDurationFormat) %>
@@ -39,7 +60,7 @@
 
           <div class="dashboard-banner-network-stats-item dashboard-banner-network-stats-item-3">
             <span class="dashboard-banner-network-stats-label">
-              <%= gettext "Height" %>
+              <%= gettext "Block Height" %>
             </span>
             <span class="dashboard-banner-network-stats-value" data-selector="block-count">
               <%= BlockScoutWeb.Cldr.Number.to_string!(@block_count, format: "#,###") %>
@@ -54,17 +75,8 @@
               <%= BlockScoutWeb.Cldr.Number.to_string!(@address_count, format: "#,###") %>
             </span>
           </div>
-          <!--validators-->
-          <!--
-          <div class="dashboard-banner-network-stats-item dashboard-banner-network-stats-item-5">
-            <span class="dashboard-banner-network-stats-label">
-              <%= gettext "Validators" %>
-            </span>
-            <span class="dashboard-banner-network-stats-value" >
-               <%= gettext "4" %>
-            </span>
-          </div>
-          -->
+
+
           <!--circulating-supply-->
           <div class="dashboard-banner-network-stats-item dashboard-banner-network-stats-item-5">
             <span class="dashboard-banner-network-stats-label">
@@ -84,123 +96,4 @@
             </span>
           </div>
     </div>
-<!-- STATS END -->
-<div class='dashboard-banner-container' data-page="chain-details">
-
-
-  <div class="container">
-    <div class="dashboard-logo">
-    <img src="/images/scanner-logo.svg" alt="Neatio Block Explorer"/>
-
-
-    </div>
-
-
-  </div>
-
-
-</div>
-<section class="container">
-
-<div class="dashboard-text">
-<h1 >
-
-          <%= gettext("NEATIO BLOCKCHAIN  EXPLORER") %>
-
-</h1>
-</div>
-
-                <%= render BlockScoutWeb.LayoutView, "_search.html", conn: @conn, id: "main-search-autocomplete", additional_classes: ["mobile-search-hide"] %>
-              <%= render BlockScoutWeb.LayoutView, "_search.html", conn: @conn, id: "main-search-autocomplete-mobile", additional_classes: ["mobile-search-show"] %>
-
-
-
-
-      <!-- Stats -->
-
-
-<div class="text-stats"></div>
-
-<div class="card card-chain-blocks js-ad-dependant-mb-3">
-    <div class="card-body">
-      <%= link(gettext("View All"), to: blocks_path(BlockScoutWeb.Endpoint, :index), class: "btn-line float-right") %>
-      <h2 class="card-title"><%= gettext "Recent Blocks" %></h2>
-      <div class="row" data-selector="chain-block-list" data-url="<%= chain_blocks_path(@conn, :chain_blocks) %>">
-        <button data-selector="error-message" class="alert alert-danger col-12 text-left" style="display: none;">
-          <span class="alert-link">
-            <%= gettext "Something went wrong, click to reload." %>
-          </span>
-        </button>
-        <div hidden data-selector="loading-message" class="col-lg-3" >
-         <div data-selector="chain-block">
-           <div class="tile tile-type-block n-p d-flex flex-column">
-             <a class="tile-title"><span class="tile-loader tile-label-loader"></span> </a>
-             <div class="tile-bottom-contents">
-               <div class="dark-block-loader"></div>
-               <div class="dark-block-loader"></div>
-             </div>
-           </div>
-         </div>
-        </div>
-        <div hidden data-selector="loading-message" class="col-lg-3" >
-         <div data-selector="chain-block">
-           <div class="tile tile-type-block n-p d-flex flex-column">
-             <a class="tile-title"><span class="tile-loader tile-label-loader"></span> </a>
-             <div class="tile-bottom-contents">
-               <div class="dark-block-loader"></div>
-               <div class="dark-block-loader"></div>
-             </div>
-           </div>
-         </div>
-        </div>
-        <div hidden data-selector="loading-message" class="col-lg-3" >
-         <div data-selector="chain-block">
-           <div class="tile tile-type-block n-p d-flex flex-column">
-             <a class="tile-title"><span class="tile-loader tile-label-loader"></span> </a>
-             <div class="tile-bottom-contents">
-               <div class="dark-block-loader"></div>
-               <div class="dark-block-loader"></div>
-             </div>
-           </div>
-         </div>
-        </div>
-        <div hidden data-selector="loading-message" class="col-lg-3" >
-         <div data-selector="chain-block">
-           <div class="tile tile-type-block n-p d-flex flex-column">
-             <a class="tile-title"><span class="tile-loader tile-label-loader"></span> </a>
-             <div class="tile-bottom-contents">
-              <div class="dark-block-loader"></div>
-              <div class="dark-block-loader"></div>
-            </div>
-           </div>
-         </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-  <div class="card card-chain-transactions">
-    <div class="card-body">
-      <%= link(gettext("View All"), to: transaction_path(BlockScoutWeb.Endpoint, :index), class: "btn-line float-right") %>
-      <h2 class="card-title lg-card-title"><%= gettext "Transactions" %></h2>
-      <div data-selector="channel-batching-message" style="display: none;">
-        <div data-selector="reload-transactions-button" class="alert alert-info">
-          <a href="#" class="alert-link"><span data-selector="channel-batching-count"></span> <%= gettext "More transactions have come in" %></a>
-        </div>
-      </div>
-      <span data-selector="transactions-list" data-transactions-path="<%= @transactions_path %>">
-        <button data-selector="error-message" class="alert alert-danger col-12 text-left" style="display: none;">
-          <span class="alert-link">
-            <%= gettext "Something went wrong, click to retry." %>
-          </span>
-        </button>
-        <div hidden data-selector="loading-message">
-          <%= render BlockScoutWeb.CommonComponentsView, "_tile-loader.html" %>
-        </div>
-      </span>
-    </div>
-  </div>
-
 </section>

@@ -34,22 +34,35 @@ $dashboard-banner-chart-axis-font-color-alt: #333;
 
 .dashboard-text {
 color:#dddddd;
+font-size: 2.2rem;
 text-align: center;
 padding-top: 22px;
 padding-bottom: 44px;
 font-weight: bold;
-@media (max-width: 374px) {
-  font-size: 2.2rem;
+@media (max-width: 380px) {
+  font-size: 1.2rem;
 }
 
+}
+
+.scan-logo {
+  width: 16vw;
+  height: auto;
+
+  @media (max-width: 599px) {
+  width: 36vw;
+  }
 }
 
 .dashboard-logo {
-  color:#00bfff;
+  color:#00ffff;
+  width: 50%;
+  margin: 0 auto;
+  height: auto;
   text-align: center;
-  padding-top: 22px;
-  padding-bottom: 10px;
+
   font-weight: bold;
+
 
 }
 
@@ -74,108 +87,8 @@ font-weight: bold;
   }
 }
 
-.dashboard-banner-network-graph {
-  flex-grow: 1;
-  padding: 15px 0 0 0;
-
-  @include media-breakpoint-down(md) {
-    display: flex;
-    flex-direction: column;
-    padding-top: 20px;
-  }
-}
-
-.dashboard-banner-chart {
-  flex-grow: 1;
-  margin: 15px 0 20px 0;
-  max-width: 350px;
-  position: relative;
-  min-height: 100px;
-  height: calc(100% - 86px);
-
-  @include media-breakpoint-down(md) {
-    flex-grow: 0;
-    margin-top: 20px;
-    margin-bottom: auto;
-    max-width: 100%;
-  }
-
-  > canvas {
-    max-height: 100%;
-    max-width: 100%;
-    width: 100%;
-  }
-}
-
-.dashboard-banner-chart-legend {
-  display: grid;
-  grid-template-columns: repeat(var(--numChartData), 0.9fr);
-  padding-bottom: 12px;
-  padding-left:20px;
-
-  .dashboard-banner-chart-legend-item {
-    padding-bottom: 3px;
-    padding-left: 12px;
-    padding-top: 3px;
-    position: relative;
-    padding-right: 12px;
-
-    @include media-breakpoint-down(md) {
-      display: flex;
-      flex-direction: row;
-    }
-
-    @media (max-width: 599px) {
-      padding-top: 0;
-      padding-bottom: 0;
-      flex-direction: column;
-    }
 
 
-  }
-
-  .dashboard-banner-chart-legend-label {
-    color: $dashboard-banner-chart-legend-label-color;
-    display: block;
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 1.2;
-    margin: 0 0 5px;
-
-    @media (max-width: 374px) {
-      position: relative;
-      top: -2px;
-    }
-
-    @include media-breakpoint-down(md) {
-      margin: 0 5px 0 0;
-    }
-  }
-
-  .dashboard-banner-chart-legend-value {
-    color: $dashboard-banner-chart-legend-value-color;
-    display: block;
-    font-size: 12px;
-    font-weight: normal;
-    line-height: 1.2;
-
-    &.inline {
-      display: inline-block;
-    }
-  }
-
-  .dashboard-banner-chart-legend-value-container {
-    white-space: nowrap;
-  }
-
-  .gas-price-icon {
-    position: relative;
-    top: -2px;
-    path {
-      fill: $dashboard-line-color-price;
-    }
-  }
-}
 // dashboard
 .dashboard-banner-network-plain-container {
   align-items: center;
@@ -211,7 +124,7 @@ font-weight: bold;
 
 .dashboard-banner-network-stats {
   margin: auto;
-  margin-top: 5px;
+  margin-top: 20px;
   max-width: 1320px;
   display: inline-block;
   margin-bottom: 40px;
@@ -278,8 +191,9 @@ font-weight: bold;
   }
 
   .dashboard-banner-network-stats-value {
-    color: #00bfff;
-    @media (max-width: 374px) {
+    color: #00ffff;
+    font-size: 0.7rem;
+    @media screen and (max-width: 374px) {
       font-size: 0.4rem;
     }
   }

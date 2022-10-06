@@ -22,15 +22,6 @@ function showAd () {
   }
 }
 
-function adjustPaddingForTextAd (showAd, data) {
-  if (showAd && data) {
-    $('.js-ad-dependant-pt').addClass('pt-4')
-    $('.js-ad-dependant-pt').removeClass('pt-5')
-  } else {
-    $('.js-ad-dependant-pt').addClass('pt-5')
-    $('.js-ad-dependant-pt').removeClass('pt-4')
-  }
-}
 
 function getTextAdData () {
   return new Promise((resolve) => {

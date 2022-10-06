@@ -87,9 +87,14 @@ $dark-primary-alternate: $dark-primary;
 	.dashboard-banner-network-plain-container::after {
 		background-color: $dark-light-bg;
 	}
-	.dashboard-banner-network-stats-label,
+	.dashboard-banner-network-stats-label {
+		font-family: $font-family-neat;
+		font-size: 1.2rem;
+		color: #ffffff;
+	}
 	.dashboard-banner-chart-legend .dashboard-banner-chart-legend-label {
 		color: $labels-dark;
+		font-family: $font-family-neat;
 	}
 	.dashboard-banner-chart-legend .dashboard-banner-chart-legend-item:nth-child(1)::before {
 		background-color: $dark-primary;

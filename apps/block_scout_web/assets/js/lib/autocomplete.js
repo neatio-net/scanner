@@ -5,7 +5,7 @@ import { DateTime } from 'luxon'
 import { appendTokenIcon } from './token_icon'
 import xss from 'xss'
 
-const placeHolder = 'WALLET ADDRESS / BLOCK NUMBER / TRANSACTION HASH'
+const placeHolder = 'ADDRESS / HASH / BLOCK'
 const dataSrc = async (query, id) => {
   try {
     // Loading placeholder text

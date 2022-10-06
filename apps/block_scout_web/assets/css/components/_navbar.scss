@@ -1,6 +1,6 @@
 // Default variables
 $header-background-color: #fff !default;
-$header-links-color: #00bfff !default;
+$header-links-color: #00ffff !default;
 $header-links-color-active: #333 !default;
 $header-icon-color: $header-links-color !default;
 $header-icon-color-hover: $secondary !default;
@@ -15,15 +15,17 @@ $navbar-logo-width: auto !default;
 
 // Navbar
 .navbar.navbar-primary {
-  background-color: #24292f;
+  background-color: #000;
+  border-bottom: #00ffff 1px solid;
   position: relative;
   z-index: 100;
   
 
   .nav-item {
-    font-size: 16px;
+    font-size: 0.85rem;
     margin-right: 20px;
     font-weight: bold;
+    font-family: Pirulen;
     text-transform: uppercase;    
   }
 
@@ -34,14 +36,14 @@ $navbar-logo-width: auto !default;
     .nav-link {
       outline: none;
       align-items: center;
-      color: #00bfff;
+      color: #00ffff;
       display: flex;
-      font-size: 18px;
+      font-size: 12px;
       position: relative;
       transition: $transition-cont;
 
       &:before {
-        background-color: #a6ff33;
+        background-color: #496785;
         border-radius: 0 0 4px 4px;
         content: "";
         display: block;
@@ -69,7 +71,7 @@ $navbar-logo-width: auto !default;
       &.active,
       &:hover,
       &.active-icon {
-        color: #a6ff33;
+        color: #496785;
         .nav-link-icon {
           path {
             fill: $header-icon-color-hover;
@@ -117,6 +119,8 @@ $navbar-logo-width: auto !default;
   }
   .search-form {
     display: flex;
+    margin-top: 300px;
+    border-color: #00ffff;
  
 
     @include media-breakpoint-up(xl) {
@@ -138,10 +142,12 @@ $navbar-logo-width: auto !default;
   // }
 
 
+
+
   .form-control {
     background: $header-textfield-background-color;
     border-color: $header-textfield-background-color;
-    color: #00bfff;
+    color: #00ffff;
     font-size: 14px;
     height: 100%;
     padding-left: 38px;
@@ -227,7 +233,7 @@ $navbar-logo-width: auto !default;
     justify-content: center;
     padding: 0;
     width: 100%;
-    color: #a6ff33;
+    color: #496785;
 
     margin-top: 20px;
     &.border {
@@ -242,7 +248,7 @@ $navbar-logo-width: auto !default;
 
 // Explorer name
 .explorer-text {
-  color: #00bfff;
+  color: #00ffff;
   font-weight: bold;
   word-spacing: 7px;
   text-align: center;
@@ -287,7 +293,8 @@ $navbar-logo-width: auto !default;
 }
 
 .navbar-brand {
-
+  font-family: $font-family-neat;
+  font-size: 0.85rem;
 
   .navbar-logo {
     max-width: 100%;

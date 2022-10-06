@@ -109,7 +109,7 @@ const appJs =
                   precision: 8,
                   includePaths: [
                     'node_modules/bootstrap/scss',
-                    'node_modules/@fortawesome/fontawesome-free/scss'
+                    'node_modules/@fontawesome/fontawesome-free/scss'
                   ]
                 }
               }
