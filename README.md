@@ -1,5 +1,5 @@
 
-# Neatio Blockchain Explorer
+# Neatio Explorer
 
 Neatio logo, design and all related code, trade names and service marks are the exclusive property of Neatio project and Neatio developers.
 
