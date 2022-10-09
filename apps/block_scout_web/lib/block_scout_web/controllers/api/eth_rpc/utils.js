@@ -1,0 +1,960 @@
+const BN = require('bn.js');
+const numberToBN = require('number-to-bn');
+const keccak256 = require('./hash').keccak256;
+const Buffer = require('safe-buffer').Buffer;
+const _ = require('underscore');
+const utf8 = require('utf8');
+const Hash = require('./hash');
+
+/**
+ * Returns true if object is BN, otherwise false
+ *
+ * @method isBN
+ * @param {Object} object
+ * @return {Boolean}
+ */
+var isBN = function (object) {
+    return BN.isBN(object);
+};
+
+/**
+ * Returns true if object is BigNumber, otherwise false
+ *
+ * @method isBigNumber
+ * @param {Object} object
+ * @return {Boolean}
+ */
+var isBigNumber = function (object) {
+    return object && object.constructor && object.constructor.name === 'BigNumber';
+};
+
+/**
+ * Takes an input and transforms it into an BN
+ *
+ * @method toBN
+ * @param {Number|String|BN} number, string, HEX string or BN
+ * @return {BN} BN
+ */
+var toBN = function(number){
+    try {
+        return numberToBN.apply(null, arguments);
+    } catch(e) {
+        throw new Error(e + ' Given value: "'+ number +'"');
+    }
+};
+
+
+const stringToHex = (str) => {
+    var val = "0x";
+    for (var i = 0; i < str.length; i++) {
+        if (val === "") { val = str.charCodeAt(i).toString(16); } else { val += str.charCodeAt(i).toString(16); }
+    }
+    return val;
+}
+
+const hexToString = (str) => {
+    let s = str.indexOf("0x") == 0 ? str.slice(2) : str;
+    let val = '';
+    for(let i = 0; i < s.length; i += 2) {
+        val += String.fromCharCode(+parseInt(s.substr(i, 2), 16).toString(10))
+    }
+    return val;
+}
+
+function stripZeros(aInput) {
+    var a = aInput; // eslint-disable-line
+    var first = a[0]; // eslint-disable-line
+    while (a.length > 0 && first.toString() === '0') {
+        a = a.slice(1);
+        first = a[0];
+    }
+    return a;
+}
+
+function bnToBuffer(bnInput) {
+    var bn = bnInput; // eslint-disable-line
+    var hex = bn.toString(16); // eslint-disable-line
+    if (hex.length % 2) { hex = `0${hex}`; }
+    return stripZeros(Buffer.from(hex, 'hex'));
+}
+
+function isHexString(value, length) {
+    if (typeof(value) !== 'string' || !value.match(/^0x[0-9A-Fa-f]*$/)) {
+        return false;
+    }
+    if (length && value.length !== 2 + 2 * length) { return false; }
+    return true;
+}
+
+function hexOrBuffer(valueInput, name) {
+    var value = valueInput; // eslint-disable-line
+    if (!Buffer.isBuffer(value)) {
+        if (!isHexString(value)) {
+            const error = new Error(name ? (`[neatjs-abi] invalid ${name}`) : '[neatjs-abi] invalid hex or buffer, must be a prefixed alphanumeric even length hex string');
+            error.reason = '[neatjs-abi] invalid hex string, hex must be prefixed and alphanumeric (e.g. 0x023..)';
+            error.value = value;
+            throw error;
+        }
+
+        value = value.substring(2);
+        if (value.length % 2) { value = `0${value}`; }
+        value = Buffer.from(value, 'hex');
+    }
+
+    return value;
+}
+
+function hexlify(value) {
+    if (typeof(value) === 'number') {
+        return `0x${bnToBuffer(new BN(value)).toString('hex')}`;
+    } else if (value.mod || value.modulo) {
+        return `0x${bnToBuffer(value).toString('hex')}`;
+    } else { // eslint-disable-line
+        return `0x${hexOrBuffer(value).toString('hex')}`;
+    }
+}
+
+// getKeys([{a: 1, b: 2}, {a: 3, b: 4}], 'a') => [1, 3]
+function getKeys(params, key, allowEmpty) {
+    var result = []; // eslint-disable-line
+
+    if (!Array.isArray(params)) { throw new Error(`[neatjs-abi] while getting keys, invalid params value ${JSON.stringify(params)}`); }
+
+    for (var i = 0; i < params.length; i++) { // eslint-disable-line
+        var value = params[i][key];  // eslint-disable-line
+        if (allowEmpty && !value) {
+            value = '';
+        } else if (typeof(value) !== 'string') {
+            throw new Error('[neatjs-abi] while getKeys found invalid ABI data structure, type value not string');
+        }
+        result.push(value);
+    }
+
+    return result;
+}
+
+function coderNumber(size, signed) {
+    return {
+        encode: function encodeNumber(valueInput) {
+            var value = valueInput; // eslint-disable-line
+
+            if (typeof value === 'object'
+                && value.toString
+                && (value.toTwos || value.dividedToIntegerBy)) {
+                value = (value.toString(10)).split('.')[0];
+            }
+
+            if (typeof value === 'string' || typeof value === 'number') {
+                value = String(value).split('.')[0];
+            }
+
+            value = numberToBN(value);
+            value = value.toTwos(size * 8).maskn(size * 8);
+            if (signed) {
+                value = value.fromTwos(size * 8).toTwos(256);
+            }
+            return value.toArrayLike(Buffer, 'be', 32);
+        },
+        decode: function decodeNumber(data, offset) {
+            var junkLength = 32 - size; // eslint-disable-line
+            var value = new BN(data.slice(offset + junkLength, offset + 32)); // eslint-disable-line
+            if (signed) {
+                value = value.fromTwos(size * 8);
+            } else {
+                value = value.maskn(size * 8);
+            }
+            return {
+                consumed: 32,
+                value: new BN(value.toString(10)),
+            };
+        },
+    };
+}
+const uint256Coder = coderNumber(32, false);
+
+const coderBoolean = {
+    encode: function encodeBoolean(value) {
+        return uint256Coder.encode(value ? 1 : 0);
+    },
+    decode: function decodeBoolean(data, offset) {
+        var result = uint256Coder.decode(data, offset); // eslint-disable-line
+        return {
+            consumed: result.consumed,
+            value: !result.value.isZero(),
+        };
+    },
+};
+
+function coderFixedBytes(length) {
+    return {
+        encode: function encodeFixedBytes(valueInput) {
+            var value = valueInput; // eslint-disable-line
+            value = hexOrBuffer(value);
+
+            if (value.length === 32) { return value; }
+
+            var result = Buffer.alloc(32); // eslint-disable-line
+            result.fill(0);
+            value.copy(result);
+            return result;
+        },
+        decode: function decodeFixedBytes(data, offset) {
+            if (data.length !== 0 && data.length < offset + 32) { throw new Error(`[neatjs-abi] while decoding fixed bytes, invalid bytes data length: ${length}`); }
+
+            return {
+                consumed: 32,
+                value: `0x${data.slice(offset, offset + length).toString('hex')}`,
+            };
+        },
+    };
+}
+
+const coderAddress = {
+    encode: function encodeAddress(valueInput) {
+        var value = valueInput; // eslint-disable-line
+        var result = Buffer.alloc(32); // eslint-disable-line
+        if (!isHexString(value, 20)) { throw new Error('[neatjs-abi] while encoding address, invalid address value, not alphanumeric 20 byte hex string'); }
+        value = hexOrBuffer(value);
+        result.fill(0);
+        value.copy(result, 12);
+        return result;
+    },
+    decode: function decodeAddress(data, offset) {
+        if (data.length === 0) {
+            return {
+                consumed: 32,
+                value: '0x',
+            };
+        }
+        if (data.length !== 0 && data.length < offset + 32) { throw new Error(`[neatjs-abi] while decoding address data, invalid address data, invalid byte length ${data.length}`); }
+        return {
+            consumed: 32,
+            value: `0x${data.slice(offset + 12, offset + 32).toString('hex')}`,
+        };
+    },
+};
+
+function encodeDynamicBytesHelper(value) {
+    var dataLength = parseInt(32 * Math.ceil(value.length / 32)); // eslint-disable-line
+    var padding = Buffer.alloc(dataLength - value.length); // eslint-disable-line
+    padding.fill(0);
+
+    return Buffer.concat([
+        uint256Coder.encode(value.length),
+        value,
+        padding,
+    ]);
+}
+
+function decodeDynamicBytesHelper(data, offset) {
+    if (data.length !== 0 && data.length < offset + 32) { throw new Error(`[neatjs-abi] while decoding dynamic bytes data, invalid bytes length: ${data.length} should be less than ${offset + 32}`); }
+
+    var length = uint256Coder.decode(data, offset).value; // eslint-disable-line
+    length = length.toNumber();
+    if (data.length !== 0 && data.length < offset + 32 + length) { throw new Error(`[neatjs-abi] while decoding dynamic bytes data, invalid bytes length: ${data.length} should be less than ${offset + 32 + length}`); }
+
+    return {
+        consumed: parseInt(32 + 32 * Math.ceil(length / 32), 10),
+        value: data.slice(offset + 32, offset + 32 + length),
+    };
+}
+
+const coderDynamicBytes = {
+    encode: function encodeDynamicBytes(value) {
+        return encodeDynamicBytesHelper(hexOrBuffer(value));
+    },
+    decode: function decodeDynamicBytes(data, offset) {
+        var result = decodeDynamicBytesHelper(data, offset); // eslint-disable-line
+        result.value = `0x${result.value.toString('hex')}`;
+        return result;
+    },
+    dynamic: true,
+};
+
+const coderString = {
+    encode: function encodeString(value) {
+        return encodeDynamicBytesHelper(Buffer.from(value, 'utf8'));
+    },
+    decode: function decodeString(data, offset) {
+        var result = decodeDynamicBytesHelper(data, offset); // eslint-disable-line
+        result.value = result.value.toString('utf8');
+        return result;
+    },
+    dynamic: true,
+};
+
+function coderArray(coder, lengthInput) {
+    return {
+        encode: function encodeArray(value) {
+            var result = Buffer.alloc(0); // eslint-disable-line
+            var length = lengthInput; // eslint-disable-line
+
+            if (!Array.isArray(value)) { throw new Error('[neatjs-abi] while encoding array, invalid array data, not type Object (Array)'); }
+
+            if (length === -1) {
+                length = value.length;
+                result = uint256Coder.encode(length);
+            }
+
+            if (length !== value.length) { throw new Error(`[neatjs-abi] while encoding array, size mismatch array length ${length} does not equal ${value.length}`); }
+
+            value.forEach((resultValue) => {
+                result = Buffer.concat([
+                    result,
+                    coder.encode(resultValue),
+                ]);
+            });
+
+            return result;
+        },
+        decode: function decodeArray(data, offsetInput) {
+            var length = lengthInput; // eslint-disable-line
+            var offset = offsetInput; // eslint-disable-line
+            // @TODO:
+            // if (data.length < offset + length * 32) { throw new Error('invalid array'); }
+
+            var consumed = 0; // eslint-disable-line
+            var decodeResult; // eslint-disable-line
+
+            if (length === -1) {
+                decodeResult = uint256Coder.decode(data, offset);
+                length = decodeResult.value.toNumber();
+                consumed += decodeResult.consumed;
+                offset += decodeResult.consumed;
+            }
+
+            var value = []; // eslint-disable-line
+
+            for (var i = 0; i < length; i++) { // eslint-disable-line
+                const loopResult = coder.decode(data, offset);
+                consumed += loopResult.consumed;
+                offset += loopResult.consumed;
+                value.push(loopResult.value);
+            }
+
+            return {
+                consumed,
+                value,
+            };
+        },
+        dynamic: (lengthInput === -1),
+    };
+}
+
+// Break the type up into [staticType][staticArray]*[dynamicArray]? | [dynamicType] and
+// build the coder up from its parts
+const paramTypePart = new RegExp(/^((u?int|bytes)([0-9]*)|(address|bool|string)|(\[([0-9]*)\]))/);
+
+function getParamCoder(typeInput) {
+    var type = typeInput; // eslint-disable-line
+    var coder = null; // eslint-disable-line
+    const invalidTypeErrorMessage = `[neatjs-abi] while getting param coder (getParamCoder) type value ${JSON.stringify(type)} is either invalid or unsupported by neatjs-abi.`;
+
+    while (type) {
+        var part = type.match(paramTypePart); // eslint-disable-line
+        if (!part) { throw new Error(invalidTypeErrorMessage); }
+        type = type.substring(part[0].length);
+
+        var prefix = (part[2] || part[4] || part[5]); // eslint-disable-line
+        switch (prefix) {
+            case 'int': case 'uint':
+                if (coder) { throw new Error(invalidTypeErrorMessage); }
+                var intSize = parseInt(part[3] || 256); // eslint-disable-line
+                if (intSize === 0 || intSize > 256 || (intSize % 8) !== 0) {
+                    throw new Error(`[neatjs-abi] while getting param coder for type ${type}, invalid ${prefix}<N> width: ${type}`);
+                }
+
+                coder = coderNumber(intSize / 8, (prefix === 'int'));
+                break;
+
+            case 'bool':
+                if (coder) { throw new Error(invalidTypeErrorMessage); }
+                coder = coderBoolean;
+                break;
+
+            case 'string':
+                if (coder) { throw new Error(invalidTypeErrorMessage); }
+                coder = coderString;
+                break;
+
+            case 'bytes':
+                if (coder) { throw new Error(invalidTypeErrorMessage); }
+                if (part[3]) {
+                    var size = parseInt(part[3]); // eslint-disable-line
+                    if (size === 0 || size > 32) {
+                        throw new Error(`[neatjs-abi] while getting param coder for prefix bytes, invalid type ${type}, size ${size} should be 0 or greater than 32`);
+                    }
+                    coder = coderFixedBytes(size);
+                } else {
+                    coder = coderDynamicBytes;
+                }
+                break;
+
+            case 'address':
+                if (coder) { throw new Error(invalidTypeErrorMessage); }
+                coder = coderAddress;
+                break;
+
+            case '[]':
+                if (!coder || coder.dynamic) { throw new Error(invalidTypeErrorMessage); }
+                coder = coderArray(coder, -1);
+                break;
+
+            // "[0-9+]"
+            default:
+                if (!coder || coder.dynamic) { throw new Error(invalidTypeErrorMessage); }
+                var defaultSize = parseInt(part[6]); // eslint-disable-line
+                coder = coderArray(coder, defaultSize);
+        }
+    }
+
+    if (!coder) { throw new Error(invalidTypeErrorMessage); }
+    return coder;
+}
+
+
+
+const zero = new BN(0);
+const negative1 = new BN(-1);
+
+const unitMap = {
+    'wei':          '1', // eslint-disable-line
+    'neat':        '1000000000000000000', // eslint-disable-line
+};
+
+/**
+ * Returns value of unit in Wei
+ *
+ * @method getValueOfUnit
+ * @param {String} unit the unit to convert to, default neat
+ * @returns {BigNumber} value of the unit (in Wei)
+ * @throws error if the unit is not correct:w
+ */
+function getValueOfUnit(unitInput) {
+    const unit = unitInput ? unitInput.toLowerCase() : 'neat';
+    var unitValue = unitMap[unit]; // eslint-disable-line
+
+    if (typeof unitValue !== 'string') {
+        throw new Error(`[neatjs-unit] the unit provided ${unitInput} doesn't exists, please use the one of the following units ${JSON.stringify(unitMap, null, 2)}`);
+    }
+
+    return new BN(unitValue, 10);
+}
+
+function numberToString(arg) {
+    if (typeof arg === 'string') {
+        if (!arg.match(/^-?[0-9.]+$/)) {
+            throw new Error(`while converting number to string, invalid number value '${arg}', should be a number matching (^-?[0-9.]+).`);
+        }
+        return arg;
+    } else if (typeof arg === 'number') {
+        return String(arg);
+    } else if (typeof arg === 'object' && arg.toString && (arg.toTwos || arg.dividedToIntegerBy)) {
+        if (arg.toPrecision) {
+            return String(arg.toPrecision());
+        } else { // eslint-disable-line
+            return arg.toString(10);
+        }
+    }
+    throw new Error(`while converting number to string, invalid number value '${arg}' type ${typeof arg}.`);
+}
+
+function fromWei(weiInput, unit, optionsInput) {
+    var wei = numberToBN(weiInput); // eslint-disable-line
+    var negative = wei.lt(zero); // eslint-disable-line
+    const base = getValueOfUnit(unit);
+    const baseLength = unitMap[unit].length - 1 || 1;
+    const options = optionsInput || {};
+
+    if (negative) {
+        wei = wei.mul(negative1);
+    }
+
+    var fraction = wei.mod(base).toString(10); // eslint-disable-line
+
+    while (fraction.length < baseLength) {
+        fraction = `0${fraction}`;
+    }
+
+    if (!options.pad) {
+        fraction = fraction.match(/^([0-9]*[1-9]|0)(0*)/)[1];
+    }
+
+    var whole = wei.div(base).toString(10); // eslint-disable-line
+
+    if (options.commify) {
+        whole = whole.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+
+    var value = `${whole}${fraction == '0' ? '' : `.${fraction}`}`; // eslint-disable-line
+
+    if (negative) {
+        value = `-${value}`;
+    }
+
+    return value;
+}
+
+function toWei(neatInput, unit) {
+    var neat = numberToString(neatInput); // eslint-disable-line
+    const base = getValueOfUnit(unit);
+    const baseLength = unitMap[unit].length - 1 || 1;
+
+    // Is it negative?
+    var negative = (neat.substring(0, 1) === '-'); // eslint-disable-line
+    if (negative) {
+        neat = neat.substring(1);
+    }
+
+    if (neat === '.') { throw new Error(`[neatjs-unit] while converting number ${neatInput} to wei, invalid value`); }
+
+    // Split it into a whole and fractional part
+    var comps = neat.split('.'); // eslint-disable-line
+    if (comps.length > 2) { throw new Error(`[neatjs-unit] while converting number ${neatInput} to wei,  too many decimal points`); }
+
+    var whole = comps[0], fraction = comps[1]; // eslint-disable-line
+
+    if (!whole) { whole = '0'; }
+    if (!fraction) { fraction = '0'; }
+    if (fraction.length > baseLength) { throw new Error(`[neatjs-unit] while converting number ${neatInput} to wei, too many decimal places`); }
+
+    while (fraction.length < baseLength) {
+        fraction += '0';
+    }
+
+    whole = new BN(whole);
+    fraction = new BN(fraction);
+    var wei = (whole.mul(base)).add(fraction); // eslint-disable-line
+
+    if (negative) {
+        wei = wei.mul(negative1);
+    }
+
+    return new BN(wei.toString(10), 10);
+}
+
+/**
+ *
+ * @method fromWei
+ * @param {Number|String} number can be a number, number string or a HEX of a decimal
+ * @return {String|Object} When given a BN object it returns one as well, otherwise a number
+ */
+var fromNEAT = function(number) {
+    if(!isBN(number) && !_.isString(number)) {
+        throw new Error('Please pass numbers as strings or BN objects to avoid precision errors.');
+    }
+
+    return isBN(number) ? toWei(number, "neat") : toWei(number, "neat").toString(10);
+};
+
+/**
+ *
+ * @method toNEAT
+ * @param {Number|String|BN} number can be a number, number string or a HEX of a decimal
+ * @return {String|Object} When given a BN object it returns one as well, otherwise a number
+ */
+var toNEAT = function(number) {
+    if(!isBN(number) && !_.isString(number)) {
+        throw new Error('Please pass numbers as strings or BN objects to avoid precision errors.');
+    }
+
+    return isBN(number) ? fromWei(number, 'neat') : fromWei(number, 'neat').toString(10);
+};
+
+/**
+ * Checks if the given string is an address
+ *
+ * @method isAddress
+ * @param {String} address the given HEX address
+ * @return {Boolean}
+ */
+var isAddress = function (address) {
+    if (!/^(0x)?[0-9a-f]{40}$/i.test(address)) {
+        return false;
+    } else if (/^(0x|0X)?[0-9a-f]{40}$/.test(address) || /^(0x|0X)?[0-9A-F]{40}$/.test(address)) {
+        return true;
+    } else {
+        return checkAddressChecksum(address);
+    }
+};
+
+
+
+/**
+ * Checks if the given string is a checksummed address
+ *
+ * @method checkAddressChecksum
+ * @param {String} address the given HEX address
+ * @return {Boolean}
+ */
+var checkAddressChecksum = function (address) {
+    address = address.replace(/^0x/i,'');
+    var addressHash = sha3(address.toLowerCase()).replace(/^0x/i,'');
+
+    for (var i = 0; i < 40; i++ ) {
+        if ((parseInt(addressHash[i], 16) > 7 && address[i].toUpperCase() !== address[i]) || (parseInt(addressHash[i], 16) <= 7 && address[i].toLowerCase() !== address[i])) {
+            return false;
+        }
+    }
+    return true;
+};
+
+/**
+ * Converts to a checksum address
+ *
+ * @method toChecksumAddress
+ * @param {String} address
+ * @return {String}
+ */
+var toChecksumAddress = function (address) {
+    if (typeof address === 'undefined') return '';
+
+    if(!/^(0x)?[0-9a-f]{40}$/i.test(address))
+        throw new Error('Given address "'+ address +'" is not a valid HEX address.');
+
+
+
+    address = address.toLowerCase().replace(/^0x/i,'');
+    var addressHash = utils.sha3(address).replace(/^0x/i,'');
+    var checksumAddress = '0x';
+
+    for (var i = 0; i < address.length; i++ ) {
+        if (parseInt(addressHash[i], 16) > 7) {
+            checksumAddress += address[i].toUpperCase();
+        } else {
+            checksumAddress += address[i];
+        }
+    }
+    return checksumAddress;
+};
+
+/**
+ * Check if string is HEX, requires a 0x in front
+ *
+ * @method isHexStrict
+ * @param {String} hex
+ * @returns {Boolean}
+ */
+var isHexStrict = function (hex) {
+    return ((_.isString(hex) || _.isNumber(hex)) && /^(-)?0x[0-9a-f]*$/i.test(hex));
+};
+
+/**
+ * Convert a byte array to a hex string
+ *
+ * Note: Implementation from crypto-js
+ *
+ * @method bytesToHex
+ * @param {Array} bytes
+ * @return {String} the hex string
+ */
+var bytesToHex = function(bytes) {
+    for (var hex = [], i = 0; i < bytes.length; i++) {
+        /* jshint ignore:start */
+        hex.push((bytes[i] >>> 4).toString(16));
+        hex.push((bytes[i] & 0xF).toString(16));
+        /* jshint ignore:end */
+    }
+    return '0x'+ hex.join("");
+};
+
+/**
+ * Convert a hex string to a byte array
+ *
+ * Note: Implementation from crypto-js
+ *
+ * @method hexToBytes
+ * @param {string} hex
+ * @return {Array} the byte array
+ */
+var hexToBytes = function(hex) {
+    hex = hex.toString(16);
+
+    if (!isHexStrict(hex)) {
+        throw new Error('Given value "'+ hex +'" is not a valid hex string.');
+    }
+
+    hex = hex.replace(/^0x/i,'');
+
+    for (var bytes = [], c = 0; c < hex.length; c += 2)
+        bytes.push(parseInt(hex.substr(c, 2), 16));
+    return bytes;
+};
+
+/**
+ * Should be called to get hex representation (prefixed by 0x) of utf8 string
+ *
+ * @method utf8ToHex
+ * @param {String} str
+ * @returns {String} hex representation of input string
+ */
+var utf8ToHex = function(str) {
+    str = utf8.encode(str);
+    var hex = "";
+
+    str = str.replace(/^(?:\u0000)*/,'');
+    str = str.split("").reverse().join("");
+    str = str.replace(/^(?:\u0000)*/,'');
+    str = str.split("").reverse().join("");
+
+    for(var i = 0; i < str.length; i++) {
+        var code = str.charCodeAt(i);
+        var n = code.toString(16);
+        hex += n.length < 2 ? '0' + n : n;
+    }
+
+    return "0x" + hex;
+};
+
+/**
+ * Should be called to get utf8 from it's hex representation
+ *
+ * @method hexToUtf8
+ * @param {String} hex
+ * @returns {String} ascii string representation of hex value
+ */
+var hexToUtf8 = function(hex) {
+    if (!isHexStrict(hex))
+        throw new Error('The parameter "'+ hex +'" must be a valid HEX string.');
+
+    var str = "";
+    var code = 0;
+    hex = hex.replace(/^0x/i,'');
+
+    hex = hex.replace(/^(?:00)*/,'');
+    hex = hex.split("").reverse().join("");
+    hex = hex.replace(/^(?:00)*/,'');
+    hex = hex.split("").reverse().join("");
+
+    var l = hex.length;
+
+    for (var i=0; i < l; i+=2) {
+        code = parseInt(hex.substr(i, 2), 16);
+        str += String.fromCharCode(code);
+        // }
+    }
+
+    return utf8.decode(str);
+};
+
+
+/**
+ * Converts value to it's number representation
+ *
+ * @method hexToNumber
+ * @param {String|Number|BN} value
+ * @return {String}
+ */
+var hexToNumber = function (value) {
+    if (!value) {
+        return value;
+    }
+
+    if (typeof value === 'string' && !isHexStrict(value)) {
+        throw new Error('Given value "'+value+'" is not a valid hex string.');
+    }
+
+    return toBN(value).toNumber();
+};
+
+/**
+ * Converts value to it's decimal representation in string
+ *
+ * @method hexToNumberString
+ * @param {String|Number|BN} value
+ * @return {String}
+ */
+var hexToNumberString = function (value) {
+    if (!value) return value;
+
+    if (typeof value === 'string' && !isHexStrict(value)) {
+        throw new Error('Given value "'+value+'" is not a valid hex string.');
+    }
+
+    return toBN(value).toString(10);
+};
+
+
+/**
+ * Converts value to it's hex representation
+ *
+ * @method numberToHex
+ * @param {String|Number|BN} value
+ * @return {String}
+ */
+var numberToHex = function (value) {
+    if ((value === null || value === undefined)) {
+        return value;
+    }
+
+    if (!isFinite(value) && !isHexStrict(value)) {
+        throw new Error('Given input "'+value+'" is not a number.');
+    }
+
+    var number = toBN(value);
+    var result = number.toString(16);
+
+    return number.lt(new BN(0)) ? '-0x' + result.substr(1) : '0x' + result;
+};
+
+/**
+ * Auto converts any given value into it's hex representation.
+ *
+ * And even stringifys objects before.
+ *
+ * @method toHex
+ * @param {String|Number|BN|Object|Buffer} value
+ * @param {Boolean} returnType
+ * @return {String}
+ */
+var toHex = function (value, returnType) {
+    /*jshint maxcomplexity: false */
+
+    if (isAddress(value)) {
+        return returnType ? 'address' : '0x'+ value.toLowerCase().replace(/^0x/i,'');
+    }
+
+    if (typeof value === 'boolean' ) {
+        return returnType ? 'bool' : value ? '0x01' : '0x00';
+    }
+
+    if (Buffer.isBuffer(value)) {
+        return '0x' + value.toString('hex');
+    }
+
+    if (typeof value === 'object' && !!value && !isBigNumber(value) && !isBN(value)) {
+        return returnType ? 'string' : utf8ToHex(JSON.stringify(value));
+    }
+
+    // if its a negative number, pass it through numberToHex
+    if (typeof value === 'string') {
+        if (value.indexOf('-0x') === 0 || value.indexOf('-0X') === 0) {
+            return returnType ? 'int256' : numberToHex(value);
+        } else if(value.indexOf('0x') === 0 || value.indexOf('0X') === 0) {
+            return returnType ? 'bytes' : value;
+        } else if (!isFinite(value)) {
+            return returnType ? 'string' : utf8ToHex(value);
+        }
+    }
+
+    return returnType ? (value < 0 ? 'int256' : 'uint256') : numberToHex(value);
+};
+
+/**
+ * Check if string is HEX
+ *
+ * @method isHex
+ * @param {String} hex to be checked
+ * @returns {Boolean}
+ */
+var isHex = function (hex) {
+    return ((typeof hex === 'string' || typeof hex === 'number') && /^(-0x|0x)?[0-9a-f]*$/i.test(hex));
+};
+
+/**
+ * Remove 0x prefix from string
+ *
+ * @method stripHexPrefix
+ * @param {String} str to be checked
+ * @returns {String}
+ */
+var stripHexPrefix = function (str) {
+    if (str !== 0 && isHex(str))
+        return str.replace(/^(-)?0x/i, '$1')
+    return str;
+};
+
+
+/**
+ * Hashes values to a sha3 hash using keccak 256
+ *
+ * To hash a HEX string the hex must have 0x in front.
+ *
+ * @method sha3
+ * @return {String} the sha3 string
+ */
+var SHA3_NULL_S = '0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470';
+
+var sha3 = function (value) {
+    if (isBN(value)) {
+        value = value.toString();
+    }
+
+    if (isHexStrict(value) && /^0x/i.test((value).toString())) {
+        value = hexToBytes(value);
+    }
+
+    var returnValue = Hash.keccak256(value); // jshint ignore:line
+
+    if(returnValue === SHA3_NULL_S) {
+        return null;
+    } else {
+        return returnValue;
+    }
+};
+// expose the under the hood keccak256
+sha3._Hash = Hash;
+
+/**
+ * @method sha3Raw
+ *
+ * @param value
+ *
+ * @returns {string}
+ */
+var sha3Raw = function(value) {
+    value = sha3(value);
+
+    if (value === null) {
+        return SHA3_NULL_S;
+    }
+
+    return value;
+};
+
+
+module.exports = {
+    BN,
+    isBN,
+    fromNEAT,
+    toNEAT,
+    stringToHex,
+    hexToString,
+    bnToBuffer,
+    isHexString,
+    isAddress,
+    hexOrBuffer,
+    hexlify,
+    stripZeros,
+    isBigNumber,
+    toBN,
+    checkAddressChecksum,
+    toChecksumAddress,
+    utf8ToHex,
+    hexToUtf8,
+    toUtf8: hexToUtf8,
+    hexToNumber,
+    hexToNumberString,
+    numberToHex,
+    toHex,
+    isHex,
+    bytesToHex,
+    hexToBytes,
+    isHexStrict,
+    stripHexPrefix,
+    sha3,
+    sha3Raw,
+    keccak256,
+    getKeys,
+    numberToBN,
+    coderNumber,
+    uint256Coder,
+    coderBoolean,
+    coderFixedBytes,
+    coderAddress,
+    coderDynamicBytes,
+    coderString,
+    coderArray,
+    paramTypePart,
+    getParamCoder,
+};

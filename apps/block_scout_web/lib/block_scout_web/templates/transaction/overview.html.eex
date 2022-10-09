@@ -71,7 +71,7 @@
             <dt class="col-sm-3 col-lg-2 text-muted">
               <%= render BlockScoutWeb.CommonComponentsView, "_i_tooltip_2.html",
               text: gettext("Unique character string (TxID) assigned to every verified transaction.") %>
-              <%= gettext "Transaction Hash" %>
+              <%= gettext "Tx Hash" %>
             </dt>
             <dd class="col-sm-9 col-lg-10" style="word-break: break-all;">
               <span class="transaction-details-address" data-test="transaction_detail_hash"><%= @transaction %> </span>
@@ -335,7 +335,7 @@
             <dt class="col-sm-3 col-lg-2 text-muted">
               <%= render BlockScoutWeb.CommonComponentsView, "_i_tooltip_2.html",
                 text: gettext("Total transaction fee.") %>
-              <%= gettext "Transaction Fee" %>
+              <%= gettext "Tx Fee" %>
             </dt>
             <dd class="col-sm-9 col-lg-10">
               <%= formatted_fee(@transaction, denomination: :ether) %>
@@ -359,7 +359,7 @@
               <dt class="col-sm-3 col-lg-2 text-muted">
                 <%= render BlockScoutWeb.CommonComponentsView, "_i_tooltip_2.html",
                   text: gettext("Transaction type, introduced in EIP-2718.") %>
-                <%= gettext "Transaction Type" %>
+                <%= gettext "TX Type" %>
               </dt>
               <dd class="col-sm-9 col-lg-10"> <%= type %> </dd>
             </dl>
@@ -423,7 +423,7 @@
             <dt class="col-sm-3 col-lg-2 text-muted transaction-gas-used">
               <%= render BlockScoutWeb.CommonComponentsView, "_i_tooltip_2.html",
                 text: gettext("Actual gas amount used by the transaction.") %>
-              <%= gettext "Gas Used by Transaction" %>
+              <%= gettext "Gas Used" %>
             </dt>
             <% gas_used_perc = gas_used_perc(@transaction) %>
             <dd class="col-sm-9 col-lg-10"> <%= gas_used(@transaction) %> <%= if gas_used_perc, do: "| #{gas_used_perc}%" %></dd>
@@ -433,11 +433,9 @@
             <dt class="col-sm-3 col-lg-2 text-muted">
               <%= render BlockScoutWeb.CommonComponentsView, "_i_tooltip_2.html",
                 text: gettext("Transaction number from the sending address. Each transaction sent from an address increments the nonce by 1.") %>
-              <%= gettext "Nonce" %><span class="index-label ml-2"
-                                          data-toggle="tooltip"
-                                          title="<%= gettext("Index position of Transaction in the block.") %>"><%= gettext "Position" %></span>
+              <%= gettext "Nonce" %>
             </dt>
-            <dd class="col-sm-9 col-lg-10"> <%= @transaction.nonce %><span class="index-label ml-2"><%= if block, do: @transaction.index, else: formatted_result(status) %></span> </dd>
+            <dd class="col-sm-9 col-lg-10"> <%= @transaction.nonce %> </dd>
           </dl>
           <%= unless value_transfer?(@transaction) do %>
             <dl class="row">

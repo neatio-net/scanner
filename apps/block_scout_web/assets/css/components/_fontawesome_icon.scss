@@ -54,9 +54,19 @@
       mask-size: 22px !important;
       -webkit-mask-size: 22px !important;
     }
+
     &.facebook {
       -webkit-mask: url(../static/images/icons/social/facebook.svg) no-repeat center;
       mask: url(../static/images/icons/social/facebook.svg) no-repeat center;
+      height: 22px;
+      width: 22px;
+      mask-size: 22px !important;
+      -webkit-mask-size: 22px !important;
+    }
+
+    &.nomics {
+      -webkit-mask: url(../static/images/icons/social/nomics.svg) no-repeat center;
+      mask: url(../static/images/icons/social/nomics.svg) no-repeat center;
       height: 22px;
       width: 22px;
       mask-size: 22px !important;

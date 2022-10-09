@@ -227,7 +227,8 @@ $container-max-widths: (
 @media (min-width: 1200px) { 
   .container {
     max-width: 1140px !important; 
-    min-height: 720px;
+    //min-height: 720px;
+    
     margin: 0 auto;
   }
  }
@@ -317,7 +318,7 @@ $lead-font-weight: 300 !default;
 
 $small-font-size: 80% !default;
 
-$text-muted: $gray-500 !default;
+$text-muted: #496785 !default;
 
 $blockquote-small-color: $gray-600 !default;
 $blockquote-font-size: ($font-size-base * 1.25) !default;

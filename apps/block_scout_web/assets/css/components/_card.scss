@@ -54,7 +54,7 @@ $card-tab-icon-color-active: #fff !default;
 }
 
 .card-title {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: normal;
   line-height: 1.2rem;
   margin-bottom: 2rem;
@@ -92,9 +92,80 @@ $card-tab-icon-color-active: #fff !default;
   }
 }
 
-.card-subtitle {
-  color: #333;
+
+
+.col-sm-3 {
+  color: #496785;
+}
+
+.col-sm-4 {
+  color: #496785;
+}
+
+.col-sm-5 {
+  color: #496785;
+}
+.col-sm-6 {
+  color: #496785;
+}
+.col-sm-7 {
+  color: #496785;
+}
+.col-sm-8 {
+  color: #496785;
+}
+
+.col-sm-9 {
+  color: #496785;
   font-size: 12px;
+}
+.col-lg-2 {
+  color: #496785;
+}
+.col-lg-3 {
+  color: #496785;
+}
+.col-lg-4 {
+  color: #496785;
+}
+.col-lg-5 {
+  color: #496785;
+}
+.col-lg-6 {
+  color: #496785;
+}
+.col-lg-7 {
+  color: #496785;
+}
+.col-lg-8 {
+  color: #496785;
+}
+.col-lg-9 {
+  color: #496785;
+  font-size: 10px;
+}
+
+.col-lg-10 {
+  color: #496785;
+  font-size: 12px;
+}
+
+.fa-regular {
+  font-size: 10px;
+}
+
+.fa-clock {
+  font-size: 10px;
+}
+
+.mr-4 {
+  font-size: 10px;
+}
+
+
+.card-subtitle {
+  color: #00bfff;
+  font-size: 10px;
   font-weight: normal;
   line-height: 1.2;
   margin: 0 0 30px;
@@ -212,10 +283,11 @@ $card-tab-icon-color-active: #fff !default;
 
 .card-tab {
   align-items: center;
-  background-color: $card-background-color;
-  color: #333;
+  background-color: #00000041;
+  color: #496785;
   cursor: pointer;
   display: flex;
+  border-right: #000 solid 1px;
   font-size: 14px;
   font-weight: normal;
   height: 70px;
@@ -224,7 +296,7 @@ $card-tab-icon-color-active: #fff !default;
   transition: $transition-cont;
 
   &:hover {
-    background-color: rgba($card-tab-active, .15);
+    background-color: rgba(#00bfff, .15);
     color: $card-tab-active;
     text-decoration: none;
   }
@@ -240,7 +312,7 @@ $card-tab-icon-color-active: #fff !default;
   }
 
   &.active {
-    background-color: $card-tab-active;
+    background-color: #000;
     color: #fff;
     cursor: default;
     text-decoration: none;

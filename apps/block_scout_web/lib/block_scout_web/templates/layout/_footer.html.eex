@@ -1,34 +1,42 @@
 <footer class="footer">
   <div class="footer-body container">
     <!-- Footer Layout -->
+      <div class="footer-img-all">
 
+        <p class="footer-info-get-in-touch">
+          <%= gettext("GET IN TOUCH | GET INVOLVED")%>
+        </p>
         <div class="footer-social-icons">
-          <a href="https://dd.neatio.org" rel="noreferrer" target="_blank" class="footer-social-icon" title='<%= gettext("Discord") %>'>
+          <a href="https://dd.neatio.net" rel="noreferrer" target="_blank" class="footer-social-icon" title='<%= gettext("Discord") %>'>
             <div class="footer-social-icon-container fontawesome-icon discord"></div>
           </a>
-          <a href="https://twitter.com/neat_io" rel="noreferrer" target="_blank" class="footer-social-icon" title='<%= gettext("Telegram") %>'>
+          <a href="https://t.me/neat_io" rel="noreferrer" target="_blank" class="footer-social-icon" title='<%= gettext("Telegram") %>'>
             <div class="footer-social-icon-container fontawesome-icon telegram"></div>
           </a>
-          <a href="https://t.me/neat_io" rel="noreferrer" target="_blank" class="footer-social-icon" title='<%= gettext("Twitter") %>'>
+          <a href="https://twitter.com/neatio_network" rel="noreferrer" target="_blank" class="footer-social-icon" title='<%= gettext("Twitter") %>'>
             <div class="footer-social-icon-container fontawesome-icon twitter"></div>          </a>
 
-             <a href="https://facebook.com/xNeatio" rel="noreferrer" target="_blank" class="footer-social-icon" title='<%= gettext("Facebook") %>'>
+             <a href="https://facebook.com/neatio.net" rel="noreferrer" target="_blank" class="footer-social-icon" title='<%= gettext("Facebook") %>'>
             <div class="footer-social-icon-container fontawesome-icon facebook"></div>
           </a>
-           <a href="https://t.me/neat_io" rel="noreferrer" target="_blank" class="footer-social-icon" title='<%= gettext("Reddit") %>'>
+           <a href="https://www.reddit.com/r/neatio/" rel="noreferrer" target="_blank" class="footer-social-icon" title='<%= gettext("Reddit") %>'>
             <div class="footer-social-icon-container fontawesome-icon reddit"></div>
           </a>
-          <a href="https://t.me/neat_io" rel="noreferrer" target="_blank" class="footer-social-icon" title='<%= gettext("Bitcointalk") %>'>
+          <a href="https://bitcointalk.org/index.php?topic=5377414" rel="noreferrer" target="_blank" class="footer-social-icon" title='<%= gettext("Bitcointalk") %>'>
             <div class="footer-social-icon-container fontawesome-icon bitcointalk"></div>
           </a>
-             <a href="https://github.com/neatlab" rel="noreferrer" target="_blank" class="footer-social-icon" title='<%= gettext("Github") %>'>
+             <a href="https://github.com/neatio-network" rel="noreferrer" target="_blank" class="footer-social-icon" title='<%= gettext("Github") %>'>
             <div class="footer-social-icon-container fontawesome-icon github"></div>
           </a>
+            <a href="https://nomics.com/assets/neat-neatio" rel="noreferrer" target="_blank" class="footer-social-icon" title='<%= gettext("Nomics") %>'>
+            <div class="footer-social-icon-container fontawesome-icon nomics"></div>
+          </a>
         </div>
+      </div>
 
-            <div class="footer-layout-line">
+        <div class="footer-layout-line">
         <p class="footer-info-text">
-          <%= gettext("Copyright © 2022 Neatio. Powered by Blockscout. Your use of this website and software is entirely at your own risk, and this website is provided on an 'as is' basis and for reference only.")%>
+          <%= gettext("© 2022 Neatio. Your use of this software is entirely at your own risk, and this website is provided on an 'as is' basis.")%>
         </p>
        </div>
 

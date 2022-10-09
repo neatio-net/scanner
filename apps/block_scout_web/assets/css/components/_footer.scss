@@ -8,13 +8,14 @@ $footer-logo-height: 28px !default;
 $footer-logo-width: auto !default;
 
 .footer {
-  background: $footer-background-color;
+  background: #000;
   color: $footer-text-color;
   font-size: 12px;
   line-height: 1.67;
   margin: 0;
-  padding: 40px 0;
+  padding: 25px 0;
   position: relative;
+  border-top: #00ffff solid 1px;
   
 
   @media (max-width: $breakpoint-md) {
@@ -32,14 +33,31 @@ $footer-logo-width: auto !default;
 }
 
 .footer-info-text {
-  margin: 0 0 25px;
-  padding: 0 20px 0 0;
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+
+}
+
+.footer-info-get-in-touch {
+  font-size: 13px;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0 0 20px 0;
 }
 
 .footer-social-icons {
-  align-items: center;
+ 
   display: flex;
-  margin: 0 0 25px;
+  justify-content: center;
+  margin: 0 0 20px 0;
+}
+
+.footer-img-all {
+  text-align: center;
+  margin: 0 auto;
 }
 
 .footer-social-icon {
