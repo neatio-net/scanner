@@ -7,7 +7,7 @@
 
 
       <%= if logo() do %>
-        <img class="navbar-logo" id="navbar-logo" src="/static/images/new-logo.svg" alt="" />
+        <img class="navbar-logo" id="navbar-logo" alt="" />
       <% end %>
 
       <%= if logo() do %>
