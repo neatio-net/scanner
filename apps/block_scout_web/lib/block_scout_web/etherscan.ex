@@ -185,7 +185,7 @@ defmodule BlockScoutWeb.Etherscan do
         "name" => "Example Token",
         "decimals" => "18",
         "symbol" => "ET",
-        "type" => "ERC-20"
+        "type" => "NET-20"
       },
       %{
         "balance" => "1",
@@ -266,7 +266,7 @@ defmodule BlockScoutWeb.Etherscan do
       "name" => "Example Token",
       "symbol" => "ET",
       "totalSupply" => "1000000000",
-      "type" => "ERC-20"
+      "type" => "NET-20"
     }
   }
 
@@ -1000,8 +1000,8 @@ defmodule BlockScoutWeb.Etherscan do
       decimals: @token_decimal_type,
       type: %{
         type: "token type",
-        enum: ~s(["ERC-20", "ERC-721"]),
-        enum_interpretation: %{"ERC-20" => "ERC-20 token standard", "ERC-721" => "ERC-721 token standard"}
+        enum: ~s(["NET-20", "ERC-721"]),
+        enum_interpretation: %{"NET-20" => "NET-20 token standard", "ERC-721" => "ERC-721 token standard"}
       },
       cataloged: %{
         type: "boolean",
@@ -1969,7 +1969,7 @@ defmodule BlockScoutWeb.Etherscan do
   @token_gettoken_action %{
     name: "getToken",
     description:
-      "Get <a href='https://github.com/ethereum/EIPs/issues/20'>ERC-20</a> " <>
+      "Get <a href='https://github.com/ethereum/EIPs/issues/20'>NET-20</a> " <>
         "or <a href='https://github.com/ethereum/EIPs/issues/721'>ERC-721</a> token by contract address.",
     required_params: [
       %{
@@ -2101,7 +2101,7 @@ defmodule BlockScoutWeb.Etherscan do
   @stats_tokensupply_action %{
     name: "tokensupply",
     description:
-      "Get <a href='https://github.com/ethereum/EIPs/issues/20'>ERC-20</a> or " <>
+      "Get <a href='https://github.com/ethereum/EIPs/issues/20'>NET-20</a> or " <>
         "<a href='https://github.com/ethereum/EIPs/issues/721'>ERC-721</a> " <>
         " token total supply by contract address.",
     required_params: [

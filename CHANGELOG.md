@@ -1269,7 +1269,7 @@ fixed menu hovers in dark mode desktop view
 - [#1974](https://github.com/blockscout/blockscout/pull/1974) - feat: previous page button logic
 - [#1999](https://github.com/blockscout/blockscout/pull/1999) - load data async on addresses page
 - [#1807](https://github.com/blockscout/blockscout/pull/1807) - New theming capabilites.
-- [#2040](https://github.com/blockscout/blockscout/pull/2040) - Verification links to other explorers for ETH
+- [#2040](https://github.com/blockscout/blockscout/pull/2040) - Verification links to other explorers for NEAT
 - [#2037](https://github.com/blockscout/blockscout/pull/2037) - add address logs search functionality
 - [#2012](https://github.com/blockscout/blockscout/pull/2012) - make all pages pagination async
 - [#2064](https://github.com/blockscout/blockscout/pull/2064) - feat: add fields to tx apis, small cleanups
@@ -1407,7 +1407,7 @@ Reverting of synchronous block counter, implemented in #1848
 - [#1739](https://github.com/blockscout/blockscout/pull/1739) - highlight decompiled source code
 - [#1696](https://github.com/blockscout/blockscout/pull/1696) - full-text search by tokens
 - [#1742](https://github.com/blockscout/blockscout/pull/1742) - Support RSK
-- [#1777](https://github.com/blockscout/blockscout/pull/1777) - show ERC-20 token transfer info on transaction page
+- [#1777](https://github.com/blockscout/blockscout/pull/1777) - show NET-20 token transfer info on transaction page
 - [#1770](https://github.com/blockscout/blockscout/pull/1770) - set a websocket keepalive from config
 - [#1789](https://github.com/blockscout/blockscout/pull/1789) - add ERC-721 info to transaction overview page
 - [#1801](https://github.com/blockscout/blockscout/pull/1801) - Staking pools fetching

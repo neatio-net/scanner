@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /*
-    Endpoint for client interface with ERC-20 tokens
+    Endpoint for client interface with NET-20 tokens
 */
 
 const { eth } = require('./web3relay');

@@ -1011,7 +1011,7 @@ msgstr ""
 
 #, elixir-format
 #: lib/block_scout_web/views/transaction_view.ex:212
-msgid "ERC-20 "
+msgid "NET-20 "
 msgstr ""
 
 #, elixir-format
@@ -1023,12 +1023,12 @@ msgstr ""
 #: lib/block_scout_web/templates/address_token/overview.html.eex:1
 #: lib/block_scout_web/templates/smart_contract/_functions.html.eex:104 lib/block_scout_web/templates/smart_contract/_functions.html.eex:104
 #: lib/block_scout_web/templates/smart_contract/_functions.html.eex:146
-msgid "ETH"
+msgid "NEAT"
 msgstr ""
 
 #, elixir-format
 #: lib/block_scout_web/templates/api_docs/eth_rpc.html.eex:4
-msgid "ETH RPC API Documentation"
+msgid "NEAT RPC API Documentation"
 msgstr ""
 
 #, elixir-format
@@ -2109,7 +2109,7 @@ msgstr ""
 
 #, elixir-format
 #: lib/block_scout_web/templates/address_token/overview.html.eex:59
-msgid "Shows the tokens held in the address (includes ERC-20, ERC-721 and ERC-1155)."
+msgid "Shows the tokens held in the address (includes NET-20, ERC-721 and ERC-1155)."
 msgstr ""
 
 #, elixir-format

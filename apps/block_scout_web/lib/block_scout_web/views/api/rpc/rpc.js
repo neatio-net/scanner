@@ -4578,7 +4578,7 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
      * @return {Iban} the IBAN object
      */
     Iban.createIndirect = function (options) {
-        return Iban.fromBban('ETH' + options.institution + options.identifier);
+        return Iban.fromBban('NEAT' + options.institution + options.identifier);
     };
     
     /**
@@ -4600,7 +4600,7 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
      * @returns {Boolean} true if it is, otherwise false
      */
     Iban.prototype.isValid = function () {
-        return /^XE[0-9]{2}(ETH[0-9A-Z]{13}|[0-9A-Z]{30,31})$/.test(this._iban) &&
+        return /^XE[0-9]{2}(NEAT[0-9A-Z]{13}|[0-9A-Z]{30,31})$/.test(this._iban) &&
             mod9710(iso13616Prepare(this._iban)) === 1;
     };
     

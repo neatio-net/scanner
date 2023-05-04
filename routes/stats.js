@@ -179,7 +179,7 @@ var getHashrate = function (res) {
 };
 /**
   OLD CODE DON'T USE
-  Swipe ETC ETH data
+  Swipe ETC NEAT data
 **/
 const getEtcEth = function (res) {
   const options = [{

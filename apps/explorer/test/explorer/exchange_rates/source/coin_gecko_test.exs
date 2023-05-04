@@ -124,7 +124,7 @@ defmodule Explorer.ExchangeRates.Source.CoinGeckoTest do
     end
 
     test "fetches eth coin id", %{bypass: bypass} do
-      Application.put_env(:explorer, :coin, "ETH")
+      Application.put_env(:explorer, :coin, "NEAT")
 
       Bypass.expect(bypass, "GET", "/coins/list", fn conn ->
         Conn.resp(conn, 200, @coins_list)

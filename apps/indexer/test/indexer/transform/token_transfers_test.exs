@@ -58,7 +58,7 @@ defmodule Indexer.Transform.TokenTransfersTest do
           },
           %{
             contract_address_hash: log_1.address_hash,
-            type: "ERC-20"
+            type: "NET-20"
           }
         ],
         token_transfers: [
@@ -82,7 +82,7 @@ defmodule Indexer.Transform.TokenTransfersTest do
             to_address_hash: truncated_hash(log_1.third_topic),
             token_contract_address_hash: log_1.address_hash,
             transaction_hash: log_1.transaction_hash,
-            token_type: "ERC-20",
+            token_type: "NET-20",
             block_hash: log_1.block_hash
           }
         ]
