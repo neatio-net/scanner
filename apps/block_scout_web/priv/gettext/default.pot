@@ -1023,8 +1023,7 @@ msgstr ""
 #: lib/block_scout_web/templates/address_token/overview.html.eex:1
 #: lib/block_scout_web/templates/smart_contract/_functions.html.eex:104 lib/block_scout_web/templates/smart_contract/_functions.html.eex:104
 #: lib/block_scout_web/templates/smart_contract/_functions.html.eex:146
-msgid "NEAT"
-msgstr ""
+
 
 #, elixir-format
 #: lib/block_scout_web/templates/api_docs/eth_rpc.html.eex:4
