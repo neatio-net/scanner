@@ -56,7 +56,7 @@ $tile-body-a-color: #5959d8 !default;
 /*********************************************************************/
 
 .tile-label {
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 700;
   line-height: 1.2;
   margin: 0 0 2px;
@@ -98,7 +98,7 @@ $tile-body-a-color: #5959d8 !default;
 }
 
 .tile-status-label {
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 400;
   line-height: 1.2;
   text-align: center;
@@ -119,14 +119,14 @@ $tile-body-a-color: #5959d8 !default;
 
 .tile-bottom-contents {
   background-color: #24292f;
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.2;
   padding: 0.8rem 1rem;
 }
 
 .tile-transactions {
   color: #a3a9b5;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 400;
   line-height: 1.2;
   margin-bottom: 10px;
@@ -189,7 +189,7 @@ $tile-body-a-color: #5959d8 !default;
 
   .tile-title {
     color: $tile-title-color;
-    font-size: 12px;
+    font-size: 15px;
 
     &-hash {
       font-weight: 300;
@@ -204,7 +204,7 @@ $tile-body-a-color: #5959d8 !default;
   border: 1px solid $border-color;
   color: $text-muted;
   flex-grow: 1;
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.4rem;
   padding: $tile-padding;
 
@@ -466,7 +466,7 @@ $tile-body-a-color: #5959d8 !default;
 }
 
 .cube-animation-title {
-  font-size: 12px;
+  font-size: 15px;
   color: #a3a9b5;
   position: absolute;
   bottom: 10px;
@@ -592,7 +592,7 @@ $cube-quantity: 5;
 .view-original-token-container {
   margin-top: 10px;
   margin-bottom: 10px;
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .token-address-mobile {
