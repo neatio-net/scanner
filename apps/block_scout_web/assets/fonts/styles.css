@@ -1,0 +1,10 @@
+@font-face {
+  font-family: 'anita';
+  src: url(./anita.eot);
+  src: url(./anita.eot?#iefix) format('embedded-opentype'),
+       url(./anita.otf) format('otf'),
+       url(./anita.svg#anita) format('svg'),
+       url(./anita.ttf) format('truetype'),
+       url(./anita.woff) format('woff'),
+       url(./anita.woff2) format('woff2');
+}
