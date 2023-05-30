@@ -12,6 +12,18 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'anita';
+  src: url('../fonts/anita.eot');
+  src: url('../fonts/anita.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/anita.woff2') format('woff2'),
+      url('../fonts/anita.woff') format('woff'),
+      url('../fonts/anita.svg#AnitaSemi-square') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 $dashboard-line-color-price: #8286a9 !default;
 $base-border-color: #e2e5ec !default;
 $common-container-margin: 50px !default;
@@ -269,7 +281,7 @@ $transition-collapse: height 0.35s ease !default;
 $transition-cont: all 0.4s ease-in-out !default;
 
 
-$font-family-neat: Pirulen !default;
+$font-family-neat: Anita !default;
 
 $font-family:  "Helvetica Neue", Arial, sans-serif,
   "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
