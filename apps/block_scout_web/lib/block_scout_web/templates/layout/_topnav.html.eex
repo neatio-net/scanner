@@ -7,13 +7,13 @@
 
 
       <%= if logo() do %>
-        <img class="navbar-logo" id="navbar-logo" alt="" />
+        <img class="navbar-logo" id="navbar-logo" src="<%= static_path(@conn, logo()) %>" alt="<%= subnetwork_title() %>" />
       <% end %>
 
       <%= if logo() do %>
 
-
      <%= gettext("NeatScan") %>
+
 
       <% end %>
 
@@ -30,7 +30,7 @@
        <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Transactions Start -->
           <div class="nav-item">
-            <%= link to: transaction_path(@conn, :index), class: "nav-link topnav-nav-link #{tab_status("accounts", @conn.request_path)}" do %>
+            <%= link to: address_path(@conn, :index), class: "nav-link topnav-nav-link #{tab_status("accounts", @conn.request_path)}" do %>
 
               <%= gettext("Transactions") %>
             <% end %>
@@ -40,7 +40,7 @@
 
                 <!-- Blocks Start -->
           <div class="nav-item">
-            <%= link to: blocks_path(@conn, :index), class: "nav-link topnav-nav-link #{tab_status("accounts", @conn.request_path)}" do %>
+            <%= link to: address_path(@conn, :index), class: "nav-link topnav-nav-link #{tab_status("accounts", @conn.request_path)}" do %>
 
               <%= gettext("Blocks") %>
             <% end %>

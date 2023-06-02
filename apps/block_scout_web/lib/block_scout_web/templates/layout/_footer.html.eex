@@ -36,7 +36,7 @@
 
         <div class="footer-layout-line">
         <p class="footer-info-text">
-          <%= gettext("© 2023 Neatio. Your use of this software is entirely at your own risk, and this website is provided on an 'as is' basis.")%>
+          <%= gettext("© 2022 Neatio. Your use of this software is entirely at your own risk, and this website is provided on an 'as is' basis.")%>
         </p>
        </div>
 
