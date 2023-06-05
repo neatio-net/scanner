@@ -2721,7 +2721,7 @@ contract HomeWork is IHomeWork, ERC721Enumerable, IERC721Metadata, IERC1412 {
     );
 
     if (address(token) == address(0)) {
-      // Recover NEAT if the token's contract address is set to the null address.
+      // Recover ETH if the token's contract address is set to the null address.
       recipient.transfer(address(this).balance);
     } else {
       // Determine the given ERC20 token balance and transfer to the recipient.

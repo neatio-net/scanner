@@ -1316,7 +1316,7 @@
         "identifier": "binance",
         "name": "Binance"
       },
-      "target": "NEAT",
+      "target": "ETH",
       "timestamp": "2019-08-21T08:34:26+00:00",
       "trade_url": "https://www.binance.com/trade.html?symbol=POA_ETH",
       "trust_score": "green",
@@ -1406,7 +1406,7 @@
         "identifier": "bibox",
         "name": "Bibox"
       },
-      "target": "NEAT",
+      "target": "ETH",
       "timestamp": "2019-08-21T08:35:50+00:00",
       "trade_url": "https://www.bibox.com/exchange?coinPair=POA_ETH",
       "trust_score": "yellow",
@@ -1466,9 +1466,9 @@
         "identifier": "hitbtc",
         "name": "HitBTC"
       },
-      "target": "NEAT",
+      "target": "ETH",
       "timestamp": "2019-08-21T07:37:25+00:00",
-      "trade_url": "https://hitbtc.com/POA20-to-NEAT",
+      "trade_url": "https://hitbtc.com/POA20-to-ETH",
       "trust_score": "red",
       "volume": 140.0
     },
@@ -1556,7 +1556,7 @@
         "identifier": "uniswap",
         "name": "Uniswap"
       },
-      "target": "NEAT",
+      "target": "ETH",
       "timestamp": "2019-08-21T08:21:13+00:00",
       "trade_url": null,
       "trust_score": null,
@@ -1586,7 +1586,7 @@
         "identifier": "ethfinex",
         "name": "Ethfinex"
       },
-      "target": "NEAT",
+      "target": "ETH",
       "timestamp": "2019-08-18T18:43:13+00:00",
       "trade_url": "https://ethfinex.com",
       "trust_score": "red",
@@ -1646,9 +1646,9 @@
         "identifier": "hitbtc",
         "name": "HitBTC"
       },
-      "target": "NEAT",
+      "target": "ETH",
       "timestamp": "2019-08-21T02:52:09+00:00",
-      "trade_url": "https://hitbtc.com/POA-to-NEAT",
+      "trade_url": "https://hitbtc.com/POA-to-ETH",
       "trust_score": null,
       "volume": 4.0
     },
