@@ -1269,7 +1269,7 @@ fixed menu hovers in dark mode desktop view
 - [#1974](https://github.com/blockscout/blockscout/pull/1974) - feat: previous page button logic
 - [#1999](https://github.com/blockscout/blockscout/pull/1999) - load data async on addresses page
 - [#1807](https://github.com/blockscout/blockscout/pull/1807) - New theming capabilites.
-- [#2040](https://github.com/blockscout/blockscout/pull/2040) - Verification links to other explorers for NEAT
+- [#2040](https://github.com/blockscout/blockscout/pull/2040) - Verification links to other explorers for NIO
 - [#2037](https://github.com/blockscout/blockscout/pull/2037) - add address logs search functionality
 - [#2012](https://github.com/blockscout/blockscout/pull/2012) - make all pages pagination async
 - [#2064](https://github.com/blockscout/blockscout/pull/2064) - feat: add fields to tx apis, small cleanups
