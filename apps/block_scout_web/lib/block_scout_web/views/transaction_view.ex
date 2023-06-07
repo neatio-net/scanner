@@ -471,7 +471,7 @@ defmodule BlockScoutWeb.TransactionView do
   end
 
   @doc """
-  Converts a transaction's Wei value to NEAT and returns a formatted display value.
+  Converts a transaction's Wei value to NIO and returns a formatted display value.
 
   ## Options
 

@@ -139,7 +139,7 @@ class Iban {
      * @return {Iban} the IBAN object
      */
     static createIndirect (options) {
-        return Iban.fromBban('NEAT' + options.institution + options.identifier);
+        return Iban.fromBban('NIO' + options.institution + options.identifier);
     }
 
     /**
@@ -161,7 +161,7 @@ class Iban {
      * @returns {Boolean} true if it is, otherwise false
      */
     isValid () {
-        return /^XE[0-9]{2}(NEAT[0-9A-Z]{13}|[0-9A-Z]{30,31})$/.test(this._iban) &&
+        return /^XE[0-9]{2}(NIO[0-9A-Z]{13}|[0-9A-Z]{30,31})$/.test(this._iban) &&
             mod9710(iso13616Prepare(this._iban)) === 1;
     };
 

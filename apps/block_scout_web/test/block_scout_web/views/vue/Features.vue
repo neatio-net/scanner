@@ -3,7 +3,7 @@
         <div class="section section--spacing-bottom">
     </div>    
     <section id="neatkey"></section>
-    <div class="header-section__features">{{ $t("DISCOVER NEAT FEATURES") }} </div>
+    <div class="header-section__features">{{ $t("DISCOVER NIO FEATURES") }} </div>
     <div class="section">
       <div class="section__content section__content--thin-top content-container">
         <div class="dual-sections dual-sections--reverse">

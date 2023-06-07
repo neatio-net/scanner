@@ -3,7 +3,7 @@
     <div class="section section--spacing-bottom">
     </div>
     <section id="neatkey"></section>
-    <div class="header-section__features">{{ $t("ABOUT US | ABOUT NEAT") }} </div>
+    <div class="header-section__features">{{ $t("ABOUT US | ABOUT NIO") }} </div>
     <div class="section">
       <div class="section__content content-container">
         <div class="dual-sections">

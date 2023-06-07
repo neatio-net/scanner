@@ -2,4 +2,4 @@
   <%= gettext("Neatio | Explorer", subnetwork: LayoutView.subnetwork_title(), network: LayoutView.network_title()) %>
 </title>
 <meta name="description" content="<%= gettext "Neatio blockchain explorer.", subnetwork: LayoutView.subnetwork_title() %>">
-<meta name="keywords" content="Neatio, blockchain, NEAT, cryptocurrency.">
+<meta name="keywords" content="Neatio, blockchain, NIO, cryptocurrency.">

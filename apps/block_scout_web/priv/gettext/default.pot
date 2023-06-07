@@ -1117,7 +1117,7 @@ msgstr ""
 #: lib/block_scout_web/templates/layout/app.html.eex:51 lib/block_scout_web/templates/transaction/_pending_tile.html.eex:20
 #: lib/block_scout_web/templates/transaction/_tile.html.eex:43 lib/block_scout_web/templates/transaction/overview.html.eex:411
 #: lib/block_scout_web/views/wei_helpers.ex:78
-msgid "NEAT"
+msgid "NIO"
 msgstr ""
 
 #, elixir-format
@@ -2308,7 +2308,7 @@ msgstr ""
 
 #, elixir-format
 #: lib/block_scout_web/templates/smart_contract/_functions.html.eex:41
-msgid "The fallback function is executed on a call to the contract if none of the other functions match the given function signature, or if no data was supplied at all and there is no receive NEAT function. The fallback function always receives data, but in order to also receive NEAT it must be marked payable."
+msgid "The fallback function is executed on a call to the contract if none of the other functions match the given function signature, or if no data was supplied at all and there is no receive NIO function. The fallback function always receives data, but in order to also receive NIO it must be marked payable."
 msgstr ""
 
 #, elixir-format
@@ -2358,7 +2358,7 @@ msgstr ""
 
 #, elixir-format
 #: lib/block_scout_web/templates/smart_contract/_functions.html.eex:43
-msgid "The receive function is executed on a call to the contract with empty calldata. This is the function that is executed on plain NEAT transfers (e.g. via .send() or .transfer()). If no such function exists, but a payable fallback function exists, the fallback function will be called on a plain NEAT transfer. If neither a receive NEAT nor a payable fallback function is present, the contract cannot receive NEAT through regular transactions and throws an exception."
+msgid "The receive function is executed on a call to the contract with empty calldata. This is the function that is executed on plain NIO transfers (e.g. via .send() or .transfer()). If no such function exists, but a payable fallback function exists, the fallback function will be called on a plain NIO transfer. If neither a receive NIO nor a payable fallback function is present, the contract cannot receive NIO through regular transactions and throws an exception."
 msgstr ""
 
 #, elixir-format
