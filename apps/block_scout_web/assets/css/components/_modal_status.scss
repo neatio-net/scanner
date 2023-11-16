@@ -51,7 +51,7 @@ $modal-status-graph-question: #329ae9 !default;
 }
 
 .modal-status-title {
-  color: #333;
+  color: #6DD5FA;
   font-size: 18px;
   font-weight: normal;
   line-height: 1.2;
@@ -61,7 +61,7 @@ $modal-status-graph-question: #329ae9 !default;
 
 .modal-status-text {
   color: #a3a9b5;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: normal;
   line-height: 1.5;
   margin: 0 0 25px;
@@ -88,11 +88,12 @@ $modal-status-graph-question: #329ae9 !default;
   .btn-line {
     flex-grow: 1;
     margin-right: 20px;
-    border-color: $primary;
+    background-color: yellow;
+    color: red;
     color: $primary;
 
     &:hover {
-      background-color: $primary;
+      background-color: orange;
       color: $additional-font;
     }
 

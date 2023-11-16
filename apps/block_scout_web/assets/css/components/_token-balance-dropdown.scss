@@ -1,7 +1,7 @@
 .token-balance-dropdown {
   min-width: 10rem;
   margin-top: 1rem;
-  background-color: #fff;
+  background-color: #9CECFB;
 
   &.dropdown-menu {
     border-radius: 4px !important;
@@ -19,7 +19,7 @@
       }
       .row:nth-child(2) {
         p {
-          font-size: 15px;
+          font-size: 12px;
           opacity: .65;
         }
       }
@@ -34,8 +34,8 @@
 
   .dropdown-search-field {
     height: 50px;
-    border: 1px solid #f5f6fa;
-    background-color: #f5f6fa;
+    border: 1px solid #302b63;
+    background-color: #302b63;
     outline: none !important;
     font-size: 14px;
     color: #828ba0;
@@ -102,7 +102,16 @@
   margin-left: 5px;
 }
 
+.ml-20px {
+  margin-left: 20px !important;
+}
+
 .dropdown-row {
   padding-left: 5px;
   padding-right: 5px;
+}
+
+.dropdown-amount {
+  font-size: 12px;
+  opacity: .65;
 }

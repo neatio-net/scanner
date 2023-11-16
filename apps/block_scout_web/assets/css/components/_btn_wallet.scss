@@ -5,6 +5,6 @@ $btn-wallet-dimensions: 31px !default;
   @include square-icon-button($btn-wallet-color, $btn-wallet-dimensions);
   color: $btn-wallet-color;
   &:hover {
-    color: #fff;
+    color: #9CECFB;
   }
 }

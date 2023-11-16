@@ -3,16 +3,16 @@
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     color: $text-muted;
-    font-size: 0.9rem;
+    font-size: 14px;
     padding: 1.25rem 2.5rem;
 
     &:hover {
-      color: yellow;
+      color: $primary;
     }
 
     &.active {
-      background-color: red;
-      border-color: blue;
+      background-color: $primary;
+      border-color: $primary;
       color: $white;
     }
 

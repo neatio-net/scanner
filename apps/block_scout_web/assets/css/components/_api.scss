@@ -2,8 +2,8 @@
 
 $api-text-monospace-color: $secondary !default;
 $api-text-monospace-background: rgba($api-text-monospace-color, 0.1) !default;
-$api-anchors-list-background-color: #f6f7f9 !default;
-$api-doc-list-item-title-color: #333 !default;
+$api-anchors-list-background-color: transparent!default;
+$api-doc-list-item-title-color: #6DD5FA !default;
 $api-doc-list-item-view-more-color: $api-doc-list-item-title-color !default;
 
 .api-text-monospace {
@@ -52,7 +52,7 @@ $api-doc-list-item-view-more-color: $api-doc-list-item-title-color !default;
 
 .api-anchors-list-item-title {
   align-self: center;
-  color: #333;
+  color: #6DD5FA;
   font-size: 14px;
   font-weight: 300;
   line-height: 1.2;
@@ -61,13 +61,13 @@ $api-doc-list-item-view-more-color: $api-doc-list-item-title-color !default;
 
 .api-anchors-list-item-value {
   align-self: center;
-  font-size: 15px;
+  font-size: 12px;
   line-height: 1.2;
   white-space: nowrap;
 }
 
 .api-text-title {
-  font-size: 15px;
+  font-size: 12px;
   line-height: 1.2;
   margin-left: 20px;
 }
@@ -99,7 +99,7 @@ $api-doc-list-item-view-more-color: $api-doc-list-item-title-color !default;
 
 .api-doc-list-item-query {
   display: inline-block;
-  font-size: 15px;
+  font-size: 12px;
   line-height: 1.2;
   margin-bottom: 20px;
   word-break: break-all;
@@ -193,7 +193,7 @@ $api-doc-list-item-view-more-color: $api-doc-list-item-title-color !default;
 }
 
 .api-doc-parameters-list-title {
-  color: #333;
+  color: #6DD5FA;
   font-size: 16px;
   font-weight: 500;
   line-height: 1.2;
@@ -222,7 +222,7 @@ $api-doc-list-item-view-more-color: $api-doc-list-item-title-color !default;
 }
 
 .api-doc-parameters-list-item-title {
-  color: #333;
+  color: #6DD5FA;
   font-size: 14px;
   font-weight: 500;
   line-height: 1.2;
@@ -238,7 +238,7 @@ $api-doc-list-item-view-more-color: $api-doc-list-item-title-color !default;
 }
 
 .api-doc-parameters-list-item-description {
-  color: #333;
+  color: #6DD5FA;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.2;

@@ -1,7 +1,14 @@
+# Neatio Explorer - NeatScan
 
-# Neatio Explorer
+NeatScan is a Block Explorer for **Neatio Blockchain**. NeatScan allows you to explore and search the **Neatio Blockchain** for transactions, addresses, tokens, prices and other activities taking place on **Neatio Blockchain**.
 
-Neatio logo, design and all related code, trade names and service marks are the exclusive property of Neatio project and Neatio developers.
+## Current Features
+- Check network stats such as total tx, total accounts;
+- Browse blocks, transactions, accounts and contracts;
+- Upload & verify smart contract sources;
+- Display the current state of verified contracts;
 
-No adaption or use of any kind of any of our trademarks, trade names, service marks or copyrights is allowed without the express written permission of Neatio developers.
 
+### Usage notes
+
+The NeatScan explorer is still under heavy development and it is provided on an 'as is' basis, hence your use of this software is entirely at your own risk.

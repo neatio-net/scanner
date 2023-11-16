@@ -1,17 +1,19 @@
 defmodule BlockScoutWeb.RecentTransactionsController do
   use BlockScoutWeb, :controller
 
+  import Explorer.Chain.SmartContract, only: [burn_address_hash_string: 0]
+
   alias Explorer.{Chain, PagingOptions}
   alias Explorer.Chain.Hash
   alias Phoenix.View
 
-  {:ok, burn_address_hash} = Chain.string_to_address_hash("0x0000000000000000000000000000000000000000")
+  {:ok, burn_address_hash} = Chain.string_to_address_hash(burn_address_hash_string())
   @burn_address_hash burn_address_hash
 
   def index(conn, _params) do
     if ajax?(conn) do
       recent_transactions =
-        Chain.recent_collated_transactions(
+        Chain.recent_collated_transactions(true,
           necessity_by_association: %{
             :block => :required,
             [created_contract_address: :names] => :optional,

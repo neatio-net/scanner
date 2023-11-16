@@ -6,7 +6,7 @@ $additional-font: #89cae6;
 
 // footer
 $footer-background-color: $primary;
-$footer-title-color: #fff;
+$footer-title-color: #9CECFB;
 $footer-text-color: #89cae6;
 $footer-item-disc-color: $secondary;
 .footer-logo { filter: brightness(0) invert(1); }
@@ -17,8 +17,8 @@ $dashboard-line-color-price: $tertiary; // price left border
 
 $dashboard-banner-chart-legend-label-color: #89cae6;
 $dashboard-stats-item-label-color: #89cae6;
-$dashboard-banner-chart-legend-value-color: #fff; // chart labels
-$dashboard-stats-item-value-color: #fff; // stat values
+$dashboard-banner-chart-legend-value-color: #9CECFB; // chart labels
+$dashboard-stats-item-value-color: #9CECFB; // stat values
 
 $dashboard-stats-item-border-color: $tertiary; // stat border
 
@@ -33,7 +33,7 @@ $dashboard-banner-network-plain-container-background-color: #1c476c; // stats bg
 .navbar { box-shadow: 0px 0px 30px 0px rgba(21, 53, 80, 0.12); } // header shadow
 
 // buttons
-$btn-line-bg: #fff; // button bg
+$btn-line-bg: #9CECFB; // button bg
 $btn-line-color: $secondary; // button border and font color && hover bg color
 $btn-copy-color: $secondary; // btn copy
 $btn-qr-color: $secondary; // btn qr-code

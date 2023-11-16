@@ -41,7 +41,7 @@ abstract contract Proxy {
     }
 
     /**
-     * @dev This is a virtual function that should be overriden so it returns the address to which the fallback function
+     * @dev This is a virtual function that should be overridden so it returns the address to which the fallback function
      * and {_fallback} should delegate.
      */
     function _implementation() internal view virtual returns (address);
@@ -76,7 +76,7 @@ abstract contract Proxy {
      * @dev Hook that is called before falling back to the implementation. Can happen as part of a manual `_fallback`
      * call, or as part of the Solidity `fallback` or `receive` functions.
      *
-     * If overriden should call `super._beforeFallback()`.
+     * If overridden should call `super._beforeFallback()`.
      */
     function _beforeFallback() internal virtual {
     }
@@ -190,7 +190,7 @@ library Address {
      *
      * Requirements:
      *
-     * - the calling contract must have an ETH balance of at least `value`.
+     * - the calling contract must have an NIO balance of at least `value`.
      * - the called Solidity function must be `payable`.
      *
      * _Available since v3.1._

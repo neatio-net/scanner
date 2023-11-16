@@ -2,7 +2,7 @@ $tile-type-block-color: $primary !default;
 $tile-type-uncle-color: $cyan !default;
 $tile-type-reorg-color: $purple !default;
 $tile-type-emission-reward-color: $lilac !default;
-$tile-type-transaction-color: #00ffff !default;
+$tile-type-transaction-color: $blue !default;
 $tile-type-contract-call-color: $green !default;
 $tile-type-contract-creation-color: $dark-purple !default;
 $tile-type-token-transfer-color: $orange !default;
@@ -14,7 +14,7 @@ $tile-type-progress-bar-color: $primary !default;
 $tile-status-error-reason: #ff7986 !default;
 $tile-status-awaiting-internal-transactions: $warning !default;
 $tile-padding: 1rem;
-$tile-title-color: #496785 !default;
+$tile-title-color: #8f94fb !default;
 $tile-body-a-color: #5959d8 !default;
 
 @mixin generate-tile-block($prefix, $color, $label-color: false) {
@@ -56,7 +56,7 @@ $tile-body-a-color: #5959d8 !default;
 /*********************************************************************/
 
 .tile-label {
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 700;
   line-height: 1.2;
   margin: 0 0 2px;
@@ -78,7 +78,6 @@ $tile-body-a-color: #5959d8 !default;
   margin-left: -1px;
   margin-top: -34px;
   padding: 0 5px;
-  background-color: #24292f;
   position: relative;
 
   @include media-breakpoint-down(sm) {
@@ -98,7 +97,7 @@ $tile-body-a-color: #5959d8 !default;
 }
 
 .tile-status-label {
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 400;
   line-height: 1.2;
   text-align: center;
@@ -118,15 +117,15 @@ $tile-body-a-color: #5959d8 !default;
 }
 
 .tile-bottom-contents {
-  background-color: #24292f;
-  font-size: 15px;
+  background-color: transparent; // #f6f7f9;
+  font-size: 12px;
   line-height: 1.2;
   padding: 0.8rem 1rem;
 }
 
 .tile-transactions {
   color: #a3a9b5;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 400;
   line-height: 1.2;
   margin-bottom: 10px;
@@ -142,9 +141,18 @@ $tile-body-a-color: #5959d8 !default;
 }
 
 .tile-muted {
-  background-color: #000000ce;
+  background-color: transparent;
   border-left: 1px solid $border-color;
   box-shadow: none;
+}
+
+.tile-code {
+  border-radius: 4px;
+  border: 1px solid $border-color;
+  flex-grow: 1;
+  font-size: 12px;
+  line-height: 1.4rem;
+  padding: $tile-padding;
 }
 
 .tile-function-response {
@@ -189,7 +197,7 @@ $tile-body-a-color: #5959d8 !default;
 
   .tile-title {
     color: $tile-title-color;
-    font-size: 15px;
+    font-size: 12px;
 
     &-hash {
       font-weight: 300;
@@ -204,7 +212,7 @@ $tile-body-a-color: #5959d8 !default;
   border: 1px solid $border-color;
   color: $text-muted;
   flex-grow: 1;
-  font-size: 15px;
+  font-size: 12px;
   line-height: 1.4rem;
   padding: $tile-padding;
 
@@ -324,7 +332,7 @@ $tile-body-a-color: #5959d8 !default;
 
   /* Progress bar */
   .progress {
-    background-color: #f5f6fa;
+    background-color: #302b63;
     border-radius: 2px;
     height: 4px;
     margin-top: 8px;
@@ -359,7 +367,7 @@ $tile-body-a-color: #5959d8 !default;
 
 // Loader
 .tile-type-loading {
-  background-color: #fff;
+  background-color: #9CECFB;
   padding-top: 30px;
   padding-bottom: 28px;
 }
@@ -369,7 +377,7 @@ $tile-body-a-color: #5959d8 !default;
   height: 20px;
   width: 100%;
   border-radius: 4px;
-  background-color: #f5f6fa;
+  background-color: #302b63;
   overflow: hidden;
   position: relative;
   &:before {
@@ -377,7 +385,7 @@ $tile-body-a-color: #5959d8 !default;
     height: inherit;
     content: '';
     position: absolute;
-    background: linear-gradient(to right, #f5f6fa 2%, #eee 18%, #f5f6fa 33%);
+    background: linear-gradient(to right, transparent 2%, #eee 18%, transparent 33%);
     animation-duration: 1.7s;
     animation-fill-mode: forwards;
     animation-iteration-count: infinite;
@@ -437,9 +445,9 @@ $tile-body-a-color: #5959d8 !default;
     border-radius: 4px;
     overflow: hidden;
     transition: .24s ease-out;
-    border-top: 1px solid #00ffff;
-    border-right: 1px solid #00ffff;
-    border-bottom: 1px solid #00ffff;
+    border-top: 1px solid #dee2e6;
+    border-right: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
     pointer-events: none;
     .tile-type-line-up {
       position: absolute;
@@ -460,13 +468,13 @@ $tile-body-a-color: #5959d8 !default;
       left: 0;
       bottom: 0;
       width: 1px;
-      background-color: #00ffff;
+      background-color: #dee2e6;
     }
   }
 }
 
 .cube-animation-title {
-  font-size: 15px;
+  font-size: 12px;
   color: #a3a9b5;
   position: absolute;
   bottom: 10px;
@@ -592,7 +600,7 @@ $cube-quantity: 5;
 .view-original-token-container {
   margin-top: 10px;
   margin-bottom: 10px;
-  font-size: 15px;
+  font-size: 12px;
 }
 
 .token-address-mobile {

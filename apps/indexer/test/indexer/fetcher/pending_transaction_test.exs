@@ -17,7 +17,7 @@ defmodule Indexer.Fetcher.PendingTransactionTest do
   @moduletag [capture_log: true, no_geth: true]
 
   describe "start_link/1" do
-    # this test may fail if Sokol so low volume that the pending transactions are empty for too long
+    # this test may fail if Neatio so low volume that the pending transactions are empty for too long
     test "starts fetching pending transactions", %{json_rpc_named_arguments: json_rpc_named_arguments} do
       if json_rpc_named_arguments[:transport] == EthereumJSONRPC.Mox do
         EthereumJSONRPC.Mox

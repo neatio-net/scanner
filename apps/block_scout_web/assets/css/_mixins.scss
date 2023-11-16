@@ -1,44 +1,52 @@
-@mixin textfield-placeholder($color: #00ffff) {
+@mixin textfield-placeholder($color: #a3a9b5) {
   &::-webkit-input-placeholder {
-    color: #00ffff;
-    font-family: $font-family-neat;
+    color: $color;
   }
   &::-moz-placeholder {
-    color: #00ffff;
-    font-family: $font-family-neat;
+    color: $color;
   }
   &:-ms-input-placeholder {
-    color: #00ffff;
-    font-family: $font-family-neat;
+    color: $color;
   }
   &:-moz-placeholder {
     color: $color;
-    font-family: $font-family-neat;
   }
 }
 
 @mixin gradient-container() {
-  background-color: transparent;
-  // border: 1px solid #00ffffa4;
-  // border-radius: 4px;
-  // box-shadow: 0 0 40px #00bfff31;
-
-  box-shadow: 0 5px 40px -5px rgba(#fff, 0.25);
+  background-color: #282945;//$primary;
+  background-image: linear-gradient(
+    to right,
+    $dashboard-banner-gradient-start,
+    $dashboard-banner-gradient-end
+  );
+  box-shadow: 0 5px 40px -5px rgba(#000, 0.25);
   margin-top: -3rem;
 }
 
-@mixin stats-item($border-color: #fff, $text-color: #fff, $value-color: #00ffff) {
+@mixin stats-item($border-color: #9CECFB, $text-color: #9CECFB, $value-color: #9CECFB) {
   &-item {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-left: calc(1rem + 4px);
+    padding-right: 1rem;
     position: relative;
 
-
+    &::before {
+      background-color: $border-color;
+      border-radius: 2px;
+      content: "";
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 4px;
+    }
   }
 
   &-label {
-    color: #ffff;
+    color: $text-color;
     display: block;
     white-space: nowrap;
   }
@@ -54,17 +62,17 @@
   &-value {
     color: $value-color;
     display: block;
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: 200;
     white-space: nowrap;
 
     @media (max-width: $breakpoint-lg) {
-      font-size: 0.85rem;
+      font-size: 1.25rem;
     }
   }
 }
 
-@mixin btn-full($bg-color: $primary, $text-color: #fff) {
+@mixin btn-full($bg-color: $primary, $text-color: #9CECFB) {
   -webkit-appearance: none !important;
   align-items: center;
   background-color: $bg-color;
@@ -73,7 +81,7 @@
   color: $text-color;
   cursor: pointer;
   display: flex;
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 600;
   height: 36px;
   justify-content: center;
@@ -118,13 +126,12 @@
   }
 }
 
-@mixin btn-line($bg-color: #000, $text-color: $secondary, $font-size: 12px) {
+@mixin btn-line($bg-color: #9CECFB, $text-color: $secondary, $font-size: 12px) {
   -webkit-appearance: none !important;
   align-items: center;
-  background-color: transparent;
+  background: linear-gradient(to left, #4776E6, #8E54E9);
   border-radius: 2px;
-  border: 1px solid $text-color;
-  color: $text-color;
+  color: #000000;
   cursor: pointer;
   display: flex;
   font-size: $font-size;
@@ -140,8 +147,8 @@
   font-weight: 400;
 
   &:hover {
-    background-color: #00ffff;
-    color: $bg-color;
+    background: linear-gradient(to right, #06a0bb, #2948ff);
+    color: #ffffff;
     text-decoration: none;
 
     path {
@@ -200,7 +207,7 @@
     background-color: $color;
 
     path {
-      fill: #fff;
+      fill: #9CECFB;
     }
   }
 }
@@ -228,7 +235,7 @@
     background-color: $color;
 
     path {
-      fill: #fff;
+      fill: #9CECFB;
     }
   }
 }

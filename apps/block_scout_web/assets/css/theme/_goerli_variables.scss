@@ -7,7 +7,7 @@ $sub-accent-color: #a46f30;
 
 // footer
 $footer-background-color: $primary;
-$footer-title-color: #fff;
+$footer-title-color: #9CECFB;
 $footer-text-color: #7e7e7e;
 $footer-item-disc-color: $secondary;
 .footer-logo { filter: brightness(0) invert(1); }
@@ -19,8 +19,8 @@ $dashboard-line-color-market: $tertiary;
 
 $dashboard-banner-chart-legend-label-color: $tertiary;
 $dashboard-stats-item-label-color: $tertiary;
-$dashboard-banner-chart-legend-value-color: #fff; // chart labels
-$dashboard-stats-item-value-color: #fff; // stat values
+$dashboard-banner-chart-legend-value-color: #9CECFB; // chart labels
+$dashboard-stats-item-value-color: #9CECFB; // stat values
 
 $dashboard-stats-item-border-color: $secondary; // stat border
 
@@ -39,7 +39,7 @@ $header-icon-color-hover: $sub-accent-color;
 $header-icon-border-color-hover: $sub-accent-color;
 
 // buttons
-$btn-line-bg: #fff; // button bg
+$btn-line-bg: #9CECFB; // button bg
 $btn-line-color: $sub-accent-color; // button border and font color && hover bg color
 $btn-copy-color: $sub-accent-color; // btn copy
 $btn-qr-color: $sub-accent-color; // btn qr-code

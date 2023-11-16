@@ -74,7 +74,7 @@ defmodule BlockScoutWeb.Schema.Scalars do
   end
 
   @desc """
-  The smallest fractional unit of NIO. Using wei instead of ether allows code to do integer match instead of using
+  The smallest fractional unit of Ether. Using wei instead of ether allows code to do integer match instead of using
   floats.
 
   See [Ethereum Homestead Documentation](http://ethdocs.org/en/latest/ether.html) for examples of various denominations of wei.
@@ -112,5 +112,10 @@ defmodule BlockScoutWeb.Schema.Scalars do
     value(:create)
     value(:reward)
     value(:selfdestruct)
+  end
+
+  enum :sort_order do
+    value(:asc)
+    value(:desc)
   end
 end

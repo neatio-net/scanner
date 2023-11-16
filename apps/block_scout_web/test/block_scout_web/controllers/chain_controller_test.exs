@@ -23,7 +23,7 @@ defmodule BlockScoutWeb.ChainControllerTest do
     test "returns a welcome message", %{conn: conn} do
       conn = get(conn, chain_path(BlockScoutWeb.Endpoint, :show))
 
-      assert(html_response(conn, 200) =~ "POA")
+      assert(html_response(conn, 200) =~ "NIO")
     end
 
     test "returns a block" do
@@ -54,7 +54,7 @@ defmodule BlockScoutWeb.ChainControllerTest do
     end
 
     test "displays miner primary address names" do
-      miner_name = "POA Validator Pool"
+      miner_name = "NIO Miner Pool"
       %{address: miner_address} = insert(:address_name, name: miner_name, primary: true)
 
       insert(:block, miner: miner_address, miner_hash: nil)
@@ -205,21 +205,21 @@ defmodule BlockScoutWeb.ChainControllerTest do
 
       "0x" <> non_prefix_hash = to_string(transaction.hash)
 
-      conn = get(conn, "search?q=#{to_string(non_prefix_hash)}")
+      conn = get(conn, "/search?q=#{to_string(non_prefix_hash)}")
 
       assert redirected_to(conn) == transaction_path(conn, :show, transaction)
     end
 
     test "finds an address by hash", %{conn: conn} do
       address = insert(:address)
-      conn = get(conn, "search?q=#{to_string(address.hash)}")
+      conn = get(conn, "/search?q=#{to_string(address.hash)}")
 
       assert redirected_to(conn) == address_path(conn, :show, address)
     end
 
     test "finds an address by hash when there are extra spaces", %{conn: conn} do
       address = insert(:address)
-      conn = get(conn, "search?q=#{to_string(address.hash)}")
+      conn = get(conn, "/search?q=#{to_string(address.hash)}")
 
       assert redirected_to(conn) == address_path(conn, :show, address)
     end
@@ -228,13 +228,13 @@ defmodule BlockScoutWeb.ChainControllerTest do
       address = insert(:address)
       "0x" <> non_prefix_hash = to_string(address.hash)
 
-      conn = get(conn, "search?q=#{to_string(non_prefix_hash)}")
+      conn = get(conn, "/search?q=#{to_string(non_prefix_hash)}")
 
       assert redirected_to(conn) == address_path(conn, :show, address)
     end
 
     test "redirects to result page when it finds nothing", %{conn: conn} do
-      conn = get(conn, "search?q=zaphod")
+      conn = get(conn, "/search?q=zaphod")
       assert conn.status == 302
     end
   end

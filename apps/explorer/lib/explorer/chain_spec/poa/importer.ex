@@ -1,6 +1,6 @@
-defmodule Explorer.ChainSpec.POA.Importer do
+defmodule Explorer.ChainSpec.NIO.Importer do
   @moduledoc """
-  Imports emission reward range for POA chain.
+  Imports emission reward range for NIO chain.
   """
 
   require Logger

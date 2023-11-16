@@ -117,7 +117,7 @@ defmodule BlockScoutWeb.BlockControllerTest do
     end
 
     test "displays miner primary address name", %{conn: conn} do
-      miner_name = "POA Validator Pool"
+      miner_name = "NIO Miner Pool"
       %{address: miner_address} = insert(:address_name, name: miner_name, primary: true)
 
       insert(:block, miner: miner_address, miner_hash: nil)
@@ -134,7 +134,7 @@ defmodule BlockScoutWeb.BlockControllerTest do
     test "returns all reorgs", %{conn: conn} do
       4
       |> insert_list(:block, consensus: false)
-      |> Enum.map(& &1.hash)
+      |> Enum.each(fn b -> insert(:block, number: b.number, consensus: true) end)
 
       conn = get(conn, reorg_path(conn, :reorg), %{"type" => "JSON"})
 
@@ -146,7 +146,7 @@ defmodule BlockScoutWeb.BlockControllerTest do
     test "does not include blocks or uncles", %{conn: conn} do
       4
       |> insert_list(:block, consensus: false)
-      |> Enum.map(& &1.hash)
+      |> Enum.each(fn b -> insert(:block, number: b.number, consensus: true) end)
 
       insert(:block)
       uncle = insert(:block, consensus: false)

@@ -6,8 +6,8 @@ $additional-font: #ff95db;
 
 // footer
 $footer-background-color: $primary;
-$footer-title-color: #fff;
-$footer-text-color: #fff;
+$footer-title-color: #9CECFB;
+$footer-text-color: #9CECFB;
 $footer-item-disc-color: $secondary;
 
 // dashboard
@@ -33,7 +33,7 @@ $header-icon-color-hover: $tertiary; // nav icon on hover
 .dropdown-item:hover, .dropdown-item:focus { background-color: $tertiary !important; } // dropdown item on hover
 
 // buttons
-$btn-line-bg: #fff; // button bg
+$btn-line-bg: #9CECFB; // button bg
 $btn-line-color: #4b021e; // button border and font color && hover bg color
 $btn-copy-color: #4b021e; // btn copy
 $btn-qr-color: #4b021e; // btn qr-code

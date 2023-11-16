@@ -2,80 +2,29 @@
     background-color: $footer-text-color;
   
     &.github {
-      -webkit-mask: url(../static/images/icons/social/github.svg) no-repeat center;
-      mask: url(../static/images/icons/social/github.svg) no-repeat center;
+      -webkit-mask: url(../static/images/icons/fontawesome/github.svg) no-repeat center;
+      mask: url(../static/images/icons/fontawesome/github.svg) no-repeat center;
       height: 22px;
       width: 22px;
       mask-size: 22px !important;
       -webkit-mask-size: 22px !important;
     }
     &.twitter {
-      -webkit-mask: url(../static/images/icons/social/twitter.svg) no-repeat center;
-      mask: url(../static/images/icons/social/twitter.svg) no-repeat center;
+      -webkit-mask: url(../static/images/icons/fontawesome/twitter.svg) no-repeat center;
+      mask: url(../static/images/icons/fontawesome/twitter.svg) no-repeat center;
       height: 22px;
       width: 22px;
       mask-size: 22px !important;
       -webkit-mask-size: 22px !important;
     }
-
-    &.discord {
-      -webkit-mask: url(../static/images/icons/social/discord.svg) no-repeat center;
-      mask: url(../static/images/icons/social/discord.svg) no-repeat center;
-      height: 22px;
-      width: 22px;
-      mask-size: 22px !important;
-      -webkit-mask-size: 22px !important;
-    }
-
-
     &.telegram {
-      -webkit-mask: url(../static/images/icons/social/telegram.svg) no-repeat center;
-      mask: url(../static/images/icons/social/telegram.svg) no-repeat center;
+      -webkit-mask: url(../static/images/icons/fontawesome/telegram.svg) no-repeat center;
+      mask: url(../static/images/icons/fontawesome/telegram.svg) no-repeat center;
       height: 22px;
       width: 22px;
       mask-size: 22px !important;
       -webkit-mask-size: 22px !important;
     }
-
-    &.bitcointalk {
-      -webkit-mask: url(../static/images/icons/social/bitcointalk.svg) no-repeat center;
-      mask: url(../static/images/icons/social/bitcointalk.svg) no-repeat center;
-      height: 22px;
-      width: 22px;
-      mask-size: 22px !important;
-      -webkit-mask-size: 22px !important;
-    }
-
-    &.reddit {
-      -webkit-mask: url(../static/images/icons/social/reddit.svg) no-repeat center;
-      mask: url(../static/images/icons/social/reddit.svg) no-repeat center;
-      height: 22px;
-      width: 22px;
-      mask-size: 22px !important;
-      -webkit-mask-size: 22px !important;
-    }
-
-    &.facebook {
-      -webkit-mask: url(../static/images/icons/social/facebook.svg) no-repeat center;
-      mask: url(../static/images/icons/social/facebook.svg) no-repeat center;
-      height: 22px;
-      width: 22px;
-      mask-size: 22px !important;
-      -webkit-mask-size: 22px !important;
-    }
-
-    &.nomics {
-      -webkit-mask: url(../static/images/icons/social/nomics.svg) no-repeat center;
-      mask: url(../static/images/icons/social/nomics.svg) no-repeat center;
-      height: 22px;
-      width: 22px;
-      mask-size: 22px !important;
-      -webkit-mask-size: 22px !important;
-    }
-
-
-
-
     &.bar-chart {
       -webkit-mask: url(../static/images/icons/fontawesome/bar-chart.svg) no-repeat center;
       mask: url(../static/images/icons/fontawesome/bar-chart.svg) no-repeat center;
@@ -84,9 +33,6 @@
       mask-size: 22px !important;
       -webkit-mask-size: 22px !important;
     }
-
-
-
     &.info-circle {
       -webkit-mask: url(../static/images/icons/fontawesome/info-circle.svg) no-repeat center;
       mask: url(../static/images/icons/fontawesome/info-circle.svg) no-repeat center;

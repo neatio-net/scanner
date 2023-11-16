@@ -11,7 +11,7 @@ a.tile-title { color: $tertiary !important; }
 
 // footer
 $footer-background-color: $primary;
-$footer-title-color: #fff;
+$footer-title-color: #9CECFB;
 $footer-text-color: $secondary;
 $footer-item-disc-color: $secondary;
 $footer-social-icon-color: $secondary;
@@ -40,7 +40,7 @@ $dropdown-menu-item-hover-color: $primary !default;
 $dropdown-menu-item-hover-background: rgba($primary, .1) !default;
 
 // buttons
-$btn-line-bg: #fff; // button bg
+$btn-line-bg: #9CECFB; // button bg
 $btn-line-color: $primary; // button border and font color && hover bg color
 $btn-copy-color: $primary; // btn copy
 $btn-qr-color: $primary; // btn qr-code
@@ -131,13 +131,13 @@ $dashboard-banner-network-plain-container-height: 150px;
         }
 
         &.dashboard-banner-network-stats-item-1 {
-          order: 4;
+          order: 1;
         }
         &.dashboard-banner-network-stats-item-2 {
           order: 2;
         }
         &.dashboard-banner-network-stats-item-3 {
-          order: 1;
+          order: 4;
           margin-right: 0;
         }
         &.dashboard-banner-network-stats-item-4 {

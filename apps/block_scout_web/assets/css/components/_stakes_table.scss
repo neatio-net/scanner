@@ -1,4 +1,4 @@
-$stakes-table-th-background: #24292f !default;
+$stakes-table-th-background: transparent !default;
 $stakes-table-cell-separation: 25px !default;
 $stakes-link-color: $primary !default;
 
@@ -33,7 +33,7 @@ $stakes-link-color: $primary !default;
   height: 24px;
   width: 100%;
   border-radius: 4px;
-  background-color: #f5f6fa;
+  background-color: #302b63;
   overflow: hidden;
   position: relative;
   &:before {
@@ -41,7 +41,7 @@ $stakes-link-color: $primary !default;
     height: inherit;
     content: '';
     position: absolute;
-    background: linear-gradient(to right, #f5f6fa 2%, #eee 18%, #f5f6fa 33%);
+    background: linear-gradient(to right, transparent 2%, #eee 18%, transparent 33%);
     animation-duration: 1.7s;
     animation-fill-mode: forwards;
     animation-iteration-count: infinite;
@@ -118,7 +118,6 @@ $stakes-link-color: $primary !default;
 }
 
 .stakes-table-th-content {
-  color: #ffff;
   align-items: center;
   display: flex;
   justify-content: flex-start;
@@ -139,9 +138,8 @@ $stakes-link-color: $primary !default;
 }
 
 .stakes-td {
-  color: #496785;
-  border-bottom: 1px solid #f5f6fa;
-  font-size: 15px;
+  border-bottom: 1px solid #302b63;
+  font-size: 14px;
   font-weight: normal;
   height: 60px;
   line-height: 1.5;
@@ -212,7 +210,7 @@ $stakes-link-color: $primary !default;
           fill: $stakes-banned-color;
         }
         .check-tooltip-check {
-          fill: #fff;
+          fill: #9CECFB;
         }
       }
     }

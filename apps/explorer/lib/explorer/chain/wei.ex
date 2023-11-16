@@ -1,6 +1,6 @@
 defmodule Explorer.Chain.Wei do
   @moduledoc """
-  The smallest fractional unit of NIO. Using wei instead of ether allows code to do integer match instead of using
+  The smallest fractional unit of Ether. Using wei instead of ether allows code to do integer match instead of using
   floats.
 
   All values represented by the `Wei` struct are assumed to measured in the base unit of wei.
@@ -86,7 +86,7 @@ defmodule Explorer.Chain.Wei do
   end
 
   @typedoc """
-  NIO is the default unit Ethereum and its side chains are measured in when displaying values to humans.
+  Ether is the default unit Ethereum and its side chains are measured in when displaying values to humans.
 
   10<sup>18</sup> wei is 1 ether.
   """
@@ -105,7 +105,7 @@ defmodule Explorer.Chain.Wei do
   @type unit :: :wei | :gwei | :ether
 
   @typedoc """
-  The smallest fractional unit of NIO.
+  The smallest fractional unit of Ether.
   """
   @type wei :: Decimal.t()
 
@@ -264,5 +264,12 @@ end
 defimpl Inspect, for: Explorer.Chain.Wei do
   def inspect(wei, _) do
     "#Explorer.Chain.Wei<#{Decimal.to_string(wei.value)}>"
+  end
+end
+
+defimpl Jason.Encoder, for: Explorer.Chain.Wei do
+  def encode(wei, opts) do
+    # changed since it's needed to return wei value (which is big number) as string
+    Jason.Encode.struct(wei.value, opts)
   end
 end

@@ -7,6 +7,8 @@ defmodule Explorer.Chain.LogTest do
   alias Explorer.Chain.{Log, SmartContract}
   alias Explorer.Repo
 
+  setup :set_mox_from_context
+
   doctest Log
 
   describe "changeset/2" do
@@ -56,7 +58,7 @@ defmodule Explorer.Chain.LogTest do
 
       log = insert(:log, transaction: transaction)
 
-      assert Log.decode(log, transaction) == {:error, :could_not_decode}
+      assert {{:error, :could_not_decode}, _, _} = Log.decode(log, transaction, [], false)
     end
 
     test "that a contract call transaction that has a verified contract returns the decoded input data" do
@@ -102,50 +104,17 @@ defmodule Explorer.Chain.LogTest do
           data: data
         )
 
-      blockchain_get_code_mock()
+      get_eip1967_implementation()
 
-      EthereumJSONRPC.Mox
-      |> expect(
-        :json_rpc,
-        fn %{
-             id: _id,
-             method: "eth_getStorageAt",
-             params: [
-               _,
-               "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
-               "latest"
-             ]
-           },
-           _options ->
-          {:ok, "0x0000000000000000000000000000000000000000000000000000000000000000"}
-        end
-      )
-      |> expect(
-        :json_rpc,
-        fn %{
-             id: _id,
-             method: "eth_getStorageAt",
-             params: [
-               _,
-               "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
-               "latest"
-             ]
-           },
-           _options ->
-          {:ok, "0x0000000000000000000000000000000000000000000000000000000000000000"}
-        end
-      )
-
-      assert Log.decode(log, transaction) ==
-               {:ok, "eb9b3c4c", "WantsPets(string indexed _from_human, uint256 _number, bool indexed _belly)",
-                [
-                  {"_from_human", "string", true,
-                   {:dynamic,
-                    <<56, 228, 122, 123, 113, 157, 206, 99, 102, 42, 234, 244, 52, 64, 50, 111, 85, 27, 138, 126, 225,
-                      152, 206, 227, 92, 181, 213, 23, 242, 210, 150, 162>>}},
-                  {"_number", "uint256", false, 0},
-                  {"_belly", "bool", true, true}
-                ]}
+      assert {{:ok, "eb9b3c4c", "WantsPets(string indexed _from_human, uint256 _number, bool indexed _belly)",
+               [
+                 {"_from_human", "string", true,
+                  {:dynamic,
+                   <<56, 228, 122, 123, 113, 157, 206, 99, 102, 42, 234, 244, 52, 64, 50, 111, 85, 27, 138, 126, 225,
+                     152, 206, 227, 92, 181, 213, 23, 242, 210, 150, 162>>}},
+                 {"_number", "uint256", false, 0},
+                 {"_belly", "bool", true, true}
+               ]}, _, _} = Log.decode(log, transaction, [], false)
     end
 
     test "finds decoding candidates" do
@@ -189,29 +158,58 @@ defmodule Explorer.Chain.LogTest do
           data: data
         )
 
-      assert Log.decode(log, transaction) ==
-               {:error, :contract_not_verified,
-                [
-                  {:ok, "eb9b3c4c", "WantsPets(string indexed _from_human, uint256 _number, bool indexed _belly)",
-                   [
-                     {"_from_human", "string", true,
-                      {:dynamic,
-                       <<56, 228, 122, 123, 113, 157, 206, 99, 102, 42, 234, 244, 52, 64, 50, 111, 85, 27, 138, 126,
-                         225, 152, 206, 227, 92, 181, 213, 23, 242, 210, 150, 162>>}},
-                     {"_number", "uint256", false, 0},
-                     {"_belly", "bool", true, true}
-                   ]}
-                ]}
+      assert {{:error, :contract_not_verified,
+               [
+                 {:ok, "eb9b3c4c", "WantsPets(string indexed _from_human, uint256 _number, bool indexed _belly)",
+                  [
+                    {"_from_human", "string", true,
+                     {:dynamic,
+                      <<56, 228, 122, 123, 113, 157, 206, 99, 102, 42, 234, 244, 52, 64, 50, 111, 85, 27, 138, 126, 225,
+                        152, 206, 227, 92, 181, 213, 23, 242, 210, 150, 162>>}},
+                    {"_number", "uint256", false, 0},
+                    {"_belly", "bool", true, true}
+                  ]}
+               ]}, _, _} = Log.decode(log, transaction, [], false)
     end
   end
 
-  defp blockchain_get_code_mock do
-    expect(
-      EthereumJSONRPC.Mox,
-      :json_rpc,
-      fn [%{id: id, method: "eth_getCode", params: [_, _]}], _options ->
-        {:ok, [%{id: id, jsonrpc: "2.0", result: "0x0"}]}
-      end
-    )
+  def get_eip1967_implementation do
+    EthereumJSONRPC.Mox
+    |> expect(:json_rpc, fn %{
+                              id: 0,
+                              method: "eth_getStorageAt",
+                              params: [
+                                _,
+                                "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc",
+                                "latest"
+                              ]
+                            },
+                            _options ->
+      {:ok, "0x0000000000000000000000000000000000000000000000000000000000000000"}
+    end)
+    |> expect(:json_rpc, fn %{
+                              id: 0,
+                              method: "eth_getStorageAt",
+                              params: [
+                                _,
+                                "0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50",
+                                "latest"
+                              ]
+                            },
+                            _options ->
+      {:ok, "0x0000000000000000000000000000000000000000000000000000000000000000"}
+    end)
+    |> expect(:json_rpc, fn %{
+                              id: 0,
+                              method: "eth_getStorageAt",
+                              params: [
+                                _,
+                                "0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3",
+                                "latest"
+                              ]
+                            },
+                            _options ->
+      {:ok, "0x0000000000000000000000000000000000000000000000000000000000000000"}
+    end)
   end
 end

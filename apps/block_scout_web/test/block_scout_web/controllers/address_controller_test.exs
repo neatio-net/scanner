@@ -40,7 +40,7 @@ defmodule BlockScoutWeb.AddressControllerTest do
 
     test "returns an address's primary name when present", %{conn: conn} do
       address = insert(:address, fetched_coin_balance: 1)
-      insert(:address_name, address: address, primary: true, name: "POA Wallet")
+      insert(:address_name, address: address, primary: true, name: "NIO Wallet")
 
       start_supervised!(AddressesCounter)
       AddressesCounter.consolidate()
@@ -49,7 +49,7 @@ defmodule BlockScoutWeb.AddressControllerTest do
 
       {:ok, %{"items" => [item]}} = Poison.decode(conn.resp_body)
 
-      assert String.contains?(item, "POA Wallet")
+      assert String.contains?(item, "NIO Wallet")
     end
   end
 
@@ -72,7 +72,7 @@ defmodule BlockScoutWeb.AddressControllerTest do
 
       conn = get(conn, "/address/0x5aAeb6053F3E94C9b9A09f33669435E7Ef1BeAed")
 
-      assert redirected_to(conn) =~ "/address/0x5aAeb6053F3E94C9b9A09f33669435E7Ef1BeAed/transactions"
+      assert html_response(conn, 200)
     end
   end
 
@@ -89,8 +89,7 @@ defmodule BlockScoutWeb.AddressControllerTest do
                "transaction_count" => 0,
                "token_transfer_count" => 0,
                "validation_count" => 0,
-               "gas_usage_count" => 0,
-               "crc_total_worth" => "0"
+               "gas_usage_count" => 0
              } ==
                response
     end

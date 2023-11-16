@@ -1,5 +1,5 @@
 import $ from 'jquery'
-import customAds from './custom_ad'
+import customAds from './custom_ad.json'
 
 function countImpressions (impressionUrl) {
   if (impressionUrl) {
@@ -9,7 +9,7 @@ function countImpressions (impressionUrl) {
 
 function showAd () {
   const domainName = window.location.hostname
-  if (domainName.endsWith('blockscout.com')) {
+  if (domainName === 'blockscout.com' || domainName.endsWith('.blockscout.com')) {
     $('.js-ad-dependant-mb-2').addClass('mb-2')
     $('.js-ad-dependant-mb-3').addClass('mb-3')
     $('.js-ad-dependant-mb-5-reverse').removeClass('mb-5')
@@ -22,6 +22,15 @@ function showAd () {
   }
 }
 
+function adjustPaddingForTextAd (showAd, data) {
+  if (showAd && data) {
+    $('.js-ad-dependant-pt').addClass('pt-4')
+    $('.js-ad-dependant-pt').removeClass('pt-5')
+  } else {
+    $('.js-ad-dependant-pt').addClass('pt-5')
+    $('.js-ad-dependant-pt').removeClass('pt-4')
+  }
+}
 
 function getTextAdData () {
   return new Promise((resolve) => {
@@ -34,7 +43,7 @@ function getTextAdData () {
               const ind = getRandomInt(0, customAds.length)
               const inHouse = true
               adjustPaddingForTextAd(displayAd, true)
-              resolve({ data: customAds[ind], inHouse: inHouse })
+              resolve({ data: customAds[ind], inHouse })
             } catch (_e) {
               adjustPaddingForTextAd(displayAd, false)
               resolve({ data: null, inHouse: null })
@@ -46,7 +55,7 @@ function getTextAdData () {
         } else {
           const inHouse = false
           adjustPaddingForTextAd(displayAd, true)
-          resolve({ data: data, inHouse: inHouse })
+          resolve({ data, inHouse })
         }
       })
     } else {

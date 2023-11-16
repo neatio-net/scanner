@@ -3,11 +3,9 @@ $blue: #4b89fb !default;
 $success: #34c0ad !default;
 
 body {
-  font-family: $font-family-neat;
-  font-size: $font-size-base * 0.5;
-  @media screen and (max-width: 374px) {
-    font-size: $font-size-base * 0.5;
-  }
+  font-family: $font-family;
+  font-size: 12px;
+  color: #797EF6;
 }
 
 h1 {
@@ -46,7 +44,7 @@ p {
   font-size: 13px;
 
   @media screen and (max-width: 768px) {
-    font-size: 15px;
+    font-size: 14px;
   }
 }
 

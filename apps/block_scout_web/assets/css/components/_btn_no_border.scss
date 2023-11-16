@@ -1,4 +1,4 @@
-$btn-no-border-bg: #fff !default;
+$btn-no-border-bg: #9CECFB !default;
 $btn-no-border-color: $primary !default;
 
 .btn-no-border {
@@ -17,7 +17,7 @@ $btn-no-border-color: $primary !default;
   align-items: center;
   border-radius: 2px;
   display: flex;
-  font-size: 15px;
+  font-size: 12px;
   position: relative;
   user-select: none;
   text-align: center;
@@ -25,6 +25,6 @@ $btn-no-border-color: $primary !default;
   color: $primary !important;
 
   &:hover {
-    border-color: #f5f6fa;
+    border-color: #302b63;
   }
 }

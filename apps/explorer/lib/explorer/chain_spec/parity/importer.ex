@@ -12,14 +12,15 @@ defmodule Explorer.ChainSpec.Parity.Importer do
   alias Explorer.Chain.Hash.Address, as: AddressHash
   alias Explorer.Chain.Wei
   alias Explorer.ChainSpec.GenesisData
-  alias Explorer.ChainSpec.POA.Importer, as: PoaEmissionImporter
+  alias Explorer.ChainSpec.NIO.Importer, as: PoaEmissionImporter
+  alias Explorer.Helper, as: ExplorerHelper
 
   import Ecto.Query
 
   @max_block_number :infinity
 
   def import_emission_rewards(chain_spec) do
-    if Application.get_env(:explorer, GenesisData)[:emission_format] == "POA" do
+    if Application.get_env(:explorer, GenesisData)[:emission_format] == "NIO" do
       PoaEmissionImporter.import_emission_rewards()
     else
       import_rewards_from_chain_spec(chain_spec)
@@ -181,8 +182,6 @@ defmodule Explorer.ChainSpec.Parity.Importer do
   end
 
   defp parse_number(string_number) do
-    {number, ""} = Integer.parse(string_number, 10)
-
-    number
+    ExplorerHelper.parse_integer(string_number)
   end
 end

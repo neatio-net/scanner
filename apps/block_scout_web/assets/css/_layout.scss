@@ -4,15 +4,12 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background: linear-gradient(to left, #24243e, #302b63, #24243e);;
 
   main {
     flex-grow: 1;
-    padding-top: 0%;
-    background-color: #000;
-    //background-image: url("explorer2.svg");
-    //background-blend-mode: multiply;
-    // object-fit: cover;
-    
+    background: linear-gradient(to left, #24243e, #302b63, #24243e);
+
   }
 }
 

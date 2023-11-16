@@ -23,13 +23,13 @@ defmodule Indexer.Fetcher.UncleBlockTest do
   setup :verify_on_exit!
 
   setup do
-    # Uncle don't occur on POA chains, so there's no way to test this using the public addresses, so mox-only testing
+    # Uncle don't occur on NIO chains, so there's no way to test this using the public addresses, so mox-only testing
     %{
       json_rpc_named_arguments: [
         transport: EthereumJSONRPC.Mox,
         transport_options: [],
         # Which one does not matter, so pick one
-        variant: EthereumJSONRPC.Parity
+        variant: EthereumJSONRPC.Nethermind
       ]
     }
   end
@@ -196,7 +196,7 @@ defmodule Indexer.Fetcher.UncleBlockTest do
          ]}
       end)
 
-      assert {:retry, [entry]} =
+      assert {:retry, [^entry]} =
                UncleBlock.run(entries, %Block.Fetcher{json_rpc_named_arguments: json_rpc_named_arguments})
     end
   end

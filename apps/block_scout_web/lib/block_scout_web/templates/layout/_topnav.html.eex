@@ -1,67 +1,145 @@
-<% staking_enabled_in_menu = Application.get_env(:block_scout_web, BlockScoutWeb.Chain)[:staking_enabled_in_menu] %>
 <% apps_menu = Application.get_env(:block_scout_web, :apps_menu) %>
+<% other_nets = dropdown_other_nets() %>
+<% test_nets = test_nets(dropdown_nets()) %>
+<% main_nets = dropdown_head_main_nets() %>
+
 <nav class="navbar navbar-dark navbar-expand-lg navbar-primary" data-selector="navbar" id="top-navbar">
   <div class="container-fluid navbar-container">
     <%= link to: webapp_url(@conn), class: "navbar-brand", "data-test": "header_logo" do %>
-
-
-
       <%= if logo() do %>
         <img class="navbar-logo" id="navbar-logo" src="<%= static_path(@conn, logo()) %>" alt="<%= subnetwork_title() %>" />
       <% end %>
-
-      <%= if logo() do %>
-
-     <%= gettext("NeatScan") %>
-
-
-      <% end %>
-
       <%= if logo_text() do %>
         <span class="logo-text <%= unless logo(), do: "no-logo" %>"> <%= logo_text() %> </span>
       <% end %>
-
+      <%= if Application.get_env(:block_scout_web, BlockScoutWeb.Chain)[:enable_testnet_label] do %>
+        <%= render BlockScoutWeb.FormView, "_tag.html", text: Application.get_env(:block_scout_web, BlockScoutWeb.Chain)[:testnet_label_text], additional_classes: ["testnet-label", "ml-2"] %>
+      <% end %>
     <% end %>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="<%= gettext("Toggle navigation") %>">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="<%= gettext("Toggle navigation") %>">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Transactions Start -->
-          <div class="nav-item">
-            <%= link to: address_path(@conn, :index), class: "nav-link topnav-nav-link #{tab_status("accounts", @conn.request_path)}" do %>
-
-              <%= gettext("Transactions") %>
-            <% end %>
-          </div>
-
-        <!-- Transactions End -->
-
-                <!-- Blocks Start -->
-          <div class="nav-item">
-            <%= link to: address_path(@conn, :index), class: "nav-link topnav-nav-link #{tab_status("accounts", @conn.request_path)}" do %>
-
-              <%= gettext("Blocks") %>
-            <% end %>
-          </div>
-
-        <!-- Blocks End -->
-
-
-        <!-- Rich List Start -->
-          <div class="nav-item">
-            <%= link to: address_path(@conn, :index), class: "nav-link topnav-nav-link #{tab_status("accounts", @conn.request_path)}" do %>
-
-              <%= gettext("RichList") %>
-            <% end %>
-          </div>
-
-        <!-- Rich List End -->
-      </div>
 
 
 
 
+        <%= render BlockScoutWeb.LayoutView, "_account_menu_item.html", conn: @conn, current_user: @current_user %>
+      <%= render BlockScoutWeb.LayoutView, "_search.html", conn: @conn, id: "main-search-autocomplete", additional_classes: ["mobile-search-hide"] %>
+
+      <%= render BlockScoutWeb.LayoutView, "_search.html", conn: @conn, id: "main-search-autocomplete-mobile", additional_classes: ["mobile-search-show"] %>
+
+
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <%= if Application.get_env(:block_scout_web, BlockScoutWeb.WebRouter)[:enabled] do %>
+          <li class="nav-item dropdown">
+            <a class="nav-link topnav-nav-link dropdown-toggle" href="#" id="navbarBlocksDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="nav-link-icon">
+                <%= render BlockScoutWeb.IconsView, "_blockchain_icon.html" %>
+              </span>
+              <%= gettext("Blockchain") %>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarBlockchainDropdown">
+              <div class="nav-submenu">
+                <span>
+                  <%= gettext("Blocks") %>
+                </span>
+              </div>
+              <%= link(
+                    gettext("Blocks"),
+                    to: blocks_path(@conn, :index),
+                    class: "dropdown-item #{tab_status("blocks", @conn.request_path)}")%>
+              <%= link(gettext("Uncles"),
+                    to: uncle_path(@conn, :uncle),
+                    class: "dropdown-item #{tab_status("uncles", @conn.request_path)}")%>
+              <%= link(gettext("Forked Blocks (Reorgs)"),
+                    to: reorg_path(@conn, :reorg),
+                    class: "border-bottom dropdown-item #{tab_status("reorgs", @conn.request_path)}")%>
+              <div class="nav-submenu">
+                <span>
+                  <%= gettext("Transactions") %>
+                </span>
+              </div>
+              <% json_rpc_named_arguments = Application.fetch_env!(:indexer, :json_rpc_named_arguments) %>
+              <% variant = Keyword.fetch!(json_rpc_named_arguments, :variant) %>
+              <% show_withdrawals? = not Application.get_env(:indexer, Indexer.Fetcher.Withdrawal.Supervisor)[:disabled?] %>
+              <%= link(
+                    gettext("Validated"),
+                    to: transaction_path(@conn, :index),
+                    class: "#{if variant == EthereumJSONRPC.Besu, do: "border-bottom", else: ""} dropdown-item #{tab_status("txs", @conn.request_path)}"
+                  ) %>
+
+              <%= if variant !== EthereumJSONRPC.Besu do %>
+                <%= link(
+                      gettext("Pending"),
+                      class: "border-bottom dropdown-item #{tab_status("pending-transactions", @conn.request_path)}",
+                      "data-test": "pending_transactions_link",
+                      to: pending_transaction_path(@conn, :index)
+                    ) %>
+              <% end %>
+              <%= link(gettext("Verified contracts"),
+                    to: verified_contracts_path(@conn, :index),
+                    class: "dropdown-item border-bottom #{tab_status("reorgs", @conn.request_path)}")%>
+              <%= if show_withdrawals? do %>
+                <%= link(gettext("Withdrawals"),
+                    to: withdrawal_path(@conn, :index),
+                    class: "dropdown-item #{tab_status("reorgs", @conn.request_path)}")%>
+              <% end %>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" role="button" id="navbarTokensDropdown" class="nav-link topnav-nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="nav-link-icon">
+                <%= render BlockScoutWeb.IconsView, "_tokens_icon.html" %>
+              </span>
+              <%= gettext("Tokens") %>
+            </a>
+            <div class="dropdown-menu" aria-labeledby="navbarTransactionsDropdown">
+              <%= link(
+                    gettext("All"),
+                    class: "dropdown-item #{tab_status("tokens", @conn.request_path)}",
+                    to: tokens_path(@conn, :index)
+                  ) %>
+              <%= link(
+                    Explorer.coin_name(),
+                    class: "dropdown-item #{tab_status("accounts", @conn.request_path)}",
+                    to: address_path(@conn, :index)
+                  ) %>
+            </div>
+          </li>
+        <% end %>
+        <%= if Application.get_env(:block_scout_web, BlockScoutWeb.ApiRouter)[:reading_enabled] || Application.get_env(:block_scout_web, :api_url) do %>
+          <li class="nav-item dropdown">
+            <a href="#" role="button" id="navbarAPIsDropdown" class="nav-link topnav-nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="nav-link-icon">
+                <%= render BlockScoutWeb.IconsView, "_api_icon.html" %>
+              </span>
+              <%= gettext("APIs") %>
+            </a>
+            <div class="dropdown-menu" aria-labeledby="navbarTransactionsDropdown">
+              <%= link(
+                    gettext("GraphQL"),
+                    class: "dropdown-item #{tab_status("graphiql", @conn.request_path)}",
+                    to: api_url() <> "/graphiql"
+                  ) %>
+              <%= link(
+                    gettext("RPC"),
+                    class: "dropdown-item #{tab_status("api-docs", @conn.request_path)}",
+                    to: api_url() <> api_docs_path(@conn, :index)
+                  ) %>
+              <%= link(
+                    gettext("Eth RPC"),
+                    class: "dropdown-item #{tab_status("eth-rpc-api-docs", @conn.request_path)}",
+                    to: api_url() <> api_docs_path(@conn, :eth_rpc)
+                  ) %>
+            </div>
+          </li>
+        <% end %>
+
+      </ul>
+    </div>
   </div>
 </nav>

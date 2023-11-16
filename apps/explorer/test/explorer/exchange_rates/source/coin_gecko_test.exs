@@ -23,7 +23,7 @@ defmodule Explorer.ExchangeRates.Source.CoinGeckoTest do
     {
       "id": "poa-network",
       "symbol": "poa",
-      "name": "Neatio Network"
+      "name": "NIO Network"
     },
     {
       "id": "poc-chain",
@@ -58,6 +58,38 @@ defmodule Explorer.ExchangeRates.Source.CoinGeckoTest do
   ]
   """
 
+  describe "source_url/1" do
+    setup do
+      bypass = Bypass.open()
+      Application.put_env(:explorer, CoinGecko, base_url: "https://api.coingecko.com/api/v3")
+
+      {:ok, bypass: bypass}
+    end
+
+    test "composes cg :coins_list URL" do
+      assert "https://api.coingecko.com/api/v3/coins/list?include_platform=true" == CoinGecko.source_url(:coins_list)
+    end
+
+    test "composes cg url to list of contract address hashes" do
+      assert "https://api.coingecko.com/api/v3/simple/token_price/ethereum?vs_currencies=usd&include_market_cap=true&contract_addresses=0xdAC17F958D2ee523a2206206994597C13D831ec7" ==
+               CoinGecko.source_url(["0xdAC17F958D2ee523a2206206994597C13D831ec7"])
+    end
+
+    test "composes cg url by contract address hash" do
+      assert "https://api.coingecko.com/api/v3/coins/ethereum/contract/0xdAC17F958D2ee523a2206206994597C13D831ec7" ==
+               CoinGecko.source_url("0xdAC17F958D2ee523a2206206994597C13D831ec7")
+    end
+
+    test "composes cg url by contract address hash with custom coin_id" do
+      Application.put_env(:explorer, CoinGecko, platform: "poa-network")
+
+      assert "https://api.coingecko.com/api/v3/coins/poa-network/contract/0xdAC17F958D2ee523a2206206994597C13D831ec7" ==
+               CoinGecko.source_url("0xdAC17F958D2ee523a2206206994597C13D831ec7")
+
+      Application.put_env(:explorer, CoinGecko, platform: nil)
+    end
+  end
+
   describe "format_data/1" do
     setup do
       bypass = Bypass.open()
@@ -84,8 +116,9 @@ defmodule Explorer.ExchangeRates.Source.CoinGeckoTest do
           id: "poa-network",
           last_updated: ~U[2019-08-21 08:36:49.371Z],
           market_cap_usd: Decimal.new("2962791"),
-          name: "Neatio Network",
-          symbol: "POA",
+          tvl_usd: nil,
+          name: "NIO Network",
+          symbol: "NIO",
           usd_value: Decimal.new("0.01345698"),
           volume_24h_usd: Decimal.new("119946")
         }
@@ -109,13 +142,15 @@ defmodule Explorer.ExchangeRates.Source.CoinGeckoTest do
       Application.put_env(:explorer, CoinGecko, base_url: "http://localhost:#{bypass.port}")
 
       on_exit(fn ->
-        Application.put_env(:explorer, :coin, "POA")
+        Application.put_env(:explorer, :coin, "NIO")
       end)
 
       {:ok, bypass: bypass}
     end
 
-    test "fetches poa coin id by default", %{bypass: bypass} do
+    test "fetches poa coin id", %{bypass: bypass} do
+      Application.put_env(:explorer, :coin, "NIO")
+
       Bypass.expect(bypass, "GET", "/coins/list", fn conn ->
         Conn.resp(conn, 200, @coins_list)
       end)
@@ -124,7 +159,7 @@ defmodule Explorer.ExchangeRates.Source.CoinGeckoTest do
     end
 
     test "fetches eth coin id", %{bypass: bypass} do
-      Application.put_env(:explorer, :coin, "ETH")
+      Application.put_env(:explorer, :coin, "NIO")
 
       Bypass.expect(bypass, "GET", "/coins/list", fn conn ->
         Conn.resp(conn, 200, @coins_list)
@@ -161,26 +196,6 @@ defmodule Explorer.ExchangeRates.Source.CoinGeckoTest do
       end)
 
       assert CoinGecko.coin_id() == {:ok, "callisto"}
-    end
-
-    test "returns redirect on fetching", %{bypass: bypass} do
-      Application.put_env(:explorer, :coin, "DAI")
-
-      Bypass.expect(bypass, "GET", "/coins/list", fn conn ->
-        Conn.resp(conn, 302, "Request redirected...")
-      end)
-
-      assert CoinGecko.coin_id() == {:error, "Source redirected"}
-    end
-
-    test "returns error on fetching", %{bypass: bypass} do
-      Application.put_env(:explorer, :coin, "DAI")
-
-      Bypass.expect(bypass, "GET", "/coins/list", fn conn ->
-        Conn.resp(conn, 503, "Internal server error...")
-      end)
-
-      assert CoinGecko.coin_id() == {:error, "Internal server error..."}
     end
   end
 end

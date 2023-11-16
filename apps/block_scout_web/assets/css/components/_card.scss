@@ -1,22 +1,19 @@
-$card-background-color: #fff !default;
+$card-background-color: transparent !default;
 $card-tab-active: $primary !default;
-$card-default-border-radius: 4px !default;
+$card-default-border-radius: 10px !default;
 $card-horizontal-padding: 30px;
 $card-vertical-padding: 30px;
-$card-background-1: $primary !default;
-$card-background-1-text-color: #fff !default;
+$card-background-1: red !default;
+$card-background-1-text-color: transparent !default;
 $card-tab-icon-color: #20b760 !default;
-$card-tab-icon-color-active: #fff !default;
+$card-tab-icon-color-active: transparent !default;
 
 .card {
-  background-color: $card-background-color;
+  background-color: transparent;
   border-radius: $card-default-border-radius;
-  border: 1px;
-  border-style: solid;
-  border-color: #00ffff;
-  //box-shadow: 0 0 16px 0 rgba(202, 199, 226, 0.5);
+  border: none;
+  box-shadow: 0 0 30px 0 #000;
   margin-bottom: $common-container-margin;
-  margin-top: 10px;
 
   .block-details-row {
     flex-direction: row;
@@ -35,7 +32,7 @@ $card-tab-icon-color-active: #fff !default;
 }
 
 .card-background-1 {
-  background-color: $card-background-1;
+  background-color: #000;
   color: $card-background-1-text-color;
   a:not(.dropdown-item),
   a:not(.dropdown-item):hover {
@@ -54,11 +51,11 @@ $card-tab-icon-color-active: #fff !default;
 }
 
 .card-title {
-  font-size: 14px;
+  font-size: 18px;
   font-weight: normal;
   line-height: 1.2rem;
   margin-bottom: 2rem;
-  color: #00ffff;
+  color: azure;
 
   &.lg-card-title {
     @media (max-width: 374px) {
@@ -92,80 +89,9 @@ $card-tab-icon-color-active: #fff !default;
   }
 }
 
-
-
-.col-sm-3 {
-  color: #496785;
-}
-
-.col-sm-4 {
-  color: #496785;
-}
-
-.col-sm-5 {
-  color: #496785;
-}
-.col-sm-6 {
-  color: #496785;
-}
-.col-sm-7 {
-  color: #496785;
-}
-.col-sm-8 {
-  color: #496785;
-}
-
-.col-sm-9 {
-  color: #496785;
-  font-size: 15px;
-}
-.col-lg-2 {
-  color: #496785;
-}
-.col-lg-3 {
-  color: #496785;
-}
-.col-lg-4 {
-  color: #496785;
-}
-.col-lg-5 {
-  color: #496785;
-}
-.col-lg-6 {
-  color: #496785;
-}
-.col-lg-7 {
-  color: #496785;
-}
-.col-lg-8 {
-  color: #496785;
-}
-.col-lg-9 {
-  color: #496785;
-  font-size: 15px;
-}
-
-.col-lg-10 {
-  color: #496785;
-  font-size: 15px;
-}
-
-.fa-regular {
-  font-size: 15px;
-}
-
-.fa-clock {
-  font-size: 15px;
-}
-
-.mr-4 {
-  font-size: 15px;
-}
-
-
 .card-subtitle {
-  color: #00bfff;
-  font-size: 15px;
+  color: #6DD5FA;
+  font-size: 12px;
   font-weight: normal;
   line-height: 1.2;
   margin: 0 0 30px;
@@ -230,10 +156,6 @@ $card-tab-icon-color-active: #fff !default;
 
 .card-body {
   padding: $card-horizontal-padding;
-  background-color: #000000;
-  border: 1px solid #00ffffa4;
-  border-radius: 4px;
-  box-shadow: 0 0 40px #00bfff31;
 }
 
 .card-body-flex-column-space-between {
@@ -262,6 +184,7 @@ $card-tab-icon-color-active: #fff !default;
   max-height: auto;
 
   .tile {
+    color: #6DD5FA;
     margin-bottom: 0;
   }
 }
@@ -274,7 +197,6 @@ $card-tab-icon-color-active: #fff !default;
   display: flex;
   justify-content: flex-start;
   overflow: hidden;
-  background-color: #24292f;
 
   @include media-breakpoint-down(md) {
     flex-direction: column;
@@ -283,11 +205,10 @@ $card-tab-icon-color-active: #fff !default;
 
 .card-tab {
   align-items: center;
-  background-color: #00000041;
-  color: #496785;
+  background-color: $card-background-color;
+  color: #6DD5FA;
   cursor: pointer;
   display: flex;
-  border-right: #000 solid 1px;
   font-size: 14px;
   font-weight: normal;
   height: 70px;
@@ -296,7 +217,7 @@ $card-tab-icon-color-active: #fff !default;
   transition: $transition-cont;
 
   &:hover {
-    background-color: rgba(#00bfff, .15);
+    background-color: rgba($card-tab-active, .15);
     color: $card-tab-active;
     text-decoration: none;
   }
@@ -312,8 +233,8 @@ $card-tab-icon-color-active: #fff !default;
   }
 
   &.active {
-    background-color: #000;
-    color: #fff;
+    background-color: $card-tab-active;
+    color: #9CECFB;
     cursor: default;
     text-decoration: none;
 
@@ -378,7 +299,7 @@ $card-tab-icon-color-active: #fff !default;
 .contract-plus-btn-container {
   height: 31px !important;
   &:hover i {
-    color: #fff !important;
+    color: #9CECFB !important;
   }
 }
 
@@ -407,4 +328,26 @@ $card-tab-icon-color-active: #fff !default;
 
 .function-output {
   margin-left: -1rem;
+}
+
+.functions-tabs input[type="radio"] {
+  display: none;
+}
+
+.card-misc-container {
+  padding-left: $card-horizontal-padding;
+  padding-top: $card-horizontal-padding;
+
+  .btn-line-inversed,
+  .btn-line {
+    background-color: yellow;
+  color: red;
+    display: inline-flex;
+  }
+}
+
+.nav-pills .nav-link.active {
+  background-color: yellow;
+  color: red;
+  background-color: $primary;
 }

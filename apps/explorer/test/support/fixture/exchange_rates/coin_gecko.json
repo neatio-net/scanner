@@ -132,27 +132,27 @@
   },
   "liquidity_score": 19.334,
   "localization": {
-    "ar": "Neatio Network",
-    "de": "Neatio Network",
-    "en": "Neatio Network",
-    "es": "Neatio Network",
-    "fr": "Neatio Network",
-    "hu": "Neatio Network",
-    "id": "Neatio Network",
-    "it": "Neatio Network",
+    "ar": "NIO Network",
+    "de": "NIO Network",
+    "en": "NIO Network",
+    "es": "NIO Network",
+    "fr": "NIO Network",
+    "hu": "NIO Network",
+    "id": "NIO Network",
+    "it": "NIO Network",
     "ja": "ポアネットワーク",
-    "ko": "POA 네트워크",
-    "nl": "Neatio Network",
-    "pl": "Neatio Network",
-    "pt": "Neatio Network",
-    "ro": "Neatio Network",
-    "ru": "Neatio Network",
-    "sv": "Neatio Network",
-    "th": "Neatio Network",
-    "tr": "Neatio Network",
-    "vi": "Neatio Network",
-    "zh": "Neatio Network",
-    "zh-tw": "Neatio Network"
+    "ko": "NIO 네트워크",
+    "nl": "NIO Network",
+    "pl": "NIO Network",
+    "pt": "NIO Network",
+    "ro": "NIO Network",
+    "ru": "NIO Network",
+    "sv": "NIO Network",
+    "th": "NIO Network",
+    "tr": "NIO Network",
+    "vi": "NIO Network",
+    "zh": "NIO Network",
+    "zh-tw": "NIO Network"
   },
   "market_cap_rank": 499,
   "market_data": {
@@ -1251,7 +1251,7 @@
       "zar": 1826528
     }
   },
-  "name": "Neatio Network",
+  "name": "NIO Network",
   "public_interest_score": 27.778,
   "public_interest_stats": {
     "alexa_rank": 702581,
@@ -1263,7 +1263,7 @@
   "symbol": "poa",
   "tickers": [
     {
-      "base": "POA",
+      "base": "NIO",
       "bid_ask_spread_percentage": 1.503759,
       "coin_id": "poa-network",
       "converted_last": {
@@ -1293,7 +1293,7 @@
       "volume": 8224275.5227272725
     },
     {
-      "base": "POA",
+      "base": "NIO",
       "bid_ask_spread_percentage": 1.729386,
       "coin_id": "poa-network",
       "converted_last": {
@@ -1316,14 +1316,14 @@
         "identifier": "binance",
         "name": "Binance"
       },
-      "target": "ETH",
+      "target": "NIO",
       "timestamp": "2019-08-21T08:34:26+00:00",
       "trade_url": "https://www.binance.com/trade.html?symbol=POA_ETH",
       "trust_score": "green",
       "volume": 263595.07819839736
     },
     {
-      "base": "POA",
+      "base": "NIO",
       "bid_ask_spread_percentage": 1.39165,
       "coin_id": "poa-network",
       "converted_last": {
@@ -1353,7 +1353,7 @@
       "volume": 179211.83864541832
     },
     {
-      "base": "POA",
+      "base": "NIO",
       "bid_ask_spread_percentage": 2.985075,
       "coin_id": "poa-network",
       "converted_last": {
@@ -1383,7 +1383,7 @@
       "volume": 122752.0737
     },
     {
-      "base": "POA",
+      "base": "NIO",
       "bid_ask_spread_percentage": 3.247202,
       "coin_id": "poa-network",
       "converted_last": {
@@ -1406,7 +1406,7 @@
         "identifier": "bibox",
         "name": "Bibox"
       },
-      "target": "ETH",
+      "target": "NIO",
       "timestamp": "2019-08-21T08:35:50+00:00",
       "trade_url": "https://www.bibox.com/exchange?coinPair=POA_ETH",
       "trust_score": "yellow",
@@ -1466,9 +1466,9 @@
         "identifier": "hitbtc",
         "name": "HitBTC"
       },
-      "target": "ETH",
+      "target": "NIO",
       "timestamp": "2019-08-21T07:37:25+00:00",
-      "trade_url": "https://hitbtc.com/POA20-to-ETH",
+      "trade_url": "https://hitbtc.com/POA20-to-NIO",
       "trust_score": "red",
       "volume": 140.0
     },
@@ -1556,14 +1556,14 @@
         "identifier": "uniswap",
         "name": "Uniswap"
       },
-      "target": "ETH",
+      "target": "NIO",
       "timestamp": "2019-08-21T08:21:13+00:00",
       "trade_url": null,
       "trust_score": null,
       "volume": 7333.316809051611
     },
     {
-      "base": "POA",
+      "base": "NIO",
       "bid_ask_spread_percentage": 40.083051,
       "coin_id": "poa-network",
       "converted_last": {
@@ -1586,14 +1586,14 @@
         "identifier": "ethfinex",
         "name": "Ethfinex"
       },
-      "target": "ETH",
+      "target": "NIO",
       "timestamp": "2019-08-18T18:43:13+00:00",
       "trade_url": "https://ethfinex.com",
       "trust_score": "red",
       "volume": 1713.3067
     },
     {
-      "base": "POA",
+      "base": "NIO",
       "bid_ask_spread_percentage": 44.440399,
       "coin_id": "poa-network",
       "converted_last": {
@@ -1623,7 +1623,7 @@
       "volume": 3324.44883078
     },
     {
-      "base": "POA",
+      "base": "NIO",
       "bid_ask_spread_percentage": 14.012015,
       "coin_id": "poa-network",
       "converted_last": {
@@ -1646,14 +1646,14 @@
         "identifier": "hitbtc",
         "name": "HitBTC"
       },
-      "target": "ETH",
+      "target": "NIO",
       "timestamp": "2019-08-21T02:52:09+00:00",
-      "trade_url": "https://hitbtc.com/POA-to-ETH",
+      "trade_url": "https://hitbtc.com/NIO-to-NIO",
       "trust_score": null,
       "volume": 4.0
     },
     {
-      "base": "POA",
+      "base": "NIO",
       "bid_ask_spread_percentage": 64.645979,
       "coin_id": "poa-network",
       "converted_last": {
@@ -1678,12 +1678,12 @@
       },
       "target": "DAI",
       "timestamp": "2019-08-21T02:52:25+00:00",
-      "trade_url": "https://hitbtc.com/POA-to-DAI",
+      "trade_url": "https://hitbtc.com/NIO-to-DAI",
       "trust_score": null,
       "volume": 2.0
     },
     {
-      "base": "POA",
+      "base": "NIO",
       "bid_ask_spread_percentage": 64.353312,
       "coin_id": "poa-network",
       "converted_last": {
@@ -1713,7 +1713,7 @@
       "volume": 1234.0
     },
     {
-      "base": "POA",
+      "base": "NIO",
       "bid_ask_spread_percentage": 21.080977,
       "coin_id": "poa-network",
       "converted_last": {
@@ -1738,12 +1738,12 @@
       },
       "target": "BTC",
       "timestamp": "2019-08-20T18:50:31+00:00",
-      "trade_url": "https://hitbtc.com/POA-to-BTC",
+      "trade_url": "https://hitbtc.com/NIO-to-BTC",
       "trust_score": null,
       "volume": 0.0
     },
     {
-      "base": "POA",
+      "base": "NIO",
       "bid_ask_spread_percentage": 36.441715,
       "coin_id": "poa-network",
       "converted_last": {
@@ -1768,7 +1768,7 @@
       },
       "target": "USD",
       "timestamp": "2019-08-20T18:50:15+00:00",
-      "trade_url": "https://hitbtc.com/POA-to-USD",
+      "trade_url": "https://hitbtc.com/NIO-to-USD",
       "trust_score": null,
       "volume": 0.0
     },

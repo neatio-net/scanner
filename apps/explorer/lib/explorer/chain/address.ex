@@ -8,6 +8,7 @@ defmodule Explorer.Chain.Address do
   use Explorer.Schema
 
   alias Ecto.Changeset
+  alias Explorer.Chain
 
   alias Explorer.Chain.{
     Address,
@@ -20,7 +21,8 @@ defmodule Explorer.Chain.Address do
     SmartContractAdditionalSource,
     Token,
     Transaction,
-    Wei
+    Wei,
+    Withdrawal
   }
 
   alias Explorer.Chain.Cache.NetVersion
@@ -35,7 +37,7 @@ defmodule Explorer.Chain.Address do
   @type hash :: Hash.t()
 
   @typedoc """
-   * `fetched_coin_balance` - The last fetched balance from Parity
+   * `fetched_coin_balance` - The last fetched balance from Nethermind
    * `fetched_coin_balance_block_number` - the `t:Explorer.Chain.Block.t/0` `t:Explorer.Chain.Block.block_number/0` for
      which `fetched_coin_balance` was fetched
    * `hash` - the hash of the address's public key
@@ -120,6 +122,7 @@ defmodule Explorer.Chain.Address do
     has_many(:names, Address.Name, foreign_key: :address_hash)
     has_many(:decompiled_smart_contracts, DecompiledSmartContract, foreign_key: :address_hash)
     has_many(:smart_contract_additional_sources, SmartContractAdditionalSource, foreign_key: :address_hash)
+    has_many(:withdrawals, Withdrawal, foreign_key: :address_hash)
 
     timestamps()
   end
@@ -147,6 +150,8 @@ defmodule Explorer.Chain.Address do
   end
 
   def checksum(address_or_hash, iodata? \\ false)
+
+  def checksum(nil, _iodata?), do: ""
 
   def checksum(%__MODULE__{hash: hash}, iodata?) do
     checksum(hash, iodata?)
@@ -249,6 +254,16 @@ defmodule Explorer.Chain.Address do
   end
 
   @doc """
+    Preloads provided contracts associations if address has contract_code which is not nil
+  """
+  @spec maybe_preload_smart_contract_associations(Address.t(), list, list) :: Address.t()
+  def maybe_preload_smart_contract_associations(%Address{contract_code: nil} = address, _associations, _options),
+    do: address
+
+  def maybe_preload_smart_contract_associations(%Address{contract_code: _} = address, associations, options),
+    do: Chain.select_repo(options).preload(address, associations)
+
+  @doc """
   Counts all the addresses where the `fetched_coin_balance` is > 0.
   """
   def count_with_fetched_coin_balance do
@@ -259,14 +274,10 @@ defmodule Explorer.Chain.Address do
     )
   end
 
-  @doc """
-  Counts all the addresses.
-  """
-  def count do
-    from(
-      a in Address,
-      select: fragment("COUNT(*)")
-    )
+  def fetched_coin_balance(address_hash) when not is_nil(address_hash) do
+    Address
+    |> where([address], address.hash == ^address_hash)
+    |> select([address], address.fetched_coin_balance)
   end
 
   defimpl String.Chars do

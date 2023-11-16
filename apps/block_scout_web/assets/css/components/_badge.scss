@@ -9,7 +9,7 @@ $badge-neutral-background-color: rgba($secondary, .1) !default;
   color: $white;
 
   &.tile-badge {
-    font-size: 15px;
+    font-size: 10px;
     font-weight: bold;
     height: 20px;
     line-height: 20px;
@@ -19,7 +19,7 @@ $badge-neutral-background-color: rgba($secondary, .1) !default;
   }
 
   &.api-badge {
-    font-size: 15px;
+    font-size: 12px;
     font-weight: 700;
     height: 24px;
     line-height: 26px;

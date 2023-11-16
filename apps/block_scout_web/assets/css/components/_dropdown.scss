@@ -1,4 +1,4 @@
-$dropdown-menu-item-color: #333 !default;
+$dropdown-menu-item-color:  #6DD5FA !default;
 $dropdown-menu-item-hover-color: $secondary !default;
 $dropdown-menu-item-hover-background: rgba($secondary, 0.1) !default;
 
@@ -21,11 +21,13 @@ $dropdown-menu-item-hover-background: rgba($secondary, 0.1) !default;
   .nav-item & {
     border-top-left-radius: 0 !important;
     border-top-right-radius: 0 !important;
-    //top: 45px;
+    border-bottom: 10px;
+    top: 45px;
 
     .dropdown-item:first-child {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
+      border-bottom: 10px;
     }
   }
 
@@ -36,17 +38,18 @@ $dropdown-menu-item-hover-background: rgba($secondary, 0.1) !default;
 }
 
 .dropdown-item {
-  color: $dropdown-menu-item-color;
-  font-size: 15px;
+  color: #000;
+  font-size: 12px;
   padding: 10px 20px;
   transition: $transition-cont;
   white-space: initial;
+  background: linear-gradient(to left, #4776E6, #8E54E9);
 
   & {
     &.active,
     &:hover,
     &:focus {
-      background-color: $dropdown-menu-item-hover-background;
+      background: #4b6cb7;
       color: $dropdown-menu-item-hover-color;
 
       .external-link-icon {
@@ -72,9 +75,9 @@ $dropdown-menu-item-hover-background: rgba($secondary, 0.1) !default;
     &:hover,
     &:active {
       padding-left: 10px;
-      background-color: #fff !important;
+      background-color: #9CECFB !important;
       cursor: default;
-      color: #333;
+      color: #6DD5FA;
       font-weight: 700;
     }
   }
@@ -86,15 +89,13 @@ $dropdown-menu-item-hover-background: rgba($secondary, 0.1) !default;
 
 .navbar .dropdown-menu {
   border: none;
-  background-color: #24292f;
 }
 
 .dropdown-search-icon {
-  color: $gray-500;
+  color: $gray-300;
   left: 8px;
   pointer-events: none;
   top: 5px;
-
 }
 
 .dropdown-search-field {
@@ -111,4 +112,8 @@ $dropdown-menu-item-hover-background: rgba($secondary, 0.1) !default;
   top: 20px !important;
   left: unset !important;
   width: 300px !important;
+}
+
+.flex-grow-2 {
+  flex-grow: 2;
 }

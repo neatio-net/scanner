@@ -1,8 +1,8 @@
 // general
 $primary: #2b9f7a;
 $secondary: #20745a;
-$tertiary: #fff;
-$additional-font: #fff;
+$tertiary: #9CECFB;
+$additional-font: #9CECFB;
 
 $tile-body-a-color: $primary;
 $tile-type-block-color: $primary;
@@ -11,18 +11,18 @@ a.tile-title { color: $primary !important; }
 
 // footer
 $footer-background-color: #282d31;
-$footer-title-color: #fff;
+$footer-title-color: #9CECFB;
 $footer-text-color: $additional-font;
 $footer-item-disc-color: $secondary;
 $footer-social-icon-color: $secondary;
 
 // dashboard
-$dashboard-line-color-price: #fff; // price left border
+$dashboard-line-color-price: #9CECFB; // price left border
 
-$dashboard-banner-chart-legend-label-color: #fff;
+$dashboard-banner-chart-legend-label-color: #9CECFB;
 $dashboard-stats-item-label-color: $dashboard-banner-chart-legend-label-color;
-$dashboard-banner-chart-legend-value-color: #fff; // chart labels
-$dashboard-stats-item-value-color: #fff; // stat values
+$dashboard-banner-chart-legend-value-color: #9CECFB; // chart labels
+$dashboard-stats-item-value-color: #9CECFB; // stat values
 
 $dashboard-stats-item-border-color: $secondary; // stat border
 
@@ -41,7 +41,7 @@ $header-icon-color-hover: $primary;
 $header-icon-border-color-hover: $primary;
 
 // buttons
-$btn-line-bg: #fff; // button bg
+$btn-line-bg: #9CECFB; // button bg
 $btn-line-color: $primary; // button border and font color && hover bg color
 $btn-copy-color: $primary; // btn copy
 $btn-qr-color: $primary; // btn qr-code

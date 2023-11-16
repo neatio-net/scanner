@@ -21,13 +21,13 @@
 
 .logs-search-input, .logs-search-btn, .logs-search-btn-cancel {
 	height: 24px;
-	background-color: #f5f6fa;
-	border: 1px solid #f5f6fa;
-	color: #333;
+	background-color: #302b63;
+	border: 1px solid #302b63;
+	color: #6DD5FA;
 	border-radius: 2px;
 	outline: none;
-	font-family: Helvetica, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 15px;
+	font-family: Nunito, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 12px;
     font-weight: 600;
     -webkit-appearance: none;
 }
@@ -39,7 +39,7 @@
     min-width: 160px;
     font-weight: 300 !important;
     &::placeholder {
-    	color: #00ffff;
+    	color: #a3a9b5;
     	font-weight: 300 !important;
     }
 }
@@ -51,7 +51,7 @@
 	cursor: pointer;
 	&:hover {
 		background-color: $primary;
-		color: #fff;
+		color: #9CECFB;
 		border-color: $primary;
 	}
 }
@@ -64,6 +64,6 @@
 	top: 0;
 	right: 56px;
 	&:hover {
-		color: #333;
+		color: #6DD5FA;
 	}
 }

@@ -17,7 +17,7 @@ pre {
   content: counter(line);
   display: inline-block;
   width: 3em;
-  border-right: 1px solid #00ffff;
+  border-right: 1px solid #ddd;
   padding: 0 .5em;
   margin-right: .5em;
   color: #888;
@@ -30,7 +30,6 @@ pre {
 
 .tile pre {
   margin-bottom: 0;
-  background-color: #24292f;
 }
 
 .contract-code-container {
@@ -39,7 +38,6 @@ pre {
   }
 
   & .buttons {
-    background-color: transparent;
     @include media-breakpoint-down(md) {
       width: 100%;
       margin-bottom: 10px;
