@@ -56,6 +56,7 @@ $card-tab-icon-color-active: transparent !default;
   line-height: 1.2rem;
   margin-bottom: 2rem;
   color: azure;
+  font-family: Anita, Helvetica, sans-serif;
 
   &.lg-card-title {
     @media (max-width: 374px) {
@@ -340,6 +341,7 @@ $card-tab-icon-color-active: transparent !default;
 
   .btn-line-inversed,
   .btn-line {
+    font-family: Anita, Helvetica, sans-serif;
     background-color: yellow;
   color: red;
     display: inline-flex;

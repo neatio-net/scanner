@@ -8,8 +8,8 @@ $dashboard-line-color-price: lighten($dashboard-banner-gradient-end, 5%) !defaul
 $dashboard-line-color-price-dark-theme: lighten($dashboard-banner-gradient-end, 5%) !default;
 $dashboard-line-color-market: $secondary !default;
 $dashboard-line-color-market-dark-theme: $secondary !default;
-$dashboard-line-color-transactions: #a044ff !default;
-$dashboard-line-color-transactions-dark-theme: #a044ff !default;
+$dashboard-line-color-transactions: #5959d8 !default;
+$dashboard-line-color-transactions-dark-theme: #5959d8 !default;
 $dashboard-stats-item-label-color: #9CECFB !default;
 $dashboard-stats-item-value-color: rgba(#9CECFB, 0.8) !default;
 $dashboard-banner-chart-legend-label-color: #9CECFB !default;
@@ -131,6 +131,7 @@ $dashboard-banner-chart-axis-font-color-alt: #6DD5FA;
       position: absolute;
       top: 0;
       width: 4px;
+      background-color: #5959d8;
     }
 
     &.price-per-day {
@@ -159,12 +160,13 @@ $dashboard-banner-chart-axis-font-color-alt: #6DD5FA;
   }
 
   .dashboard-banner-chart-legend-label {
-    color: $dashboard-banner-chart-legend-label-color;
+    color: #7d7dff;
     display: block;
-    font-size: 12px;
-    font-weight: 600;
+    font-size: 10px;
+    font-weight: 200;
     line-height: 1.2;
     margin: 0 0 5px;
+    font-family: Anita, Helvetica, sans-serif;
 
     @media (max-width: 374px) {
       position: relative;
@@ -255,6 +257,7 @@ $dashboard-banner-chart-axis-font-color-alt: #6DD5FA;
 }
 
 .dashboard-banner-network-stats {
+  font-family: Anita, Helvetica, sans-serif;
   column-gap: 25px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;

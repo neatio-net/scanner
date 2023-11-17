@@ -76,14 +76,14 @@ a.tile-title { color: $secondary !important; }
 }
 
 .dashboard-banner-network-stats-item::before {
-  background-color: #F0EBDE !important;
+  background-color: #7f00ff !important;
 }
 
 .dashboard-banner-chart-legend {
   .dashboard-banner-chart-legend-item.market-cap-per-day
    {
     &::before {
-      background-color: $dashboard-line-color-market !important;
+      background-color: #7f00ff !important;
     }
   }
 }
@@ -170,6 +170,7 @@ $dashboard-line-color-transactions-dark-theme: $secondary;
     background-color: transparent !important;
     background-color: yellow;
     color: red;
+    font-family: Anita, Helvetica, sans-serif;
 
     &[disabled] {
         &,
@@ -236,7 +237,7 @@ $dashboard-line-color-transactions-dark-theme: $secondary;
   }
 
   .text-muted {
-    color: #8a8dba !important;
+    color: #1CB5E0 !important;
   }
 
   .card-tab {

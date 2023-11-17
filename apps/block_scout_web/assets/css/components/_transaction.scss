@@ -10,7 +10,7 @@
 
 .download-all-items {
 	text-align: center;
-	color: #a3a9b5;
+	color: #8CA6DB;
 	font-size: 13px;
 	margin-top: 10px;
 	@media (min-width: 768px) {
@@ -43,6 +43,7 @@
 }
 
 .text-nowrap-small-screen {
+	font-family: Anita, Helvetica, sans-serif;
 	@include media-breakpoint-up(sm) {
 		white-space: nowrap !important;
 	}
