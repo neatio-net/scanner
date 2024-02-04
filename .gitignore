@@ -60,3 +60,4 @@ dump.rdb
 .vscode
 
 **.dec**
+apps/explorer/priv/compile_solc.js
